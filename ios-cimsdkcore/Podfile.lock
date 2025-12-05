@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - Alamofire (5.10.2)
   - AlicloudPDNS (2.1.9)
   - AliyunOSSiOS (2.11.2)
   - ASIHTTPRequest (1.8.2):
@@ -158,7 +159,11 @@ PODS:
   - Sentry/Core (8.48.0)
   - SnapKit (5.6.0)
   - SocketRocket (0.6.0)
+  - SVProgressHUD (2.3.1):
+    - SVProgressHUD/Core (= 2.3.1)
+  - SVProgressHUD/Core (2.3.1)
   - SwiftProtobuf (1.32.0)
+  - SwiftyJSON (5.0.2)
   - TKThemeConfig (0.1.2)
   - TXLiteAVSDK_Player (7.6.9355)
   - WebRTC-SDK (104.5112.17)
@@ -166,6 +171,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (= 4.0.1)
+  - Alamofire (~> 5.0)
   - AlicloudPDNS (= 2.1.9)
   - AliyunOSSiOS
   - ASIHTTPRequest (= 1.8.2)
@@ -203,6 +209,8 @@ DEPENDENCIES:
   - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `8.48.0`)
   - SnapKit (= 5.6.0)
   - SocketRocket (= 0.6.0)
+  - SVProgressHUD
+  - SwiftyJSON (~> 5.0)
   - TKThemeConfig (from `./TKThemeConfig/TKThemeConfig.podspec`)
   - TXLiteAVSDK_Player (= 7.6.9355)
   - ZegoExpressEngine (= 3.5.0)
@@ -212,6 +220,7 @@ SPEC REPOS:
     - AlicloudPDNS
   https://github.com/CocoaPods/Specs:
     - AFNetworking
+    - Alamofire
     - AliyunOSSiOS
     - ASIHTTPRequest
     - AvoidCrash
@@ -253,7 +262,9 @@ SPEC REPOS:
     - SDWebImageWebPCoder
     - SnapKit
     - SocketRocket
+    - SVProgressHUD
     - SwiftProtobuf
+    - SwiftyJSON
     - TXLiteAVSDK_Player
     - WebRTC-SDK
     - ZegoExpressEngine
@@ -280,6 +291,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   AlicloudPDNS: 6eda4d8af312b1e0824a58d97a2f5edf71531186
   AliyunOSSiOS: 6d6b668b82ac0c0ea2313412bcb5530b42ec97ab
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
@@ -327,12 +339,14 @@ SPEC CHECKSUMS:
   Sentry: 1ca8405451040482877dcd344dfa3ef80b646631
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   SwiftProtobuf: 81e341191afbddd64aa031bd12862dccfab2f639
+  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
   TKThemeConfig: a3275b78e276af9b9feabe6ef9dd1a2bc3cf0d52
   TXLiteAVSDK_Player: a96437245dfb7644727c17ad6cd8d86ba9465186
   WebRTC-SDK: 082ae4893212534a779ca233f19a9df8efd5f3bd
   ZegoExpressEngine: 2585b5782f7ad0b837beabb9cdb758d6a64fff73
 
-PODFILE CHECKSUM: a962aceb9bae662c4166c8983c473a4a932f0b1b
+PODFILE CHECKSUM: 519ca3a7fa78eb44b99d36886eeec11d827a5f21
 
 COCOAPODS: 1.16.2
