@@ -1,0 +1,190 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '13.0'
+
+source "https://github.com/CocoaPods/Specs"
+source 'https://github.com/aliyun/aliyun-specs.git'
+
+use_frameworks!
+## workspace文件名
+workspace 'CIMSDK.xcworkspace'
+
+## 主工程路径
+project './CIMKit/CIMKit.xcodeproj’
+
+## 工程路径
+target 'NoaChatSDKCore' do
+project './NoaChatSDKCore/NoaChatSDKCore.xcodeproj’
+
+  pod "AFNetworking", '4.0.1'
+  pod 'MJExtension', '3.4.0'
+  pod 'SocketRocket', '0.6.0'
+  pod 'MMKV', '1.2.16'
+  pod 'NullSafe', '2.0'
+  pod 'Protobuf', '3.21.5'
+  #新的架构实现SDK
+  pod 'CocoaAsyncSocket', '7.6.5'
+  pod 'SAMKeychain', '1.5.3'
+  
+  #音视频要求iOS13最低(SwiftUI)
+  pod 'LiveKitClient', '1.0.8'
+  #  LiveKitClient SDK安装的内容
+  #  Installing LiveKitClient (1.0.8)
+  #  Installing Logging (1.4.0)
+  #  Installing PromisesObjC (2.1.1)
+  #  Installing PromisesSwift (2.1.1)
+  #  Installing SwiftProtobuf (1.20.3)
+  #  Installing WebRTC-SDK (104.5112.07)
+#  pod 'WebRTC-SDK', '=125.6422.07'
+  #即构音视频
+  pod 'ZegoExpressEngine', '3.5.0'
+  
+  #美团日志SDK
+  pod 'Logan', '1.2.8'
+  #Sentry
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '8.48.0'
+  
+  # RAC
+  pod 'ReactiveObjC', :inhibit_warnings => true
+  
+  # 网络监听
+  pod 'NetworkStatus', :path => './NetWorkStatus/NetWorkStatus.podspec'
+  
+  # 本地日志
+  pod 'LocalLogLib', :path => './LocalLogLib/LocalLogLib.podspec'
+  
+end
+
+target 'NoaChatKit' do
+project './NoaChatKit/NoaChatKit.xcodeproj’
+
+  pod "AFNetworking", '4.0.1'
+  pod 'MJExtension', '3.4.0'
+  pod 'SocketRocket', '0.6.0'
+  pod 'MMKV', '1.2.16'
+  pod 'NullSafe', '~> 2.0'
+  pod 'Protobuf', '3.21.5'
+  #新的架构实现SDK
+  pod 'CocoaAsyncSocket', '7.6.5'
+  
+  
+  pod 'MJRefresh', '3.7.5'
+  
+  pod 'MBProgressHUD', '1.2.0'
+  
+  pod 'IQKeyboardManager'
+  
+  pod 'Masonry', '1.1.0'
+  
+  pod 'SAMKeychain', '1.5.3'
+  
+  pod 'SDWebImage', '5.20.0'
+  #SVG图片格式
+  pod 'SDWebImageSVGCoder', '1.6.1'
+  #WebP图片格式(libwebp 1.2.4)
+  pod 'SDWebImageWebPCoder', '0.9.1'
+  pod 'SDWebImageFLPlugin'
+  #空态界面展示
+  pod 'DZNEmptyDataSet', '1.8.1'
+  
+  #富文本
+#  pod 'YYText', '~> 1.0.7'
+ 
+  #超级播放器(最新版是收费的)
+  pod 'TXLiteAVSDK_Player', '7.6.9355'
+  
+  #用此网络请求，封装了一个文件下载工具 ZCacheManager
+  pod 'ASIHTTPRequest', '1.8.2'
+
+  pod 'FMDB', '2.7.5'
+
+  #定位闪退崩溃的问题
+#  pod 'Bugly'
+  
+  #界面嵌套
+  pod 'JXCategoryView', '1.6.1'
+  
+  #音视频要求iOS13最低(SwiftUI)
+  pod 'LiveKitClient', '1.0.8'
+  #  LiveKitClient SDK安装的内容
+  #  Installing LiveKitClient (1.0.8)
+  #  Installing Logging (1.4.0)
+  #  Installing PromisesObjC (2.1.1)
+  #  Installing PromisesSwift (2.1.1)
+  #  Installing SwiftProtobuf (1.20.3)
+  #  Installing WebRTC-SDK (104.5112.07)
+  
+#  pod 'WebRTC-SDK', '=125.6422.07'
+  
+  #检查内存泄漏
+  #pod 'MLeaksFinder'
+  #pod 'FBRetainCycleDetector'
+
+  #美团日志SDK
+  pod 'Logan', '1.2.8'
+  #即构音视频
+  pod 'ZegoExpressEngine', '3.5.0'
+  
+  #防止崩溃
+  pod 'AvoidCrash', '2.5.2'
+	
+  #阿里云OSS
+  pod 'AliyunOSSiOS'
+
+  #aliyun云解析DNS
+  pod 'AlicloudPDNS', '2.1.9'
+
+  #亚马逊云存储 AWS S3
+  pod 'AWSS3'
+  
+  #腾讯云存储
+  pod 'QCloudCOSXML', '6.4.8'
+
+  #swift
+  #SnapKit
+  pod 'SnapKit', '5.6.0'
+  #图片下载
+  pod 'Kingfisher'
+  #openinstall数据统计
+  pod 'libOpenInstallSDK'
+  #Sentry
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '8.48.0'
+  
+  # RAC
+  pod 'ReactiveObjC', :inhibit_warnings => true
+  
+  # 网络监听
+  pod 'NetworkStatus', :path => './NetWorkStatus/NetWorkStatus.podspec'
+  
+  # 加解密
+  pod 'EncryptLib', :path => './EncryptLib/EncryptLib.podspec'
+  
+  # 本地日志
+  pod 'LocalLogLib', :path => './LocalLogLib/LocalLogLib.podspec'
+
+    # 主题配置
+  pod 'TKThemeConfig', :path => './TKThemeConfig/TKThemeConfig.podspec'
+  
+  #debug tool
+  pod 'LLDebugTool', :configurations => ['Debug']
+    
+  # ijkplayer
+#  pod "IJKMediaFramework", :podspec => 'https://github.com/debugly/ijkplayer/releases/download/k0.8.9/IJKMediaFramework.spec.json'
+  
+  pod "FSPlayer", :podspec => 'https://github.com/debugly/fsplayer/releases/download/1.0.2/FSPlayer.spec.json'
+  
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+    end
+    if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
+       target.build_configurations.each do |config|
+         config.build_settings['CODE_SIGN_IDENTITY'] = ''
+         config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+       end
+    end
+  end
+end

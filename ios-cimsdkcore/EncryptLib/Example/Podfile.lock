@@ -1,0 +1,16 @@
+PODS:
+  - EncryptLib (0.1.0)
+
+DEPENDENCIES:
+  - EncryptLib (from `../`)
+
+EXTERNAL SOURCES:
+  EncryptLib:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EncryptLib: 4c95879c3b2c5dda0155c0c7c960e79d7a7f2158
+
+PODFILE CHECKSUM: 22fafebfe32b59d3208e92c691b9aec466e1ef97
+
+COCOAPODS: 1.16.2

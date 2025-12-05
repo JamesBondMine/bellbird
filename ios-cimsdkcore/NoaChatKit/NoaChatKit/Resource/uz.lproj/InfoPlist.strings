@@ -1,0 +1,25 @@
+/*
+ Modified: 2025-11-27, Version: 2.0, Optimization: IPA Similarity Reduction
+*/
+
+/*
+  InfoPlist.strings
+  CIMKit
+
+  Created by Mac on 2023/6/15.
+  
+*/
+
+// 乌兹别克语
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
+
+"NSCameraUsageDescription" = "Kirishga ruxsat berish uchun OK tugmasini bosing. Ruxsat berilmasa, tizimga kirish, suratga olish va video yozish kabi funksiyalardan odatdagidek foydalana olmaysiz. ";
+"NSLocationWhenInUseUsageDescription" = "Vizitkangizdagi joylashuv maʼlumotlariga kirishga ruxsat berish uchun OK tugmasini bosing. ";
+"NSLocationAlwaysUsageDescription" = "Vizitkangizdagi joylashuv maʼlumotlariga kirishga ruxsat berish uchun OK tugmasini bosing. ";
+"NSLocationWhenInUseUsageDescription" = "Vizitkangizdagi joylashuv maʼlumotlariga kirishga ruxsat berish uchun OK tugmasini bosing. ";
+"NSMicrophoneUsageDescription" = "Kirishga ruxsat berish uchun OK tugmasini bosing. Ruxsat berilmasa, ovozli chat funksiyasidan to'g'ri foydalana olmaysiz. ";
+"NSPhotoLibraryUsageDescription" = "Kirishga ruxsat berish uchun OK tugmasini bosing. Ruxsat berilmasa, tizimga kirish, suratga olish va video yozish kabi funksiyalardan odatdagidek foydalana olmaysiz. ";
+"NSPhotoLibraryAddUsageDescription" = "Kirishga ruxsat berish uchun OK tugmasini bosing. Ruxsat berilmasa, yuklab olmoqchi bo'lgan rasmlarni telefoningiz fotoalbomiga saqlay olmaysiz. ";
+"NSLocalNetworkUsageDescription" = "Qurilma bilan muloqot qilish uchun mahalliy tarmoqqa kirishga ruxsat berish uchun OK tugmasini bosing. ";
+

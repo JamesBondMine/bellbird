@@ -1,0 +1,23 @@
+/*
+ Modified: 2025-11-27, Version: 2.0, Optimization: IPA Similarity Reduction
+*/
+
+/*
+  InfoPlist.strings
+  CIMKit
+
+  Created by Mac on 2023/6/15.
+  
+*/
+// 印度尼西亚语(印尼语)
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
+
+"NSCameraUsageDescription" = "Silakan klik OK untuk mengizinkan akses. Jika tidak diizinkan, Anda tidak akan dapat menggunakan fungsi seperti login, pengambilan foto, dan perekaman video secara normal. ";
+"NSLocationWhenInUseUsageDescription" = "Silakan klik OK untuk mengizinkan akses mengakses informasi lokasi Anda di kartu nama Anda. ";
+"NSLocationAlwaysUsageDescription" = "Silakan klik OK untuk mengizinkan akses mengakses informasi lokasi Anda di kartu nama Anda. ";
+"NSLocationWhenInUseUsageDescription" = "Silakan klik OK untuk mengizinkan akses mengakses informasi lokasi Anda di kartu nama Anda. ";
+"NSMicrophoneUsageDescription" = "Silakan klik OK untuk mengizinkan akses. Jika tidak diperbolehkan, Anda tidak akan bisa menggunakan fungsi voice chat dengan baik. ";
+"NSPhotoLibraryUsageDescription" = "Silakan klik OK untuk mengizinkan akses. Jika tidak diizinkan, Anda tidak akan dapat menggunakan fungsi seperti login, pengambilan foto, dan perekaman video secara normal. ";
+"NSPhotoLibraryAddUsageDescription" = "Silakan klik OK untuk mengizinkan akses. Jika tidak diperbolehkan, Anda tidak akan bisa menyimpan gambar yang ingin Anda unduh ke album foto ponsel Anda. ";
+"NSLocalNetworkUsageDescription" = "Klik OK untuk mengizinkan akses ke jaringan lokal untuk berkomunikasi dengan perangkat. ";

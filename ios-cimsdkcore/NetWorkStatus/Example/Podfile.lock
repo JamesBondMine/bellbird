@@ -1,0 +1,16 @@
+PODS:
+  - NetWorkStatus (0.1.0)
+
+DEPENDENCIES:
+  - NetWorkStatus (from `../`)
+
+EXTERNAL SOURCES:
+  NetWorkStatus:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NetWorkStatus: 498b433c9daaabb85ddbf9760cadeca04e00893b
+
+PODFILE CHECKSUM: cbc99a5fdf800b5f81c9462558b1d7de60f3905a
+
+COCOAPODS: 1.16.2

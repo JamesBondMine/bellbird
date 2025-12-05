@@ -1,0 +1,24 @@
+/*
+ Modified: 2025-11-27, Version: 2.0, Optimization: IPA Similarity Reduction
+*/
+
+/*
+  InfoPlist.strings
+  CIMKit
+
+  Created by Mac on 2023/6/15.
+  
+*/
+
+// 阿拉伯语
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
+
+"NSCameraUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول. إذا لم يكن مسموحًا بذلك، فلن تتمكن من استخدام وظائف مثل تسجيل الدخول والتقاط الصور وتسجيل الفيديو بشكل طبيعي. ";
+"NSLocationWhenInUseUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول إلى معلومات موقعك في بطاقة عملك. ";
+"NSLocationAlwaysUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول إلى معلومات موقعك في بطاقة عملك. ";
+"NSLocationWhenInUseUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول إلى معلومات موقعك في بطاقة عملك. ";
+"NSMicrophoneUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول. إذا لم يكن مسموحًا بذلك، فلن تتمكن من استخدام وظيفة الدردشة الصوتية بشكل صحيح. ";
+"NSPhotoLibraryUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول. إذا لم يكن مسموحًا بذلك، فلن تتمكن من استخدام وظائف مثل تسجيل الدخول والتقاط الصور وتسجيل الفيديو بشكل طبيعي. ";
+"NSPhotoLibraryAddUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول. إذا لم يكن ذلك مسموحًا به، فلن تتمكن من حفظ الصور التي تريد تنزيلها في ألبوم الصور الخاص بهاتفك. ";
+"NSLocalNetworkUsageDescription" = "انقر فوق ”موافق“ للسماح بالوصول إلى الشبكة المحلية للتواصل مع الجهاز. ";

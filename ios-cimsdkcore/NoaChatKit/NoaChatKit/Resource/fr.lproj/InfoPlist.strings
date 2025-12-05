@@ -1,0 +1,23 @@
+/*
+ Modified: 2025-11-27, Version: 2.0, Optimization: IPA Similarity Reduction
+*/
+
+/*
+  InfoPlist.strings
+  CIMKit
+
+  Created by Mac on 2023/6/15.
+  
+*/
+// 法语
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
+
+"NSCameraUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès. Si cela n’est pas autorisé, vous ne pourrez pas utiliser normalement des fonctions telles que la connexion, la prise de photos et l’enregistrement vidéo. ";
+"NSLocationWhenInUseUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès aux informations de localisation sur votre carte de visite. ";
+"NSLocationAlwaysUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès aux informations de localisation sur votre carte de visite. ";
+"NSLocationWhenInUseUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès aux informations de localisation sur votre carte de visite. ";
+"NSMicrophoneUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès. Si cela n’est pas autorisé, vous ne pourrez pas utiliser correctement la fonction de chat vocal. ";
+"NSPhotoLibraryUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès. Si cela n’est pas autorisé, vous ne pourrez pas utiliser normalement des fonctions telles que la connexion, la prise de photos et l’enregistrement vidéo. ";
+"NSPhotoLibraryAddUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès. Si cela n'est pas autorisé, vous ne pourrez pas enregistrer les photos que vous souhaitez télécharger dans l'album photo de votre téléphone. ";
+"NSLocalNetworkUsageDescription" = "Cliquez sur OK pour autoriser l'accès au réseau local pour communiquer avec l'appareil. ";

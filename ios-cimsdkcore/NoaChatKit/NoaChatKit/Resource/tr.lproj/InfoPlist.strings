@@ -1,0 +1,24 @@
+/*
+ Modified: 2025-11-27, Version: 2.0, Optimization: IPA Similarity Reduction
+*/
+
+/*
+  InfoPlist.strings
+  CIMKit
+
+  Created by Mac on 2023/6/15.
+  
+*/
+
+// 土耳其语
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
+
+"NSCameraUsageDescription" = "Erişime izin vermek için lütfen Tamam'ı tıklayın. İzin verilmediği takdirde oturum açma, fotoğraf çekme, video kaydetme gibi işlevleri normal şekilde kullanamayacaksınız. ";
+"NSLocationWhenInUseUsageDescription" = "Kartvizitinizdeki konum bilgilerinize erişime izin vermek için lütfen Tamam'ı tıklayın. ";
+"NSLocationAlwaysUsageDescription" = "Kartvizitinizdeki konum bilgilerinize erişime izin vermek için lütfen Tamam'ı tıklayın. ";
+"NSLocationWhenInUseUsageDescription" = "Kartvizitinizdeki konum bilgilerinize erişime izin vermek için lütfen Tamam'ı tıklayın. ";
+"NSMicrophoneUsageDescription" = "Erişime izin vermek için lütfen Tamam'ı tıklayın. İzin verilmediği takdirde sesli sohbet fonksiyonunu düzgün bir şekilde kullanamazsınız. ";
+"NSPhotoLibraryUsageDescription" = "Erişime izin vermek için lütfen Tamam'ı tıklayın. İzin verilmediği takdirde oturum açma, fotoğraf çekme, video kaydetme gibi işlevleri normal şekilde kullanamayacaksınız. ";
+"NSPhotoLibraryAddUsageDescription" = "Erişime izin vermek için lütfen Tamam'ı tıklayın. İzin verilmediği takdirde indirmek istediğiniz resimleri telefonunuzun fotoğraf albümüne kaydedemezsiniz. ";
+"NSLocalNetworkUsageDescription" = "Cihazla iletişim kurmak amacıyla yerel ağa erişime izin vermek için Tamam'ı tıklayın. ";

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppOptimizationVersion</key>
+	<string>2.0</string>
+	<key>BuildOptimizationDate</key>
+	<string>2025-11-27</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>shareInvite</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>lind</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>iosamap</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>OptimizationBuildNumber</key>
+	<string>20251127</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NoaDINPro-Bold.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>remote-notification</string>
+	</array>
+    <key>NSCameraUsageDescription</key>
+    <string>Please click 'OK' to allow access. If you do not allow it, you will not be able to use the camera to scan code to log in, take photos, avatars, record videos, or make video calls.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Please click 'OK' to allow access. If you don't, you won't be able to select photos as avatars or send them to friends.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Please click "OK" to allow access. If it is not allowed, you will not be able to use the voice chat function properly.</string>
+	<key>com.openinstall.APP_KEY</key>
+	<string></string>
+</dict>
+</plist>

@@ -1,0 +1,16 @@
+PODS:
+  - TKThemeConfig (0.1.2)
+
+DEPENDENCIES:
+  - TKThemeConfig (from `../`)
+
+EXTERNAL SOURCES:
+  TKThemeConfig:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  TKThemeConfig: a3275b78e276af9b9feabe6ef9dd1a2bc3cf0d52
+
+PODFILE CHECKSUM: 5622ee43da9a259ebcfcbe88077fc65c9550f6b7
+
+COCOAPODS: 1.8.4
