@@ -630,6 +630,12 @@
 		2A0BE5D42EE2BF12001FF039 /* liaotian-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5C92EE2BF12001FF039 /* liaotian-2.png */; };
 		2A0BE5D72EE2BF55001FF039 /* privacy_wind.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5D62EE2BF55001FF039 /* privacy_wind.html */; };
 		2A0BE5D82EE2BF55001FF039 /* privacy_policy_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5D52EE2BF55001FF039 /* privacy_policy_en.html */; };
+		2A0BE5DC2EE2C441001FF039 /* LaunchNOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0BE5DA2EE2C441001FF039 /* LaunchNOViewController.m */; };
+		2A0BE5DD2EE2C441001FF039 /* LaunchNOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5DB2EE2C441001FF039 /* LaunchNOViewController.xib */; };
+		2A0BE5E12EE2C472001FF039 /* LaunchAnateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0BE5DF2EE2C472001FF039 /* LaunchAnateViewController.m */; };
+		2A0BE5E22EE2C472001FF039 /* LaunchAnateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5E02EE2C472001FF039 /* LaunchAnateViewController.xib */; };
+		2A0BE5E62EE2C591001FF039 /* LoginCustomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5E52EE2C591001FF039 /* LoginCustomViewController.xib */; };
+		2A0BE5E72EE2C591001FF039 /* LoginCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0BE5E42EE2C591001FF039 /* LoginCustomViewController.m */; };
 		2D40C3602ECB46BD0084182D /* NoaForgetPasswordDataHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C35F2ECB46BD0084182D /* NoaForgetPasswordDataHandle.m */; };
 		2D40C3632ECC08680084182D /* NoaForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C3622ECC08680084182D /* NoaForgetPasswordView.m */; };
 		2D40C3662ECC4A8D0084182D /* NoaVerCodeLoginDataHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C3652ECC4A8D0084182D /* NoaVerCodeLoginDataHandle.m */; };
@@ -2065,6 +2071,15 @@
 		2A0BE5CB2EE2BF12001FF039 /* pengyouquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyouquan.png; sourceTree = "<group>"; };
 		2A0BE5D52EE2BF55001FF039 /* privacy_policy_en.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacy_policy_en.html; sourceTree = "<group>"; };
 		2A0BE5D62EE2BF55001FF039 /* privacy_wind.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacy_wind.html; sourceTree = "<group>"; };
+		2A0BE5D92EE2C441001FF039 /* LaunchNOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchNOViewController.h; sourceTree = "<group>"; };
+		2A0BE5DA2EE2C441001FF039 /* LaunchNOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchNOViewController.m; sourceTree = "<group>"; };
+		2A0BE5DB2EE2C441001FF039 /* LaunchNOViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchNOViewController.xib; sourceTree = "<group>"; };
+		2A0BE5DE2EE2C472001FF039 /* LaunchAnateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAnateViewController.h; sourceTree = "<group>"; };
+		2A0BE5DF2EE2C472001FF039 /* LaunchAnateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchAnateViewController.m; sourceTree = "<group>"; };
+		2A0BE5E02EE2C472001FF039 /* LaunchAnateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchAnateViewController.xib; sourceTree = "<group>"; };
+		2A0BE5E32EE2C591001FF039 /* LoginCustomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginCustomViewController.h; sourceTree = "<group>"; };
+		2A0BE5E42EE2C591001FF039 /* LoginCustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginCustomViewController.m; sourceTree = "<group>"; };
+		2A0BE5E52EE2C591001FF039 /* LoginCustomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginCustomViewController.xib; sourceTree = "<group>"; };
 		2D40C35E2ECB46BD0084182D /* NoaForgetPasswordDataHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoaForgetPasswordDataHandle.h; sourceTree = "<group>"; };
 		2D40C35F2ECB46BD0084182D /* NoaForgetPasswordDataHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoaForgetPasswordDataHandle.m; sourceTree = "<group>"; };
 		2D40C3612ECC08680084182D /* NoaForgetPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoaForgetPasswordView.h; sourceTree = "<group>"; };
@@ -5537,6 +5552,12 @@
 				18B1535B28A2703E0033CB51 /* LaunchScreen.storyboard */,
 				5B94D23C2B99B8B80039E67D /* NILaunchViewController.h */,
 				5B94D23D2B99B8B80039E67D /* NILaunchViewController.m */,
+				2A0BE5D92EE2C441001FF039 /* LaunchNOViewController.h */,
+				2A0BE5DA2EE2C441001FF039 /* LaunchNOViewController.m */,
+				2A0BE5DE2EE2C472001FF039 /* LaunchAnateViewController.h */,
+				2A0BE5DF2EE2C472001FF039 /* LaunchAnateViewController.m */,
+				2A0BE5E02EE2C472001FF039 /* LaunchAnateViewController.xib */,
+				2A0BE5DB2EE2C441001FF039 /* LaunchNOViewController.xib */,
 			);
 			path = LaunchViewController;
 			sourceTree = "<group>";
@@ -5626,6 +5647,9 @@
 				04DDB73529DAD2BC00B7C446 /* NoaAuthPCloginViewController.m */,
 				04A03FAF2D224D450006B3CF /* NoaSafeCodeAuthViewController.h */,
 				04A03FB02D224D450006B3CF /* NoaSafeCodeAuthViewController.m */,
+				2A0BE5E32EE2C591001FF039 /* LoginCustomViewController.h */,
+				2A0BE5E42EE2C591001FF039 /* LoginCustomViewController.m */,
+				2A0BE5E52EE2C591001FF039 /* LoginCustomViewController.xib */,
 			);
 			path = AuthSafe;
 			sourceTree = "<group>";
@@ -5986,6 +6010,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C065022D6D6D37004009F5 /* NoaDINPro-Bold.ttf in Resources */,
+				2A0BE5E62EE2C591001FF039 /* LoginCustomViewController.xib in Resources */,
 				04C0D5542989F9C200C926D3 /* NoaMineToFileType.plist in Resources */,
 				04F9D5F728BDF3D8000AE80A /* Localizable.strings in Resources */,
 				042FC60028F4F7B7007F54FE /* MBProgressHUD.bundle in Resources */,
@@ -6009,11 +6034,13 @@
 				2A0BE5D22EE2BF12001FF039 /* Brush Script.ttf in Resources */,
 				2A0BE5D32EE2BF12001FF039 /* liaotian.png in Resources */,
 				2A0BE5D42EE2BF12001FF039 /* liaotian-2.png in Resources */,
+				2A0BE5DD2EE2C441001FF039 /* LaunchNOViewController.xib in Resources */,
 				04AAE0DD2CDB3BB60090660F /* noa_captcha_aliyun1.html in Resources */,
 				18B1535A28A2703E0033CB51 /* Assets.xcassets in Resources */,
 				18B1535828A2703D0033CB51 /* Main.storyboard in Resources */,
 				04A226962A3879310035BE0A /* NoaNetResultCode.plist in Resources */,
 				04ACC8D22CD4814000629B5B /* noa_captcha_aliyun.html in Resources */,
+				2A0BE5E22EE2C472001FF039 /* LaunchAnateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6213,6 +6240,7 @@
 				045F1EE228DEE3DA003D2818 /* MImageBrowserGestureHandle.m in Sources */,
 				049EE2672D2638AE00E5D211 /* NoaSafeSettingTools.m in Sources */,
 				2D66B81E2EC475C90092CE4F /* NoaRegisterView.m in Sources */,
+				2A0BE5E72EE2C591001FF039 /* LoginCustomViewController.m in Sources */,
 				04B82D8028CAEC21001196E1 /* NoaGroupListVC.m in Sources */,
 				04A79D8E2942D48A00FF324A /* NoaGroupMemberPageInfoCell.m in Sources */,
 				04D21EE92A668F36000B4572 /* NoaChatLinkSetViewCell.m in Sources */,
@@ -6338,6 +6366,7 @@
 				6CD0B5D52E17AC42009FCAE5 /* NoaChatAtBannedView.m in Sources */,
 				046ABC642966B1450038C3B7 /* NoaMessageVoiceCell.m in Sources */,
 				04CDD4912AE8EE460068D830 /* NoaEmojiShopPackageViewController.m in Sources */,
+				2A0BE5E12EE2C472001FF039 /* LaunchAnateViewController.m in Sources */,
 				184043EB2B0C54E400E575B0 /* YYTextArchiver.m in Sources */,
 				04A6BCE32A690F7D000A818D /* NoaTeamCreateVC.m in Sources */,
 				2D40C3632ECC08680084182D /* NoaForgetPasswordView.m in Sources */,
@@ -6625,6 +6654,7 @@
 				6CA2AD012EBB383100489B9A /* NoaDrawerPresentationController.m in Sources */,
 				6CA2AD022EBB383100489B9A /* NoaDrawerAnimator.m in Sources */,
 				6CA2AD032EBB383100489B9A /* NoaDrawerTransitioningDelegate.m in Sources */,
+				2A0BE5DC2EE2C441001FF039 /* LaunchNOViewController.m in Sources */,
 				041EEB9229F61D7700CDCC1A /* NoaGestureLockSetVC.m in Sources */,
 				042D7F2229165A6900D2BB59 /* NoaChatSetGroupInfoCell.m in Sources */,
 				04CDB507291CF6F100EFEABA /* NoaGroupRemoveFriendVC.m in Sources */,
@@ -7022,7 +7052,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 202512051019;
+				CURRENT_PROJECT_VERSION = 20251205;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -7293,7 +7323,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 202512051019;
+				CURRENT_PROJECT_VERSION = 20251205;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";

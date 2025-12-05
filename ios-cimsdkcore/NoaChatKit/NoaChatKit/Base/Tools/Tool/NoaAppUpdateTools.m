@@ -8,6 +8,7 @@
 #import "NoaAppUpdateTools.h"
 #import "NoaUpdateVersionView.h"
 #import "NoaToolManager.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation NoaAppUpdateTools
 
@@ -23,61 +24,73 @@
     [params setObjectSafe:ZLanguageTOOL.currentLanguage.languageAbbr forKey:@"language"];
     [params setObjectSafe:@0 forKey:@"platform"];
     [params setObjectSafe:[ZTOOL getCurretnVersion] forKey:@"version"];
+    
+    // 显示加载中
+    [SVProgressHUD show];
+    
     [IMSDKManager imSdkGetAppUpdateInfoWith:params onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
         [ZTOOL doInMain:^{
-            if([data isKindOfClass:[NSDictionary class]]){
-                NSDictionary *dataDict = (NSDictionary *)data;
-                //接口返回的版本号
-                NSString *newVersionStr = (NSString *)[dataDict objectForKey:@"versionNumber"];
-                //当前版本号
-                NSString *currentVersionStr = [ZTOOL getCurretnVersion];
-                long reminderType = [[dataDict objectForKey:@"reminderType"] longValue];
+            // 延迟1秒后隐藏SVProgressHUD，防止隐藏过快
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
                 
-                // 读取是否已经忽略了
-                BOOL isIgnore = [[MMKV defaultMMKV] getBoolForKey:[NSString stringWithFormat:@"ignore_%@", newVersionStr]];
-                
-                //比较是否相同，来决定是否弹窗
-                if (![currentVersionStr isEqualToString:newVersionStr]) {
-                    if (!isShow && isIgnore) {
-                        // 不是从关于我们页面跳转、并且已经忽略，则不弹窗
-                        if (completion) {
-                            completion(NO);
+                if([data isKindOfClass:[NSDictionary class]]){
+                    NSDictionary *dataDict = (NSDictionary *)data;
+                    //接口返回的版本号
+                    NSString *newVersionStr = (NSString *)[dataDict objectForKey:@"versionNumber"];
+                    //当前版本号
+                    NSString *currentVersionStr = [ZTOOL getCurretnVersion];
+                    long reminderType = [[dataDict objectForKey:@"reminderType"] longValue];
+                    
+                    // 读取是否已经忽略了
+                    BOOL isIgnore = [[MMKV defaultMMKV] getBoolForKey:[NSString stringWithFormat:@"ignore_%@", newVersionStr]];
+                    
+                    //比较是否相同，来决定是否弹窗
+                    if (![currentVersionStr isEqualToString:newVersionStr]) {
+                        if (!isShow && isIgnore) {
+                            // 不是从关于我们页面跳转、并且已经忽略，则不弹窗
+                            if (completion) {
+                                completion(NO);
+                            }
+                            return;
                         }
-                        return;
-                    }
-                    //是否强制更新
-                    BOOL isCompelUpdate = [[dataDict objectForKey:@"forceUpdate"] boolValue];
-                    //下载地址
-                    NSString *storeUrl = (NSString *)[dataDict objectForKey:@"storeUrl"];
-                    //更新内容
-                    NSString *updateDes = (NSString *)[dataDict objectForKey:@"updateDescription"];
-                    //更新弹窗
-                    if (isCompelUpdate || reminderType == 0) {
-                        NoaUpdateVersionView *updateAlertView = [[NoaUpdateVersionView alloc] init];
-                        updateAlertView.isCompelUpdate = isCompelUpdate;
-                        updateAlertView.storeUrl = storeUrl;
-                        updateAlertView.versionNumStr = newVersionStr;
-                        updateAlertView.updateDes = [NSString isNil:updateDes] == NO ? updateDes : @"";
-                        [updateAlertView updateVersionViewShow];
-                        if (completion) {
-                            completion(YES);
+                        //是否强制更新
+                        BOOL isCompelUpdate = [[dataDict objectForKey:@"forceUpdate"] boolValue];
+                        //下载地址
+                        NSString *storeUrl = (NSString *)[dataDict objectForKey:@"storeUrl"];
+                        //更新内容
+                        NSString *updateDes = (NSString *)[dataDict objectForKey:@"updateDescription"];
+                        //更新弹窗
+                        if (isCompelUpdate || reminderType == 0) {
+                            NoaUpdateVersionView *updateAlertView = [[NoaUpdateVersionView alloc] init];
+                            updateAlertView.isCompelUpdate = isCompelUpdate;
+                            updateAlertView.storeUrl = storeUrl;
+                            updateAlertView.versionNumStr = newVersionStr;
+                            updateAlertView.updateDes = [NSString isNil:updateDes] == NO ? updateDes : @"";
+                            [updateAlertView updateVersionViewShow];
+                            if (completion) {
+                                completion(YES);
+                            }
+                        } else {
+                            if (completion) {
+                                completion(NO);
+                            }
                         }
                     } else {
+                        if (isShow) {
+                            [HUD showMessage:LanguageToolMatch(@"已是最新版本")];
+                        }
                         if (completion) {
                             completion(NO);
                         }
                     }
-                } else {
-                    if (isShow) {
-                        [HUD showMessage:LanguageToolMatch(@"已是最新版本")];
-                    }
-                    if (completion) {
-                        completion(NO);
-                    }
                 }
-            }
+            });
         }];
     } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+        [ZTOOL doInMain:^{
+            [SVProgressHUD dismiss];
+        }];
         if (completion) {
             completion(NO);
         }
