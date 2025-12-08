@@ -586,7 +586,7 @@
         if (resultFunc) {
             resultFunc(YES, @"");
         }
-    } else if (registerType == ZLoginTypeMenuPhoneNumber) {
+    } else if (registerType == ZLoginTypeMenuEmail) {
         if (![NoaAuthInputTools registerCheckEmailWithText:accountStr IsShowToast:NO]) {
             if (resultFunc) {
                 resultFunc(NO, LanguageToolMatch(@"请输入正确的邮箱格式，如：google@mail.com"));

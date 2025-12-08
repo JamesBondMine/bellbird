@@ -1596,7 +1596,21 @@ static NSString * notReachable = @"notReachable";
     }
 }
 
-
++ (BOOL)isValiableWithFileName:(NSString *)fileName {
+    if (![NSString isNil:fileName]) {
+        // 定义文件名中不允许出现的非法字符：\ / : * ? " < > |
+        NSCharacterSet *illegalCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"\\/:*?\"<>|"];
+        
+        // 检查文件名中是否包含非法字符
+        NSRange range = [fileName rangeOfCharacterFromSet:illegalCharacterSet];
+        
+        // 如果找到非法字符，返回 NO（不合法）；否则返回 YES（合法）
+        return (range.location == NSNotFound);
+    }
+    
+    // 文件名为空，直接保持原先逻辑，支持
+    return YES;
+}
 
 @end
 

@@ -11,8 +11,8 @@
 */
 
 // 印地语
-"CFBundleDisplayName" = "RealTalk ";
-"CFBundleName" = "RealTalk ";
+"CFBundleDisplayName" = "Dragonfly ";
+"CFBundleName" = "Dragonfly ";
 
 "NSCameraUsageDescription" = "पहुंच की अनुमति देने के लिए कृपया ओके पर क्लिक करें। यदि अनुमति नहीं है, तो आप सामान्य रूप से लॉगिन, फोटो लेने और वीडियो रिकॉर्डिंग जैसे कार्यों का उपयोग नहीं कर पाएंगे।. ";
 "NSLocationWhenInUseUsageDescription" = "कृपया अपने व्यवसाय कार्ड में अपने स्थान की जानकारी तक पहुंच की अनुमति देने के लिए ओके पर क्लिक करें।. ";

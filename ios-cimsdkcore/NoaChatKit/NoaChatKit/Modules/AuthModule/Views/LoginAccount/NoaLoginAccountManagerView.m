@@ -249,7 +249,7 @@
         make.leading.equalTo(@20);
         make.top.equalTo(@30);
         make.height.equalTo(@36);
-        make.width.equalTo(@200);
+        make.trailing.equalTo(self).offset(-20);
     }];
     
     [self addSubview:self.scrollView];

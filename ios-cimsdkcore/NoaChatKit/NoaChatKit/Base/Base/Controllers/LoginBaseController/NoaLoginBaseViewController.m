@@ -167,12 +167,14 @@
         make.width.greaterThanOrEqualTo(@74);
     }];
     
+    CGFloat ssoAccountTextWith = [self calculateButtonWidthForText:self.setSsoAccountBtn.titleLabel.text font:self.setSsoAccountBtn.titleLabel.font];
+    CGFloat ssoAccountBtnWith = MAX(94, ssoAccountTextWith);
     [self.navView addSubview:self.setSsoAccountBtn];
     [self.setSsoAccountBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.equalTo(self.navView).offset(-16);
         make.centerY.equalTo(self.networkSetBtn);
         make.height.equalTo(@24);
-        make.width.greaterThanOrEqualTo(@90);
+        make.width.equalTo(@(ssoAccountBtnWith));
     }];
     
     [self.navView addSubview:self.languageArrow];
@@ -234,6 +236,14 @@
 
 - (void)showSsoAccountSetButton:(BOOL)isShow {
     self.setSsoAccountBtn.hidden = !isShow;
+}
+
+/// MARK: 根据文本计算长度
+- (CGFloat)calculateButtonWidthForText:(NSString *)text font:(UIFont *)font {
+    NSDictionary *attributes = @{NSFontAttributeName: font};
+    CGSize size = [text sizeWithAttributes:attributes];
+    CGFloat textWidth = size.width + 24; // 左右各12的内边距,多余出来一点
+    return textWidth;
 }
 
 /*

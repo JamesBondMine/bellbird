@@ -11,8 +11,8 @@
 */
 
 // 俄语
-"CFBundleDisplayName" = "RealTalk ";
-"CFBundleName" = "RealTalk ";
+"CFBundleDisplayName" = "Dragonfly ";
+"CFBundleName" = "Dragonfly ";
 
 "NSCameraUsageDescription" = "Пожалуйста, нажмите «ОК», чтобы разрешить доступ. Если это не разрешено, вы не сможете нормально использовать такие функции, как вход в систему, фотосъемка и запись видео. ";
 "NSLocationWhenInUseUsageDescription" = "Нажмите «ОК», чтобы разрешить доступ к информации о вашем местоположении на вашей визитной карточке. ";

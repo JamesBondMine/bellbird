@@ -206,6 +206,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 如果 range 无效，则返回 nil。
 - (nullable NSString *)safeSubstringWithRange:(NSRange)range;
 
+/// 判断文件名称是否包含:\/:*?"<> |
+/// - Parameter fileName:文件名称
++ (BOOL)isValiableWithFileName:(NSString *)fileName;
+
 @end
 
 NS_ASSUME_NONNULL_END

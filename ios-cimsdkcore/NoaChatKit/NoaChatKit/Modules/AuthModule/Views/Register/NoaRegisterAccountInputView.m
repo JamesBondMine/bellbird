@@ -63,6 +63,7 @@
         _accountErrorTipLabel = [UILabel new];
         _accountErrorTipLabel.tkThemetextColors = @[COLOR_FF3333, COLOR_FF3333_DARK];
         _accountErrorTipLabel.font = FONTR(14);
+        _accountErrorTipLabel.numberOfLines = 0;
         _accountErrorTipLabel.hidden = YES;
     }
     return _accountErrorTipLabel;
@@ -183,7 +184,7 @@
                     make.top.equalTo(self.accountTF.mas_bottom).offset(12);
                     make.leading.equalTo(@20);
                     make.trailing.equalTo(self).offset(-20);
-                    make.height.equalTo(@14);
+                    make.height.greaterThanOrEqualTo(@14);
                 }];
             }
         }];

@@ -11,7 +11,7 @@
 */
 
 // 土耳其语
-"风铃鸟" = "RealTalk";
+"竹蜻蜓" = "Dragonfly";
 "录音组件初始化失败！" = "Kayıt bileşeni başlatma işlemi başarısız oldu!";
 "我的群活跃等级" = "Grup aktivite seviyem";
 "分值：" = "Puanlar:";
@@ -1598,7 +1598,4 @@
 "置顶消息不存在" = "Sabitlenen mesaj bulunamadı";
 "15分钟内在线" = "15 dk çevrim içi";
 "无法连接服务器,请稍后重试" = "Bağlanılamıyor, sonra deneyin";
-"我的团队" = "Takımım";
-"签到日历" = "Giriş takvimi";
-"应用语言" = "Uygulama dili";
-"关于" = "Hakkında";
+"已有账号？%@" = "Hesabın var mı? %@";

@@ -111,6 +111,7 @@
         _sendCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sendCodeBtn setTitle:LanguageToolMatch(@"获取验证码") forState:UIControlStateNormal];
         [_sendCodeBtn setTkThemeTitleColor:@[COLOR_5966F2, COLOR_5966F2_DARK] forState:UIControlStateNormal];
+        _sendCodeBtn.tkThemebackgroundColors = @[COLOR_CLEAR, COLOR_CLEAR];
         _sendCodeBtn.titleLabel.font = FONTM(14);
     }
     return _sendCodeBtn;
@@ -129,6 +130,7 @@
         _sendCodeErrorTipLabel = [UILabel new];
         _sendCodeErrorTipLabel.tkThemetextColors = @[COLOR_FF3333, COLOR_FF3333_DARK];
         _sendCodeErrorTipLabel.font = FONTR(14);
+        _sendCodeErrorTipLabel.numberOfLines = 0;
         _sendCodeErrorTipLabel.hidden = YES;
     }
     return _sendCodeErrorTipLabel;
@@ -184,6 +186,7 @@
         _passwordErrorTipLabel = [UILabel new];
         _passwordErrorTipLabel.tkThemetextColors = @[COLOR_FF3333, COLOR_FF3333_DARK];
         _passwordErrorTipLabel.font = FONTR(14);
+        _passwordErrorTipLabel.numberOfLines = 0;
         _passwordErrorTipLabel.hidden = YES;
     }
     return _passwordErrorTipLabel;
@@ -239,6 +242,7 @@
         _confirmPasswordErrorTipLabel = [UILabel new];
         _confirmPasswordErrorTipLabel.tkThemetextColors = @[COLOR_FF3333, COLOR_FF3333_DARK];
         _confirmPasswordErrorTipLabel.font = FONTR(14);
+        _confirmPasswordErrorTipLabel.numberOfLines = 0;
         _confirmPasswordErrorTipLabel.hidden = YES;
     }
     return _confirmPasswordErrorTipLabel;
@@ -284,6 +288,7 @@
         _inviteCodeErrorTipLabel = [UILabel new];
         _inviteCodeErrorTipLabel.tkThemetextColors = @[COLOR_FF3333, COLOR_FF3333_DARK];
         _inviteCodeErrorTipLabel.font = FONTR(14);
+        _inviteCodeErrorTipLabel.numberOfLines = 0;
         _inviteCodeErrorTipLabel.hidden = YES;
     }
     return _inviteCodeErrorTipLabel;
@@ -618,7 +623,7 @@
                     make.top.equalTo(self.codeTF.mas_bottom).offset(12);
                     make.leading.equalTo(@20);
                     make.trailing.equalTo(self).offset(-20);
-                    make.height.equalTo(@14);
+                    make.height.greaterThanOrEqualTo(@14);
                 }];
             }
         }];
@@ -704,7 +709,7 @@
                     make.top.equalTo(self.passwordTF.mas_bottom).offset(12);
                     make.leading.equalTo(@20);
                     make.trailing.equalTo(self).offset(-20);
-                    make.height.equalTo(@14);
+                    make.height.greaterThanOrEqualTo(@14);
                 }];
             }
         }];
@@ -869,7 +874,7 @@
                     make.top.equalTo(self.inviteCodeTF.mas_bottom).offset(12);
                     make.leading.equalTo(@20);
                     make.trailing.equalTo(self).offset(-20);
-                    make.height.equalTo(@14);
+                    make.height.greaterThanOrEqualTo(@14);
                 }];
             }
         }];

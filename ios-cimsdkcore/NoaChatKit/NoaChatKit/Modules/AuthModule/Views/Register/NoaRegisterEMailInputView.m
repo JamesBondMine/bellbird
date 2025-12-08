@@ -63,6 +63,7 @@
         _emailErrorTipLabel = [UILabel new];
         _emailErrorTipLabel.tkThemetextColors = @[COLOR_FF3333, COLOR_FF3333_DARK];
         _emailErrorTipLabel.font = FONTR(14);
+        _emailErrorTipLabel.numberOfLines = 0;
         _emailErrorTipLabel.hidden = YES;
     }
     return _emailErrorTipLabel;
@@ -183,7 +184,7 @@
                     make.top.equalTo(self.emailTF.mas_bottom).offset(12);
                     make.leading.equalTo(@20);
                     make.trailing.equalTo(self).offset(-20);
-                    make.height.equalTo(@14);
+                    make.height.greaterThanOrEqualTo(@14);
                 }];
             }
         }];

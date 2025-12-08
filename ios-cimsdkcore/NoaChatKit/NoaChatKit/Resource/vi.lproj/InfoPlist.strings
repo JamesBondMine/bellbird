@@ -10,8 +10,8 @@
   
 */
 // 越南语
-"CFBundleDisplayName" = "RealTalk ";
-"CFBundleName" = "RealTalk ";
+"CFBundleDisplayName" = "Dragonfly ";
+"CFBundleName" = "Dragonfly ";
 
 "NSCameraUsageDescription" = "Vui lòng nhấn OK để cho phép truy cập. Nếu không bạn sẽ không thể sử dụng bình thường các chức năng như đăng nhập, chụp ảnh, quay video . ";
 "NSLocationWhenInUseUsageDescription" = "Hãy nhấn “OK” để cho phép truy cập vào thông tin vị trí trong thẻ liên hệ của bạn. ";

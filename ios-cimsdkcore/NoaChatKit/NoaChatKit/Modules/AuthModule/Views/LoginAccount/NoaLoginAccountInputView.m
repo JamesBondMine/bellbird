@@ -32,9 +32,6 @@
         // 设置边框
         _accountTF.layer.borderWidth = 1.0;
         _accountTF.layer.tkThemeborderColors = @[[COLOR_5966F2 colorWithAlphaComponent:0.05], [COLORWHITE colorWithAlphaComponent:0.4]];
-        // 设置左边文字距离左边框间隔
-        _accountTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
-        _accountTF.leftViewMode = UITextFieldViewModeAlways;
         _accountTF.keyboardType = UIKeyboardTypeDefault;
         _accountTF.delegate = self;
         // 创建属性字符串
@@ -43,6 +40,22 @@
             NSFontAttributeName:FONTM(14)
         };
         _accountTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:LanguageToolMatch(@"请输入账号") attributes:attributes];
+        
+        // 获取当前首选语言，判断是否为阿拉伯语(ar)或波斯语(fa)
+        NSString *preferredLanguage = [NSLocale preferredLanguages].firstObject;
+        BOOL isArabic = ([preferredLanguage hasPrefix:@"ar"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"阿拉伯语"]); // 阿拉伯语代码以"ar"开头
+        BOOL isPersian = ([preferredLanguage hasPrefix:@"fa"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"波斯语"]); // 波斯语代码以"fa"开头
+        
+        // 左侧占用12个单位像素(阿拉伯语语波斯语在右侧)
+        if (isArabic || isPersian) {
+            // 设置左边文字距离左边框间隔
+            _accountTF.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _accountTF.rightViewMode = UITextFieldViewModeAlways;
+        } else {
+            // 设置左边文字距离左边框间隔
+            _accountTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _accountTF.leftViewMode = UITextFieldViewModeAlways;
+        }
     }
     return _accountTF;
 }

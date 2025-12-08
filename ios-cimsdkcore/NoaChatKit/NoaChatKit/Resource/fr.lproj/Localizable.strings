@@ -11,7 +11,7 @@
 */
 
 // 法语
-"风铃鸟" = "RealTalk";
+"竹蜻蜓" = "Dragonfly";
 "录音组件初始化失败！" = "L'initialisation du composant d'enregistrement a échoué !";
 "我的群活跃等级" = "Mon niveau d'activité de groupe";
 "分值：" = "Points:";
@@ -1598,7 +1598,4 @@
 "置顶消息不存在" = "Message épinglé introuvable";
 "15分钟内在线" = "En ligne 15 min";
 "无法连接服务器,请稍后重试" = "Connexion impossible, réessayez";
-"我的团队" = "Mon équipe";
-"签到日历" = "Calendrier de pointage";
-"应用语言" = "Langue";
-"关于" = "À propos";
+"已有账号？%@" = "Déjà un compte ? %@";

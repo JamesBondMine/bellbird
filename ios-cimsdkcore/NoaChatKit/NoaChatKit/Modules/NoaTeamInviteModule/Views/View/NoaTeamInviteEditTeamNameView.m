@@ -82,8 +82,8 @@
         BOOL isPersian = [preferredLanguage hasPrefix:@"fa"]; // 波斯语代码以"fa"开头
         
         if (isArabic || isPersian) {
-            _teamNameTextField.textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
-            _teamNameTextField.textField.leftViewMode = UITextFieldViewModeAlways;
+            _teamNameTextField.textField.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _teamNameTextField.textField.rightViewMode = UITextFieldViewModeAlways;
         }else {
             // 左侧占用12个单位像素(阿拉伯语语波斯语在右侧)
             if ([ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"阿拉伯语"] ||

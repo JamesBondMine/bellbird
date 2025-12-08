@@ -32,9 +32,23 @@
         // 设置边框
         _emailTF.layer.borderWidth = 1.0;
         _emailTF.layer.tkThemeborderColors = @[[COLOR_5966F2 colorWithAlphaComponent:0.05], [COLORWHITE colorWithAlphaComponent:0.4]];
-        // 设置左边文字距离左边框间隔
-        _emailTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
-        _emailTF.leftViewMode = UITextFieldViewModeAlways;
+       
+        // 获取当前首选语言，判断是否为阿拉伯语(ar)或波斯语(fa)
+        NSString *preferredLanguage = [NSLocale preferredLanguages].firstObject;
+        BOOL isArabic = ([preferredLanguage hasPrefix:@"ar"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"阿拉伯语"]); // 阿拉伯语代码以"ar"开头
+        BOOL isPersian = ([preferredLanguage hasPrefix:@"fa"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"波斯语"]); // 波斯语代码以"fa"开头
+        
+        // 左侧占用12个单位像素(阿拉伯语语波斯语在右侧)
+        if (isArabic || isPersian) {
+            // 设置左边文字距离左边框间隔
+            _emailTF.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _emailTF.rightViewMode = UITextFieldViewModeAlways;
+        } else {
+            // 设置左边文字距离左边框间隔
+            _emailTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _emailTF.leftViewMode = UITextFieldViewModeAlways;
+        }
+       
         _emailTF.keyboardType = UIKeyboardTypeEmailAddress;
         _emailTF.delegate = self;
         // 创建属性字符串

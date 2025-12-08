@@ -12,10 +12,20 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>shareInvite</string>
+			<string>sharerealInvite</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>lind</string>
+				<string>reallindTime</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>rtcomm</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>rtpro</string>
 			</array>
 		</dict>
 	</array>
@@ -39,12 +49,6 @@
 		<string>audio</string>
 		<string>remote-notification</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>Please click 'OK' to allow access. If you do not allow it, you will not be able to use the camera to scan code to log in, take photos, avatars, record videos, or make video calls.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Please click 'OK' to allow access. If you don't, you won't be able to select photos as avatars or send them to friends.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Please click "OK" to allow access. If it is not allowed, you will not be able to use the voice chat function properly.</string>
 	<key>com.openinstall.APP_KEY</key>
 	<string></string>
 </dict>

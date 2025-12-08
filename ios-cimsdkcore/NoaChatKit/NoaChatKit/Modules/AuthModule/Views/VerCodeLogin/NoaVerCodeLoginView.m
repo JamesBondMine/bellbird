@@ -153,7 +153,7 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(@32);
         make.top.equalTo(@30);
-        make.height.equalTo(@14);
+        make.height.equalTo(@20);
         make.trailing.equalTo(self).offset(-32);
     }];
     

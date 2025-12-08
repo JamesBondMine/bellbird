@@ -136,9 +136,9 @@ return __singleton__; \
 //内置域名
 #define builtInBucketName       @"lxpoint.oss-cn-hangzhou.aliyuncs.com"
 //服务协议地址
-#define servicePolicyUrl  @"https://a.zqtpc.com/application/terms_of_service_en.html"
+#define servicePolicyUrl  @""
 // 隐私协议地址
-#define privacyPolicyUrl @"https://a.zqtpc.com/application/privacy_policy_en.html"
+#define privacyPolicyUrl @""
 
 #define httpId       @"161860"
 //内置域名
@@ -196,7 +196,7 @@ return __singleton__; \
 #define APP_CHANNEL      @"App Store"
 
 //App在App Store的地址
-#define APP_IN_APPLE_STORE_URL  @"https://apps.apple.com/cn/app/%E9%A3%8E%E9%93%83%E9%B8%9F/id6755617657"
+#define APP_IN_APPLE_STORE_URL  @"itms-apps://itunes.apple.com/app/id6450179044"
 
 #define L_DevicePushToken       @"DevicePushTokenKey"       //推送token
 

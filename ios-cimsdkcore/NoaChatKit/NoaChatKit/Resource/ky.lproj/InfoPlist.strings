@@ -11,8 +11,8 @@
 */
 
 // 吉尔吉斯语
-"CFBundleDisplayName" = "RealTalk ";
-"CFBundleName" = "RealTalk ";
+"CFBundleDisplayName" = "Dragonfly ";
+"CFBundleName" = "Dragonfly ";
 
 "NSCameraUsageDescription" = "Кирүүгө уруксат берүү үчүн OK баскычын басыңыз. Эгер уруксат берилбесе, сиз кирүү, сүрөткө тартуу жана видео жазуу сыяктуу функцияларды кадимкидей колдоно албай каласыз. ";
 "NSLocationWhenInUseUsageDescription" = "Сураныч, визиттик картаңыздагы жайгашкан жериңиздин маалыматына кирүү мүмкүнчүлүгүн берүү үчүн OK басыңыз. ";

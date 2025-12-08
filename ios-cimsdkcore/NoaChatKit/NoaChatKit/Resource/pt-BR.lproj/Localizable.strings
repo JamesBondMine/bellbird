@@ -11,7 +11,7 @@
 */
 
 // 葡萄牙语（巴西）
-"风铃鸟" = "RealTalk";
+"竹蜻蜓" = "Dragonfly";
 "录音组件初始化失败！" = "Falha na inicialização do componente de gravação!";
 "我的群活跃等级" = "Meu nível de atividade em grupo";
 "分值：" = "Pontos:";
@@ -1599,7 +1599,4 @@
 "置顶消息不存在" = "Mensagem fixada não encontrada";
 "15分钟内在线" = "Online 15 min";
 "无法连接服务器,请稍后重试" = "Sem conexão, tente depois";
-"我的团队" = "Minha equipe";
-"签到日历" = "Calendário de registro";
-"应用语言" = "Idioma do app";
-"关于" = "Sobre";
+"已有账号？%@" = "Já tem conta? %@";

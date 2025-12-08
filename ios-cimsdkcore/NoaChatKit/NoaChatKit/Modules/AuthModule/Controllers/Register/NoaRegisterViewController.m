@@ -63,7 +63,7 @@
 }
 
 - (void)setUpUI {
-    self.navTitleLabel.text = LanguageToolMatch(@"请选择注册方式");
+    self.navTitleLabel.text = LanguageToolMatch(@"选择注册方式");
     [self.view addSubview:self.registerView];
     [self.registerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.navView.mas_bottom).offset(25);

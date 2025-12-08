@@ -166,6 +166,7 @@
         }
         _passwordFormatTipLabel.tkThemetextColors = @[COLOR_11, COLOR_99];
         _passwordFormatTipLabel.font = FONTR(14);
+        _passwordFormatTipLabel.numberOfLines = 0;
         _passwordFormatTipLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _passwordFormatTipLabel;
@@ -226,7 +227,7 @@
         make.leading.equalTo(@20);
         make.top.equalTo(@30);
         make.height.equalTo(@36);
-        make.width.equalTo(@200);
+        make.trailing.equalTo(self).offset(-20);
     }];
     
     [self addSubview:self.scrollView];
@@ -245,7 +246,7 @@
         make.top.equalTo(self.currentRegisterView.mas_bottom).offset(12);
         make.leading.equalTo(self.scrollView).offset(32);
         make.trailing.equalTo(self.scrollView).offset(-32);
-        make.height.equalTo(@12);
+        make.height.greaterThanOrEqualTo(@12);
     }];
     
     [self.scrollView addSubview:self.signUpBtn];
@@ -328,7 +329,7 @@
         @strongify(self)
         // 设置富文本
         NSString *actionText = LanguageToolMatch(@"去登录");
-        NSString *template = LanguageToolMatch(@"已有账号? %@");
+        NSString *template = LanguageToolMatch(@"已有账号？%@");
         NSString *fullText = [NSString stringWithFormat:template, actionText];
         
         BOOL isDarkMode = (themeIndex != 0);

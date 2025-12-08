@@ -10,8 +10,8 @@
   
 */
 // 印度尼西亚语(印尼语)
-"CFBundleDisplayName" = "RealTalk ";
-"CFBundleName" = "RealTalk ";
+"CFBundleDisplayName" = "Dragonfly ";
+"CFBundleName" = "Dragonfly ";
 
 "NSCameraUsageDescription" = "Silakan klik OK untuk mengizinkan akses. Jika tidak diizinkan, Anda tidak akan dapat menggunakan fungsi seperti login, pengambilan foto, dan perekaman video secara normal. ";
 "NSLocationWhenInUseUsageDescription" = "Silakan klik OK untuk mengizinkan akses mengakses informasi lokasi Anda di kartu nama Anda. ";

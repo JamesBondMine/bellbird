@@ -323,6 +323,12 @@
         if (indexPath.section == 0) {
             NSMutableArray *itemArr = (NSMutableArray *)[sectionDic objectForKey:@"itemArr"];
             NoaFilePickModel *tempAssetModel = (NoaFilePickModel *)[itemArr objectAtIndex:indexPath.row];
+            if (cell.isSelected && ![NSString isValiableWithFileName:[cell showName]]) {
+                // 当前选中状态，并包含特殊字符:\/:*?\"<>|
+                [HUD showMessage:LanguageToolMatch(@"文件名不能包含下列任何字符:\\/:*?\"<>|")];
+                cell.isSelected = !cell.isSelected;
+                return;
+            }
             //选择状态改变后，更新tableView数据源数组里的数据
             tempAssetModel.isSelected = cell.isSelected;
             [itemArr replaceObjectAtIndex:indexPath.row withObject:tempAssetModel];
@@ -339,6 +345,11 @@
             //App中接收到的文件
             NSMutableArray *itemArr = (NSMutableArray *)[sectionDic objectForKey:@"itemArr"];
             NoaFilePickModel *tempFileModel = (NoaFilePickModel *)[itemArr objectAtIndex:indexPath.row];
+            if (cell.isSelected && ![NSString isValiableWithFileName:tempFileModel.fileName]) {
+                [HUD showMessage:LanguageToolMatch(@"文件名不能包含下列任何字符:\\/:*?\"<>|")];
+                cell.isSelected = !cell.isSelected;
+                return;
+            }
             //选择状态改变后，更新tableView数据源数组里的数据
             tempFileModel.isSelected = cell.isSelected;
             [itemArr replaceObjectAtIndex:indexPath.row withObject:tempFileModel];
@@ -390,6 +401,11 @@
                 [HUD showMessage:LanguageToolMatch(@"所选资源超过限制")];
                 return;
             } else {
+                NSString *fileName = [newURL lastPathComponent];
+                if (![NSString isValiableWithFileName:fileName]) {
+                    [HUD showMessage:LanguageToolMatch(@"文件名不能包含下列任何字符:\\/:*?\"<>|")];
+                    return;
+                }
                 NoaFilePickModel *phoneFileModel = [[NoaFilePickModel alloc] init];
                 phoneFileModel.fileSource = ZMsgFileSourceTypePhone;
                 phoneFileModel.fileType = [NSString fileTranslateToFileType:[newURL absoluteString]];

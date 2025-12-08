@@ -55,9 +55,6 @@
     if (!_phoneNumberTF) {
         _phoneNumberTF = [[UITextField alloc] initWithFrame:CGRectZero];
         _phoneNumberTF.tkThemetextColors = @[COLOR_11, COLOR_11_DARK];
-        // 设置左边文字距离左边框间隔
-        _phoneNumberTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 16, 0)];
-        _phoneNumberTF.leftViewMode = UITextFieldViewModeAlways;
         _phoneNumberTF.keyboardType = UIKeyboardTypePhonePad;
         _phoneNumberTF.delegate = self;
         // 创建属性字符串
@@ -67,6 +64,22 @@
         };
         _phoneNumberTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:LanguageToolMatch(@"请输入手机号") attributes:attributes];
         _phoneNumberTF.tkThemebackgroundColors = @[UIColor.clearColor, UIColor.clearColor];
+        
+        // 获取当前首选语言，判断是否为阿拉伯语(ar)或波斯语(fa)
+        NSString *preferredLanguage = [NSLocale preferredLanguages].firstObject;
+        BOOL isArabic = ([preferredLanguage hasPrefix:@"ar"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"阿拉伯语"]); // 阿拉伯语代码以"ar"开头
+        BOOL isPersian = ([preferredLanguage hasPrefix:@"fa"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"波斯语"]); // 波斯语代码以"fa"开头
+        
+        // 左侧占用12个单位像素(阿拉伯语语波斯语在右侧)
+        if (isArabic || isPersian) {
+            // 设置左边文字距离左边框间隔
+            _phoneNumberTF.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _phoneNumberTF.rightViewMode = UITextFieldViewModeAlways;
+        } else {
+            // 设置左边文字距离左边框间隔
+            _phoneNumberTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _phoneNumberTF.leftViewMode = UITextFieldViewModeAlways;
+        }
     }
     return _phoneNumberTF;
 }

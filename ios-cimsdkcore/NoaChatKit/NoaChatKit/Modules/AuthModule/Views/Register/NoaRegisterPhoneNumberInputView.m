@@ -87,6 +87,7 @@
         _phoneNumberErrorTipLabel = [UILabel new];
         _phoneNumberErrorTipLabel.tkThemetextColors = @[COLOR_FF3333, COLOR_FF3333_DARK];
         _phoneNumberErrorTipLabel.font = FONTR(14);
+        _phoneNumberErrorTipLabel.numberOfLines = 0;
         _phoneNumberErrorTipLabel.hidden = YES;
     }
     return _phoneNumberErrorTipLabel;
@@ -169,6 +170,8 @@
         make.height.equalTo(@0);
     }];
     
+    [self setupRightViewForPhoneNumberTFextField];
+    
     // 调用父类的 setupUI 方法
     [super setupUI];
     
@@ -233,7 +236,7 @@
                     make.top.equalTo(self.phoneNumberTF.mas_bottom).offset(12);
                     make.leading.equalTo(@20);
                     make.trailing.equalTo(self).offset(-20);
-                    make.height.equalTo(@14);
+                    make.height.greaterThanOrEqualTo(@14);
                 }];
             }
         }];

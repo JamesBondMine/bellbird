@@ -619,23 +619,14 @@
 		18B1536A28A2703E0033CB51 /* NoaChatKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1536928A2703E0033CB51 /* NoaChatKitTests.m */; };
 		18B1537428A2703E0033CB51 /* NoaChatKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1537328A2703E0033CB51 /* NoaChatKitUITests.m */; };
 		18B1537628A2703E0033CB51 /* NoaChatKitUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1537528A2703E0033CB51 /* NoaChatKitUITestsLaunchTests.m */; };
-		2A0BE5CC2EE2BF12001FF039 /* Apple Chancery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5C42EE2BF12001FF039 /* Apple Chancery.ttf */; };
-		2A0BE5CD2EE2BF12001FF039 /* pengyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5CA2EE2BF12001FF039 /* pengyou.png */; };
-		2A0BE5CE2EE2BF12001FF039 /* appletree.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5C62EE2BF12001FF039 /* appletree.png */; };
-		2A0BE5CF2EE2BF12001FF039 /* pengyouquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5CB2EE2BF12001FF039 /* pengyouquan.png */; };
-		2A0BE5D02EE2BF12001FF039 /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5C52EE2BF12001FF039 /* AppleMyungjo.ttf */; };
-		2A0BE5D12EE2BF12001FF039 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5C32EE2BF12001FF039 /* apple.png */; };
-		2A0BE5D22EE2BF12001FF039 /* Brush Script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5C72EE2BF12001FF039 /* Brush Script.ttf */; };
-		2A0BE5D32EE2BF12001FF039 /* liaotian.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5C82EE2BF12001FF039 /* liaotian.png */; };
-		2A0BE5D42EE2BF12001FF039 /* liaotian-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5C92EE2BF12001FF039 /* liaotian-2.png */; };
-		2A0BE5D72EE2BF55001FF039 /* privacy_wind.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5D62EE2BF55001FF039 /* privacy_wind.html */; };
-		2A0BE5D82EE2BF55001FF039 /* privacy_policy_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5D52EE2BF55001FF039 /* privacy_policy_en.html */; };
-		2A0BE5DC2EE2C441001FF039 /* LaunchNOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0BE5DA2EE2C441001FF039 /* LaunchNOViewController.m */; };
-		2A0BE5DD2EE2C441001FF039 /* LaunchNOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5DB2EE2C441001FF039 /* LaunchNOViewController.xib */; };
-		2A0BE5E12EE2C472001FF039 /* LaunchAnateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0BE5DF2EE2C472001FF039 /* LaunchAnateViewController.m */; };
-		2A0BE5E22EE2C472001FF039 /* LaunchAnateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5E02EE2C472001FF039 /* LaunchAnateViewController.xib */; };
-		2A0BE5E62EE2C591001FF039 /* LoginCustomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0BE5E52EE2C591001FF039 /* LoginCustomViewController.xib */; };
-		2A0BE5E72EE2C591001FF039 /* LoginCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0BE5E42EE2C591001FF039 /* LoginCustomViewController.m */; };
+		2A1B8CA42EE6D96C006E7705 /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8C9E2EE6D96C006E7705 /* AppleMyungjo.ttf */; };
+		2A1B8CA52EE6D96C006E7705 /* pengyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8CA22EE6D96C006E7705 /* pengyou.png */; };
+		2A1B8CA62EE6D96C006E7705 /* pengyouquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8CA32EE6D96C006E7705 /* pengyouquan.png */; };
+		2A1B8CA72EE6D96C006E7705 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8C9C2EE6D96C006E7705 /* apple.png */; };
+		2A1B8CA82EE6D96C006E7705 /* liaotian.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8CA02EE6D96C006E7705 /* liaotian.png */; };
+		2A1B8CA92EE6D96C006E7705 /* appletree.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8C9F2EE6D96C006E7705 /* appletree.png */; };
+		2A1B8CAA2EE6D96C006E7705 /* Apple Chancery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8C9D2EE6D96C006E7705 /* Apple Chancery.ttf */; };
+		2A1B8CAB2EE6D96C006E7705 /* liaotian-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8CA12EE6D96C006E7705 /* liaotian-2.png */; };
 		2D40C3602ECB46BD0084182D /* NoaForgetPasswordDataHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C35F2ECB46BD0084182D /* NoaForgetPasswordDataHandle.m */; };
 		2D40C3632ECC08680084182D /* NoaForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C3622ECC08680084182D /* NoaForgetPasswordView.m */; };
 		2D40C3662ECC4A8D0084182D /* NoaVerCodeLoginDataHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C3652ECC4A8D0084182D /* NoaVerCodeLoginDataHandle.m */; };
@@ -2045,7 +2036,7 @@
 		18AB495C28C58F02001FCE80 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		18AB496728C5CAFE001FCE80 /* NoaChineseSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoaChineseSort.m; sourceTree = "<group>"; };
 		18AB496828C5CAFE001FCE80 /* NoaChineseSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoaChineseSort.h; sourceTree = "<group>"; };
-		18B1534A28A2703D0033CB51 /* 风铃鸟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "风铃鸟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18B1534A28A2703D0033CB51 /* 竹蜻蜓.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "竹蜻蜓.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B1534D28A2703D0033CB51 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18B1534E28A2703D0033CB51 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		18B1535728A2703D0033CB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -2060,26 +2051,14 @@
 		18B1537528A2703E0033CB51 /* NoaChatKitUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoaChatKitUITestsLaunchTests.m; sourceTree = "<group>"; };
 		18B153DB28A2763A0033CB51 /* NoaChatCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NoaChatCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B013ABB24B17BD67A238FD /* Pods-NoaChatKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoaChatKit.release.xcconfig"; path = "Target Support Files/Pods-NoaChatKit/Pods-NoaChatKit.release.xcconfig"; sourceTree = "<group>"; };
-		2A0BE5C32EE2BF12001FF039 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
-		2A0BE5C42EE2BF12001FF039 /* Apple Chancery.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Chancery.ttf"; sourceTree = "<group>"; };
-		2A0BE5C52EE2BF12001FF039 /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleMyungjo.ttf; sourceTree = "<group>"; };
-		2A0BE5C62EE2BF12001FF039 /* appletree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appletree.png; sourceTree = "<group>"; };
-		2A0BE5C72EE2BF12001FF039 /* Brush Script.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Brush Script.ttf"; sourceTree = "<group>"; };
-		2A0BE5C82EE2BF12001FF039 /* liaotian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liaotian.png; sourceTree = "<group>"; };
-		2A0BE5C92EE2BF12001FF039 /* liaotian-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "liaotian-2.png"; sourceTree = "<group>"; };
-		2A0BE5CA2EE2BF12001FF039 /* pengyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyou.png; sourceTree = "<group>"; };
-		2A0BE5CB2EE2BF12001FF039 /* pengyouquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyouquan.png; sourceTree = "<group>"; };
-		2A0BE5D52EE2BF55001FF039 /* privacy_policy_en.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacy_policy_en.html; sourceTree = "<group>"; };
-		2A0BE5D62EE2BF55001FF039 /* privacy_wind.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacy_wind.html; sourceTree = "<group>"; };
-		2A0BE5D92EE2C441001FF039 /* LaunchNOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchNOViewController.h; sourceTree = "<group>"; };
-		2A0BE5DA2EE2C441001FF039 /* LaunchNOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchNOViewController.m; sourceTree = "<group>"; };
-		2A0BE5DB2EE2C441001FF039 /* LaunchNOViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchNOViewController.xib; sourceTree = "<group>"; };
-		2A0BE5DE2EE2C472001FF039 /* LaunchAnateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchAnateViewController.h; sourceTree = "<group>"; };
-		2A0BE5DF2EE2C472001FF039 /* LaunchAnateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchAnateViewController.m; sourceTree = "<group>"; };
-		2A0BE5E02EE2C472001FF039 /* LaunchAnateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchAnateViewController.xib; sourceTree = "<group>"; };
-		2A0BE5E32EE2C591001FF039 /* LoginCustomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginCustomViewController.h; sourceTree = "<group>"; };
-		2A0BE5E42EE2C591001FF039 /* LoginCustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginCustomViewController.m; sourceTree = "<group>"; };
-		2A0BE5E52EE2C591001FF039 /* LoginCustomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginCustomViewController.xib; sourceTree = "<group>"; };
+		2A1B8C9C2EE6D96C006E7705 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		2A1B8C9D2EE6D96C006E7705 /* Apple Chancery.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Chancery.ttf"; sourceTree = "<group>"; };
+		2A1B8C9E2EE6D96C006E7705 /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleMyungjo.ttf; sourceTree = "<group>"; };
+		2A1B8C9F2EE6D96C006E7705 /* appletree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appletree.png; sourceTree = "<group>"; };
+		2A1B8CA02EE6D96C006E7705 /* liaotian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liaotian.png; sourceTree = "<group>"; };
+		2A1B8CA12EE6D96C006E7705 /* liaotian-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "liaotian-2.png"; sourceTree = "<group>"; };
+		2A1B8CA22EE6D96C006E7705 /* pengyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyou.png; sourceTree = "<group>"; };
+		2A1B8CA32EE6D96C006E7705 /* pengyouquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyouquan.png; sourceTree = "<group>"; };
 		2D40C35E2ECB46BD0084182D /* NoaForgetPasswordDataHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoaForgetPasswordDataHandle.h; sourceTree = "<group>"; };
 		2D40C35F2ECB46BD0084182D /* NoaForgetPasswordDataHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoaForgetPasswordDataHandle.m; sourceTree = "<group>"; };
 		2D40C3612ECC08680084182D /* NoaForgetPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoaForgetPasswordView.h; sourceTree = "<group>"; };
@@ -4857,17 +4836,14 @@
 		04F9D5F428BDF391000AE80A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				2A0BE5D52EE2BF55001FF039 /* privacy_policy_en.html */,
-				2A0BE5D62EE2BF55001FF039 /* privacy_wind.html */,
-				2A0BE5C32EE2BF12001FF039 /* apple.png */,
-				2A0BE5C42EE2BF12001FF039 /* Apple Chancery.ttf */,
-				2A0BE5C52EE2BF12001FF039 /* AppleMyungjo.ttf */,
-				2A0BE5C62EE2BF12001FF039 /* appletree.png */,
-				2A0BE5C72EE2BF12001FF039 /* Brush Script.ttf */,
-				2A0BE5C82EE2BF12001FF039 /* liaotian.png */,
-				2A0BE5C92EE2BF12001FF039 /* liaotian-2.png */,
-				2A0BE5CA2EE2BF12001FF039 /* pengyou.png */,
-				2A0BE5CB2EE2BF12001FF039 /* pengyouquan.png */,
+				2A1B8C9C2EE6D96C006E7705 /* apple.png */,
+				2A1B8C9D2EE6D96C006E7705 /* Apple Chancery.ttf */,
+				2A1B8C9E2EE6D96C006E7705 /* AppleMyungjo.ttf */,
+				2A1B8C9F2EE6D96C006E7705 /* appletree.png */,
+				2A1B8CA02EE6D96C006E7705 /* liaotian.png */,
+				2A1B8CA12EE6D96C006E7705 /* liaotian-2.png */,
+				2A1B8CA22EE6D96C006E7705 /* pengyou.png */,
+				2A1B8CA32EE6D96C006E7705 /* pengyouquan.png */,
 				04C065012D6D6D36004009F5 /* NoaDINPro-Bold.ttf */,
 				04AAE0DB2CDB3BB60090660F /* noa_captcha_aliyun1.html */,
 				04AAE0DC2CDB3BB60090660F /* noa_captcha_aliyun2.html */,
@@ -5113,7 +5089,7 @@
 		18B1534B28A2703D0033CB51 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18B1534A28A2703D0033CB51 /* 风铃鸟.app */,
+				18B1534A28A2703D0033CB51 /* 竹蜻蜓.app */,
 				18B1536528A2703E0033CB51 /* NoaChatKitTests.xctest */,
 				18B1536F28A2703E0033CB51 /* NoaChatKitUITests.xctest */,
 			);
@@ -5552,12 +5528,6 @@
 				18B1535B28A2703E0033CB51 /* LaunchScreen.storyboard */,
 				5B94D23C2B99B8B80039E67D /* NILaunchViewController.h */,
 				5B94D23D2B99B8B80039E67D /* NILaunchViewController.m */,
-				2A0BE5D92EE2C441001FF039 /* LaunchNOViewController.h */,
-				2A0BE5DA2EE2C441001FF039 /* LaunchNOViewController.m */,
-				2A0BE5DE2EE2C472001FF039 /* LaunchAnateViewController.h */,
-				2A0BE5DF2EE2C472001FF039 /* LaunchAnateViewController.m */,
-				2A0BE5E02EE2C472001FF039 /* LaunchAnateViewController.xib */,
-				2A0BE5DB2EE2C441001FF039 /* LaunchNOViewController.xib */,
 			);
 			path = LaunchViewController;
 			sourceTree = "<group>";
@@ -5647,9 +5617,6 @@
 				04DDB73529DAD2BC00B7C446 /* NoaAuthPCloginViewController.m */,
 				04A03FAF2D224D450006B3CF /* NoaSafeCodeAuthViewController.h */,
 				04A03FB02D224D450006B3CF /* NoaSafeCodeAuthViewController.m */,
-				2A0BE5E32EE2C591001FF039 /* LoginCustomViewController.h */,
-				2A0BE5E42EE2C591001FF039 /* LoginCustomViewController.m */,
-				2A0BE5E52EE2C591001FF039 /* LoginCustomViewController.xib */,
 			);
 			path = AuthSafe;
 			sourceTree = "<group>";
@@ -5906,7 +5873,7 @@
 			);
 			name = NoaChatKit;
 			productName = NoaChatKit;
-			productReference = 18B1534A28A2703D0033CB51 /* 风铃鸟.app */;
+			productReference = 18B1534A28A2703D0033CB51 /* 竹蜻蜓.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18B1536428A2703E0033CB51 /* NoaChatKitTests */ = {
@@ -6010,7 +5977,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C065022D6D6D37004009F5 /* NoaDINPro-Bold.ttf in Resources */,
-				2A0BE5E62EE2C591001FF039 /* LoginCustomViewController.xib in Resources */,
 				04C0D5542989F9C200C926D3 /* NoaMineToFileType.plist in Resources */,
 				04F9D5F728BDF3D8000AE80A /* Localizable.strings in Resources */,
 				042FC60028F4F7B7007F54FE /* MBProgressHUD.bundle in Resources */,
@@ -6018,29 +5984,24 @@
 				1863DAF12A94AFEC005351F6 /* KLSignInView.xib in Resources */,
 				042240362A8E00D500350D31 /* NoaChatInputEmoji.plist in Resources */,
 				042240382A8E00D500350D31 /* EmojiResource.xcassets in Resources */,
+				2A1B8CA42EE6D96C006E7705 /* AppleMyungjo.ttf in Resources */,
+				2A1B8CA52EE6D96C006E7705 /* pengyou.png in Resources */,
+				2A1B8CA62EE6D96C006E7705 /* pengyouquan.png in Resources */,
+				2A1B8CA72EE6D96C006E7705 /* apple.png in Resources */,
+				2A1B8CA82EE6D96C006E7705 /* liaotian.png in Resources */,
+				2A1B8CA92EE6D96C006E7705 /* appletree.png in Resources */,
+				2A1B8CAA2EE6D96C006E7705 /* Apple Chancery.ttf in Resources */,
+				2A1B8CAB2EE6D96C006E7705 /* liaotian-2.png in Resources */,
 				18B1535D28A2703E0033CB51 /* LaunchScreen.storyboard in Resources */,
 				04882509298C999800FC58CB /* KNPhotoBrowser.bundle in Resources */,
 				04ACC8D42CD4A26F00629B5B /* noa_captcha_tencent.html in Resources */,
-				2A0BE5D72EE2BF55001FF039 /* privacy_wind.html in Resources */,
-				2A0BE5D82EE2BF55001FF039 /* privacy_policy_en.html in Resources */,
 				04A5FD992A3B324500E532A4 /* InfoPlist.strings in Resources */,
 				04AAE0DE2CDB3BB60090660F /* noa_captcha_aliyun2.html in Resources */,
-				2A0BE5CC2EE2BF12001FF039 /* Apple Chancery.ttf in Resources */,
-				2A0BE5CD2EE2BF12001FF039 /* pengyou.png in Resources */,
-				2A0BE5CE2EE2BF12001FF039 /* appletree.png in Resources */,
-				2A0BE5CF2EE2BF12001FF039 /* pengyouquan.png in Resources */,
-				2A0BE5D02EE2BF12001FF039 /* AppleMyungjo.ttf in Resources */,
-				2A0BE5D12EE2BF12001FF039 /* apple.png in Resources */,
-				2A0BE5D22EE2BF12001FF039 /* Brush Script.ttf in Resources */,
-				2A0BE5D32EE2BF12001FF039 /* liaotian.png in Resources */,
-				2A0BE5D42EE2BF12001FF039 /* liaotian-2.png in Resources */,
-				2A0BE5DD2EE2C441001FF039 /* LaunchNOViewController.xib in Resources */,
 				04AAE0DD2CDB3BB60090660F /* noa_captcha_aliyun1.html in Resources */,
 				18B1535A28A2703E0033CB51 /* Assets.xcassets in Resources */,
 				18B1535828A2703D0033CB51 /* Main.storyboard in Resources */,
 				04A226962A3879310035BE0A /* NoaNetResultCode.plist in Resources */,
 				04ACC8D22CD4814000629B5B /* noa_captcha_aliyun.html in Resources */,
-				2A0BE5E22EE2C472001FF039 /* LaunchAnateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6240,7 +6201,6 @@
 				045F1EE228DEE3DA003D2818 /* MImageBrowserGestureHandle.m in Sources */,
 				049EE2672D2638AE00E5D211 /* NoaSafeSettingTools.m in Sources */,
 				2D66B81E2EC475C90092CE4F /* NoaRegisterView.m in Sources */,
-				2A0BE5E72EE2C591001FF039 /* LoginCustomViewController.m in Sources */,
 				04B82D8028CAEC21001196E1 /* NoaGroupListVC.m in Sources */,
 				04A79D8E2942D48A00FF324A /* NoaGroupMemberPageInfoCell.m in Sources */,
 				04D21EE92A668F36000B4572 /* NoaChatLinkSetViewCell.m in Sources */,
@@ -6366,7 +6326,6 @@
 				6CD0B5D52E17AC42009FCAE5 /* NoaChatAtBannedView.m in Sources */,
 				046ABC642966B1450038C3B7 /* NoaMessageVoiceCell.m in Sources */,
 				04CDD4912AE8EE460068D830 /* NoaEmojiShopPackageViewController.m in Sources */,
-				2A0BE5E12EE2C472001FF039 /* LaunchAnateViewController.m in Sources */,
 				184043EB2B0C54E400E575B0 /* YYTextArchiver.m in Sources */,
 				04A6BCE32A690F7D000A818D /* NoaTeamCreateVC.m in Sources */,
 				2D40C3632ECC08680084182D /* NoaForgetPasswordView.m in Sources */,
@@ -6654,7 +6613,6 @@
 				6CA2AD012EBB383100489B9A /* NoaDrawerPresentationController.m in Sources */,
 				6CA2AD022EBB383100489B9A /* NoaDrawerAnimator.m in Sources */,
 				6CA2AD032EBB383100489B9A /* NoaDrawerTransitioningDelegate.m in Sources */,
-				2A0BE5DC2EE2C441001FF039 /* LaunchNOViewController.m in Sources */,
 				041EEB9229F61D7700CDCC1A /* NoaGestureLockSetVC.m in Sources */,
 				042D7F2229165A6900D2BB59 /* NoaChatSetGroupInfoCell.m in Sources */,
 				04CDB507291CF6F100EFEABA /* NoaGroupRemoveFriendVC.m in Sources */,
@@ -7052,7 +7010,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20251205;
+				CURRENT_PROJECT_VERSION = 20251208;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -7121,14 +7079,14 @@
 				);
 				INFOPLIST_FILE = NoaChatKit/Main/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "风铃鸟";
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please click 'OK' to allow access. If you do not allow it, you will not be able to use the camera to scan code to log in, take photos, avatars, record videos, or make video calls.";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please click \"OK\" to allow access. If it is not allowed, you will not be able to use the voice chat function properly.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please click 'OK' to allow access. If you don't, you won't be able to select photos as avatars or send them to friends.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -7145,7 +7103,7 @@
 					"$(PROJECT_DIR)/NoaChatKit/Base/Tools/ThirdLibs/ZFatlameTool/FatLame",
 					"$(PROJECT_DIR)/NoaChatKit/Base/Tools/ThirdLibs/LXChatEncrypt",
 				);
-				MARKETING_VERSION = 2.4.5;
+				MARKETING_VERSION = 2.5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -7293,7 +7251,7 @@
 					"$(SRCROOT)/NoaChatKit/Base/Tools/ThirdLibs/OBS/OBS.framework/OBS",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codeappyang.idnumberft;
-				PRODUCT_NAME = "风铃鸟";
+				PRODUCT_NAME = "竹蜻蜓";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ft1026dev;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -7323,7 +7281,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20251205;
+				CURRENT_PROJECT_VERSION = 20251208;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -7393,14 +7351,14 @@
 				);
 				INFOPLIST_FILE = NoaChatKit/Main/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "风铃鸟";
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please click 'OK' to allow access. If you do not allow it, you will not be able to use the camera to scan code to log in, take photos, avatars, record videos, or make video calls.";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Please click \"OK\" to allow access. If it is not allowed, you will not be able to use the voice chat function properly.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please click 'OK' to allow access. If you don't, you won't be able to select photos as avatars or send them to friends.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -7417,7 +7375,7 @@
 					"$(PROJECT_DIR)/NoaChatKit/Base/Tools/ThirdLibs/ZFatlameTool/FatLame",
 					"$(PROJECT_DIR)/NoaChatKit/Base/Tools/ThirdLibs/LXChatEncrypt",
 				);
-				MARKETING_VERSION = 2.4.5;
+				MARKETING_VERSION = 2.5.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -7564,7 +7522,7 @@
 					"$(SRCROOT)/NoaChatKit/Base/Tools/ThirdLibs/OBS/OBS.framework/OBS",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codeappyang.idnumberft;
-				PRODUCT_NAME = "风铃鸟";
+				PRODUCT_NAME = "竹蜻蜓";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ft1026dev;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -123,6 +123,7 @@
         }
         _passwordFormatTipLabel.tkThemetextColors = @[COLOR_11, COLOR_99];
         _passwordFormatTipLabel.font = FONTR(14);
+        _passwordFormatTipLabel.numberOfLines = 0;
         _passwordFormatTipLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _passwordFormatTipLabel;
@@ -194,7 +195,7 @@
         make.top.equalTo(self.currentRegisterView.mas_bottom).offset(12);
         make.leading.equalTo(self.scrollView).offset(32);
         make.trailing.equalTo(self.scrollView).offset(-32);
-        make.height.equalTo(@12);
+        make.height.greaterThanOrEqualTo(@12);
     }];
     
     [self.scrollView addSubview:self.signInBtn];

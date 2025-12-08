@@ -43,7 +43,7 @@
     UILabel *versionLbl = [[UILabel alloc] init];
     versionLbl.text = [NSString stringWithFormat:LanguageToolMatch(@"当前版本v%@ %@"), [ZTOOL getCurretnVersion], [ZTOOL getBuildVersion]];
     versionLbl.tkThemetextColors = @[COLOR_66, COLOR_66_DARK];
-    versionLbl.font = [UIFont fontWithName:@"Apple Chancery" size:16];
+    versionLbl.font = FONTN(16);
     versionLbl.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:versionLbl];
     [versionLbl mas_makeConstraints:^(MASConstraintMaker *make) {

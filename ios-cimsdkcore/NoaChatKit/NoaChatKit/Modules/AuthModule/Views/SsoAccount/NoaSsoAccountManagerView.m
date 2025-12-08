@@ -110,9 +110,6 @@
         // 设置边框
         _ssoAccountTF.layer.borderWidth = 1.0;
         _ssoAccountTF.layer.tkThemeborderColors = @[[COLOR_5966F2 colorWithAlphaComponent:0.05], [COLORWHITE colorWithAlphaComponent:0.4]];
-        // 设置左边文字距离左边框间隔
-        _ssoAccountTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
-        _ssoAccountTF.leftViewMode = UITextFieldViewModeAlways;
         _ssoAccountTF.tkThemetextColors = @[COLOR_11, COLOR_11_DARK];
         _ssoAccountTF.keyboardType = UIKeyboardTypeASCIICapable;
         _ssoAccountTF.delegate = self;
@@ -122,6 +119,22 @@
             NSFontAttributeName:FONTM(14)
         };
         _ssoAccountTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:LanguageToolMatch(@"请输入企业号") attributes:attributes];
+        
+        // 获取当前首选语言，判断是否为阿拉伯语(ar)或波斯语(fa)
+        NSString *preferredLanguage = [NSLocale preferredLanguages].firstObject;
+        BOOL isArabic = ([preferredLanguage hasPrefix:@"ar"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"阿拉伯语"]); // 阿拉伯语代码以"ar"开头
+        BOOL isPersian = ([preferredLanguage hasPrefix:@"fa"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"波斯语"]); // 波斯语代码以"fa"开头
+        
+        // 左侧占用12个单位像素(阿拉伯语语波斯语在右侧)
+        if (isArabic || isPersian) {
+            // 设置左边文字距离左边框间隔
+            _ssoAccountTF.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _ssoAccountTF.rightViewMode = UITextFieldViewModeAlways;
+        } else {
+            // 设置左边文字距离左边框间隔
+            _ssoAccountTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _ssoAccountTF.leftViewMode = UITextFieldViewModeAlways;
+        }
     }
     return _ssoAccountTF;
 }
@@ -137,9 +150,6 @@
         // 设置边框
         _ipTF.layer.borderWidth = 1.0;
         _ipTF.layer.tkThemeborderColors = @[[COLOR_5966F2 colorWithAlphaComponent:0.05], [COLORWHITE colorWithAlphaComponent:0.4]];
-        // 设置左边文字距离左边框间隔
-        _ipTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
-        _ipTF.leftViewMode = UITextFieldViewModeAlways;
         _ipTF.keyboardType = UIKeyboardTypeASCIICapable;
         _ipTF.delegate = self;
         // 创建属性字符串
@@ -148,6 +158,22 @@
             NSFontAttributeName:FONTM(14)
         };
         _ipTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:LanguageToolMatch(@"IP/域名") attributes:attributes];
+        
+        // 获取当前首选语言，判断是否为阿拉伯语(ar)或波斯语(fa)
+        NSString *preferredLanguage = [NSLocale preferredLanguages].firstObject;
+        BOOL isArabic = ([preferredLanguage hasPrefix:@"ar"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"阿拉伯语"]); // 阿拉伯语代码以"ar"开头
+        BOOL isPersian = ([preferredLanguage hasPrefix:@"fa"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"波斯语"]); // 波斯语代码以"fa"开头
+        
+        // 左侧占用12个单位像素(阿拉伯语语波斯语在右侧)
+        if (isArabic || isPersian) {
+            // 设置左边文字距离左边框间隔
+            _ipTF.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _ipTF.rightViewMode = UITextFieldViewModeAlways;
+        } else {
+            // 设置左边文字距离左边框间隔
+            _ipTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _ipTF.leftViewMode = UITextFieldViewModeAlways;
+        }
     }
     return _ipTF;
 }
@@ -182,11 +208,8 @@
         _portTF.layer.cornerRadius = 16;
         _portTF.layer.masksToBounds = YES;
         // 设置边框
-        _ipTF.layer.borderWidth = 1.0;
-        _ipTF.layer.tkThemeborderColors = @[[COLOR_5966F2 colorWithAlphaComponent:0.05], [COLORWHITE colorWithAlphaComponent:0.4]];
-        // 设置左边文字距离左边框间隔
-        _portTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
-        _portTF.leftViewMode = UITextFieldViewModeAlways;
+        _portTF.layer.borderWidth = 1.0;
+        _portTF.layer.tkThemeborderColors = @[[COLOR_5966F2 colorWithAlphaComponent:0.05], [COLORWHITE colorWithAlphaComponent:0.4]];
         _portTF.keyboardType = UIKeyboardTypeNumberPad;
         _portTF.delegate = self;
         // 创建属性字符串
@@ -195,6 +218,22 @@
             NSFontAttributeName:FONTM(14)
         };
         _portTF.attributedPlaceholder = [[NSAttributedString alloc] initWithString:LanguageToolMatch(@"端口号") attributes:attributes];
+        
+        // 获取当前首选语言，判断是否为阿拉伯语(ar)或波斯语(fa)
+        NSString *preferredLanguage = [NSLocale preferredLanguages].firstObject;
+        BOOL isArabic = ([preferredLanguage hasPrefix:@"ar"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"阿拉伯语"]); // 阿拉伯语代码以"ar"开头
+        BOOL isPersian = ([preferredLanguage hasPrefix:@"fa"] || [ZLanguageTOOL.currentLanguage.languageName_zn isEqualToString:@"波斯语"]); // 波斯语代码以"fa"开头
+        
+        // 左侧占用12个单位像素(阿拉伯语语波斯语在右侧)
+        if (isArabic || isPersian) {
+            // 设置左边文字距离左边框间隔
+            _portTF.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _portTF.rightViewMode = UITextFieldViewModeAlways;
+        } else {
+            // 设置左边文字距离左边框间隔
+            _portTF.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 0)];
+            _portTF.leftViewMode = UITextFieldViewModeAlways;
+        }
     }
     return _portTF;
 }

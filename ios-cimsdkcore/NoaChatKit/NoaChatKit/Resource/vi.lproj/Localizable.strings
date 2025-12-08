@@ -11,7 +11,7 @@
 */
 
 // 越南语
-"风铃鸟" = "RealTalk";
+"竹蜻蜓" = "Dragonfly";
 "录音组件初始化失败！" = "Không khởi tạo được thành phần ghi âm!";
 "我的群活跃等级" = "Mức độ hoạt động nhóm của tôi";
 "分值：" = "Điểm:";
@@ -1596,9 +1596,6 @@
  "群全局置顶消息已超出最大限制" = "Tin nhắn ghim toàn nhóm vượt giới hạn";
 "群个人置顶消息已超出最大限制" = "Tin nhắn ghim cá nhân vượt giới hạn";
 "置顶消息不存在" = "Tin nhắn ghim không tồn tại";
-"15分钟内在线" = "Trực tuyến 15'";
+"15分钟内在线" = "Trực tuyến 15’";
 "无法连接服务器,请稍后重试" = "Không kết nối, thử lại";
-"我的团队" = "Nhóm của tôi";
-"签到日历" = "Lịch điểm danh";
-"应用语言" = "Ngôn ngữ ứng dụng";
-"关于" = "Giới thiệu";
+"已有账号？%@" = "Đã có tài khoản? %@";

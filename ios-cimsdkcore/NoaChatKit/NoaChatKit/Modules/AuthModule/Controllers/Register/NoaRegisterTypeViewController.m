@@ -51,7 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLabel.text = LanguageToolMatch(@"请选择注册方式");
+    self.navTitleLabel.text = LanguageToolMatch(@"选择注册方式");
     [self setupUI];
     [self processData];
 }

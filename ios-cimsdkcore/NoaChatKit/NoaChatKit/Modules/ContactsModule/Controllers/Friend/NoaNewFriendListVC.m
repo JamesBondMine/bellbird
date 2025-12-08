@@ -339,20 +339,33 @@
 
 //发送好友添加成功的通知
 - (void)postNotificationWith:(NoaFriendApplyModel *)model {
-    LingIMFriendModel *friendModel = [LingIMFriendModel new];
-    friendModel.nickname = model.nickname;
-    friendModel.friendUserUID = model.fromUserUid;
-    friendModel.avatar = model.fromUserAvatar;
-    friendModel.showName = model.nickname;
-    [IMSDKManager toolAddMyFriendWith:friendModel];
+    /**
+     * 注释原因：改为通过下方接口请求好友信息，当前注释方法不全
+     LingIMFriendModel *friendModel = [LingIMFriendModel new];
+     friendModel.nickname = model.nickname;
+     friendModel.friendUserUID = model.fromUserUid;
+     friendModel.avatar = model.fromUserAvatar;
+     friendModel.showName = model.nickname;
+     [IMSDKManager toolAddMyFriendWith:friendModel];
+     */
     
     //从已读列表里删除
     if ([_readApply containsObject:[NSString stringWithFormat:@"%@-%@",model.hashKey,model.sendTime]]) {
         [_readApply removeObject:[NSString stringWithFormat:@"%@-%@",model.hashKey,model.sendTime]];
         NSString *hiddenStr = [_readApply componentsJoinedByString:@","];
         [[MMKV defaultMMKV] setString:hiddenStr forKey:@"ReadFriendApply"];
-        
     }
+    
+    // 根据安卓端逻辑，需要重新请求好友详情再保存数据
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setValue:model.fromUserUid forKey:@"friendUserUid"];
+    [dict setValue:UserManager.userInfo.userUID forKey:@"userUid"];
+    [IMSDKManager getFriendInfoWith:dict onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+        NSDictionary *friendDict = (NSDictionary *)data;
+        LingIMFriendModel *friendModel = [LingIMFriendModel mj_objectWithKeyValues:friendDict];
+        [IMSDKManager toolAddMyFriendWith:friendModel];
+    } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+    }];
 }
 
 #pragma mark - UIGestureRecognizerDelegate

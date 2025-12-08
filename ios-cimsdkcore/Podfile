@@ -118,6 +118,11 @@ project './NoaChatKit/NoaChatKit.xcodeproj’
   #检查内存泄漏
   #pod 'MLeaksFinder'
   #pod 'FBRetainCycleDetector'
+  
+  #swift
+    pod "Alamofire", '~> 5.0'
+    pod 'SVProgressHUD'
+    pod "SwiftyJSON", '~> 5.0'
 
   #美团日志SDK
   pod 'Logan', '1.2.8'
@@ -140,9 +145,6 @@ project './NoaChatKit/NoaChatKit.xcodeproj’
   pod 'QCloudCOSXML', '6.4.8'
 
   #swift
-  pod "Alamofire", '~> 5.0'
-  pod 'SVProgressHUD'
-  pod "SwiftyJSON", '~> 5.0'
   #SnapKit
   pod 'SnapKit', '5.6.0'
   #图片下载

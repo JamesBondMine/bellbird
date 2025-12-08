@@ -181,18 +181,7 @@
             }
             if (targetNav) {
                 vc.hidesBottomBarWhenPushed = YES;
-                // 建立 pop 观察器：当 vc 被 pop 时重新 present 抽屉 ZMineVC
-                NoaMineReturnObserver *observer = [NoaMineReturnObserver new];
-                observer.navigationController = targetNav;
-                observer.observedViewController = vc;
-                observer.previousDelegate = targetNav.delegate;
-                __weak typeof(targetNav) weakNav = targetNav;
-                observer.onPopped = ^{
-                    if (!weakNav) { return; }
-                    [NoaMineVC presentMineDrawerFromTop];
-                };
-                targetNav.delegate = (id<UINavigationControllerDelegate>)observer;
-                objc_setAssociatedObject(targetNav, @selector(navigationController:didShowViewController:animated:), observer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                // 移除重新 present 抽屉的逻辑，点击后隐藏 mineVC，返回后不再出现
                 [targetNav pushViewController:vc animated:YES];
             }
         }];
@@ -277,18 +266,18 @@
 - (void)setUpData {
     [self.dataArr removeAllObjects];
     
-    NSDictionary *teamManagerDic = @{@"imageName":@"mine_teamManager", @"titleName" : LanguageToolMatch(@"我的团队")};
+    NSDictionary *teamManagerDic = @{@"imageName":@"mine_teamManager", @"titleName" : LanguageToolMatch(@"团队管理")};
     NSDictionary *myQRCodeDic = @{@"imageName":@"mine_qrCode", @"titleName" : LanguageToolMatch(@"二维码")};
-    NSDictionary *signDic = @{@"imageName":@"mine_sign", @"titleName" : LanguageToolMatch(@"签到日历")};
+    NSDictionary *signDic = @{@"imageName":@"mine_sign", @"titleName" : LanguageToolMatch(@"每日签到")};
     NSDictionary *myCollectionDic = @{@"imageName":@"mine_collection", @"titleName" : LanguageToolMatch(@"我的收藏")};
     NSDictionary *friendBlackDic = @{@"imageName":@"mine_black", @"titleName" : LanguageToolMatch(@"黑名单")};
     NSDictionary *characterDic = @{@"imageName":@"mine_character", @"titleName" : LanguageToolMatch(@"翻译管理")};
-    NSDictionary *appLanguageDic = @{@"imageName":@"mine_language", @"titleName" : LanguageToolMatch(@"应用语言")};
+    NSDictionary *appLanguageDic = @{@"imageName":@"mine_language", @"titleName" : LanguageToolMatch(@"语言")};
     NSDictionary *privacySettingDic = @{@"imageName":@"mine_privacy_setting", @"titleName" : LanguageToolMatch(@"隐私设置")};
     NSDictionary *safeSettingDic = @{@"imageName":@"mine_safe", @"titleName" : LanguageToolMatch(@"安全设置")};
     NSDictionary *complainDic = @{@"imageName":@"mine_complain", @"titleName" : LanguageToolMatch(@"投诉与支持")};
     NSDictionary *networkDetectionDic = @{@"imageName":@"mine_networkDetect", @"titleName" : LanguageToolMatch(@"网络检测")};
-    NSDictionary *aboutUsDic = @{@"imageName":@"mine_about", @"titleName" : LanguageToolMatch(@"关于")};
+    NSDictionary *aboutUsDic = @{@"imageName":@"mine_about", @"titleName" : LanguageToolMatch(@"关于我们")};
     
     //是否显示“团队管理”和“分享邀请”
     if ([UserManager.userRoleAuthInfo.showTeam.configValue isEqualToString:@"true"]) {
@@ -433,7 +422,7 @@
         //我的二维码
         [self getQtcondeContent];
     }
-    if ([titleName isEqualToString:LanguageToolMatch(@"我的团队")]) {
+    if ([titleName isEqualToString:LanguageToolMatch(@"团队管理")]) {
         //团队管理
         /**
          * 旧版本代码
@@ -442,7 +431,7 @@
         NoaTeamListVC *teamVC = [NoaTeamListVC new];
         [self openFullScreen:teamVC];
     }
-    if ([titleName isEqualToString:LanguageToolMatch(@"签到日历")]) {
+    if ([titleName isEqualToString:LanguageToolMatch(@"每日签到")]) {
         NoaSignInViewController * signInVC = [[NoaSignInViewController alloc] init];
         [self openFullScreen:signInVC];
     }
@@ -463,7 +452,7 @@
         NoaTranslateSetDefaultViewController *vc = [[NoaTranslateSetDefaultViewController alloc] init];
         [self openFullScreen:vc];
     }
-    if ([titleName isEqualToString:LanguageToolMatch(@"应用语言")]) {
+    if ([titleName isEqualToString:LanguageToolMatch(@"语言")]) {
         //多语言
         NoaLanguageSetViewController *languageSetVC = [[NoaLanguageSetViewController alloc] init];
         languageSetVC.changeType = LanguageChangeUITypeTabbar;
@@ -484,7 +473,7 @@
         NoaComplainVC *vc = [NoaComplainVC new];
         [self openFullScreen:vc];
     }
-    if ([titleName isEqualToString:LanguageToolMatch(@"关于")]) {
+    if ([titleName isEqualToString:LanguageToolMatch(@"关于我们")]) {
         //关于我们
         NoaAboutUsViewController *aboutUsVC = [[NoaAboutUsViewController alloc] init];
         [self openFullScreen:aboutUsVC];

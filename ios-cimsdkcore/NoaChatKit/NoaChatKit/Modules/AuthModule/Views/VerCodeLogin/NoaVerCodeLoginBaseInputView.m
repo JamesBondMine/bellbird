@@ -68,6 +68,7 @@
         _sendCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sendCodeBtn setTitle:LanguageToolMatch(@"获取验证码") forState:UIControlStateNormal];
         [_sendCodeBtn setTkThemeTitleColor:@[COLOR_5966F2, COLOR_5966F2_DARK] forState:UIControlStateNormal];
+        _sendCodeBtn.tkThemebackgroundColors = @[COLOR_CLEAR, COLOR_CLEAR];
         _sendCodeBtn.titleLabel.font = FONTM(14);
     }
     return _sendCodeBtn;

@@ -52,7 +52,13 @@ static NoaIMHttpManager *manager = nil;
     config.connectionProxyDictionary = @{}; // 关闭系统代理
     NoaIMHttpManager *httpManager = [[NoaIMHttpManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://www.baidu.com"] sessionConfiguration:config];
     //安全模式设置：AFSSLPinningModeNone：完全信任服务器证书
-    httpManager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    // 允许无效证书（自签名证书、过期证书等），默认为 NO
+    securityPolicy.allowInvalidCertificates = YES;
+    // 不验证域名，允许使用 IP 地址访问 HTTPS，默认为 YES
+    // 注意：设置为 NO 会降低安全性，仅在开发/测试环境或使用 IP 访问时使用
+    securityPolicy.validatesDomainName = NO;
+    httpManager.securityPolicy = securityPolicy;
     
     //JSON解析
     httpManager.requestSerializer = [AFJSONRequestSerializer serializer];

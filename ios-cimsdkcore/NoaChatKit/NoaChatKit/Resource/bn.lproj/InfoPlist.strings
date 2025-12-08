@@ -11,8 +11,8 @@
 */
 
 // 孟加拉语
-"CFBundleDisplayName" = "RealTalk ";
-"CFBundleName" = "RealTalk ";
+"CFBundleDisplayName" = "Dragonfly ";
+"CFBundleName" = "Dragonfly ";
 
 "NSCameraUsageDescription" = "অ্যাক্সেসের অনুমতি দিতে ওকে ক্লিক করুন। যদি অনুমতি না দেওয়া হয়, আপনি সাধারণত লগইন, ফটো তোলা এবং ভিডিও রেকর্ডিংয়ের মতো ফাংশনগুলি ব্যবহার করতে পারবেন না৷. ";
 "NSLocationWhenInUseUsageDescription" = "আপনার ব্যবসা কার্ডে আপনার অবস্থানের তথ্য অ্যাক্সেস করার অনুমতি দিতে দয়া করে ঠিক আছে ক্লিক করুন৷. ";

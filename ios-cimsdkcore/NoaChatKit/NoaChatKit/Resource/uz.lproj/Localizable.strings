@@ -11,7 +11,7 @@
 */
 
 // 乌兹别克语
-"风铃鸟" = "RealTalk";
+"竹蜻蜓" = "Dragonfly";
 "录音组件初始化失败！" = "Yozib olish komponentini ishga tushirib bo‘lmadi!";
 "我的群活跃等级" = "Mening guruhdagi faollik darajasi";
 "分值：" = "Ballar:";
@@ -1597,8 +1597,5 @@
 "群个人置顶消息已超出最大限制" = "Shaxsiy xabarlar chegaradan oshdi";
 "置顶消息不存在" = "Mahkamlangan xabar topilmadi";
 "15分钟内在线" = "15 daq. onlayn";
-"无法连接服务器,请稍后重试" = "Ulanmadi, keyin urinib ko'ring";
-"我的团队" = "Mening jamoam";
-"签到日历" = "Ro'yxatdan o'tish taqvimi";
-"应用语言" = "Ilova tili";
-"关于" = "Haqida";
+"无法连接服务器,请稍后重试" = "Ulanmadi, keyin urinib ko‘ring";
+"已有账号？%@" = "Hisobingiz bormi? %@";
