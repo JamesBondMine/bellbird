@@ -158,6 +158,14 @@
     }
 }
 
+- (void)ssoAddFeedBackWith:(NSMutableDictionary *)params onSuccess:(nullable LingIMSuccessCallback)onSuccess onFailure:(nullable LingIMFailureCallback)onFailure {
+    if (kAllHttpRequestUseTcp) {
+        [LingIMTcpRequestModel sendTcpRequestWithParam:params Url:Sso_Feedback_Url Method:LingRequestPost SuccessFunc:onSuccess FailureFunc:onFailure];
+    }else {
+        [self netRequestWithType:LingIMHttpRequestTypePOST path:Sso_Feedback_Url parameters:params onSuccess:onSuccess onFailure:onFailure];
+    }
+}
+
 #pragma mark - 获取用户角色权限
 - (void)getRoleAuthorityListWith:(NSMutableDictionary *)params onSuccess:(nullable LingIMSuccessCallback)onSuccess onFailure:(nullable LingIMFailureCallback)onFailure {
     if (kAllHttpRequestUseTcp) {

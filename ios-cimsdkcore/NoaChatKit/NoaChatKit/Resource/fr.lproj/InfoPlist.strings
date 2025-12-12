@@ -10,8 +10,8 @@
   
 */
 // 法语
-"CFBundleDisplayName" = "Dragonfly ";
-"CFBundleName" = "Dragonfly ";
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
 
 "NSCameraUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès. Si cela n’est pas autorisé, vous ne pourrez pas utiliser normalement des fonctions telles que la connexion, la prise de photos et l’enregistrement vidéo. ";
 "NSLocationWhenInUseUsageDescription" = "Veuillez cliquer sur OK pour autoriser l'accès aux informations de localisation sur votre carte de visite. ";

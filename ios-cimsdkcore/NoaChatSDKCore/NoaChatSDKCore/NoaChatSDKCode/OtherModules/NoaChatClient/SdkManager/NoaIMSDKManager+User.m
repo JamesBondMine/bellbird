@@ -113,6 +113,10 @@
     [[NoaIMHttpManager sharedManager] userAddFeedBackWith:params onSuccess:onSuccess onFailure:onFailure];
 }
 
+- (void)ssoFeedBackWith:(NSMutableDictionary *)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure {
+    [[NoaIMHttpManager sharedManager] ssoAddFeedBackWith:params onSuccess:onSuccess onFailure:onFailure];
+}
+
 /// 获取用户角色权限
 ///  userUid 用户账号
 - (void)userGetRoleAuthorityListWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure {

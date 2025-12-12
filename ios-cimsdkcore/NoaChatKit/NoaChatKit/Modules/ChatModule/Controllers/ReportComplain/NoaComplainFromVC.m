@@ -701,6 +701,7 @@
     [dict setValue:UserManager.userInfo.nickname forKey:@"nickname"];//反馈人昵称
     [dict setValue:_comImages forKey:@"ufbImages"];//投诉图片(必填)
     [dict setValue:_comType forKey:@"ufbContentGroup"];//投诉类型(默认1)
+    [dict setValue:UserManager.userInfo.userName forKey:@"username"];
     if (![NSString isNil:_comContent]) {
         [dict setValue:_comContent forKey:@"ufbComment"];//投诉内容
     }
@@ -759,6 +760,7 @@
     [dict setValue:UserManager.userInfo.nickname forKey:@"nickname"];//反馈人昵称
     [dict setValue:_comFullImages forKey:@"ufbImages"];//投诉图片(必填)
     [dict setValue:_comType forKey:@"ufbContentGroup"];//投诉类型(默认1)
+    [dict setValue:UserManager.userInfo.userName forKey:@"username"];
     if (![NSString isNil:_comContent]) {
         [dict setValue:_comContent forKey:@"ufbComment"];//投诉内容
     }
@@ -783,16 +785,23 @@
     }
     [dict setValue:@"alex" forKey:@"productCode"];//投诉来源App
     
-    //根据后端返回的配置信息里的环境信息，调用不同环境下的 企业号投诉url的域名
-    NSString *urlHostStr = complainBaseurl;
+//    //根据后端返回的配置信息里的环境信息，调用不同环境下的 企业号投诉url的域名
+//    NSString *urlHostStr = complainBaseurl;
+//    WeakSelf
+//    [IMSDKHTTPTOOL netRequestWorkCommonBaseUrl:urlHostStr Path:@"/feedback/addFeedBack" medth:LingIMHttpRequestTypePOST parameters:dict onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+//        [HUD showMessage:LanguageToolMatch(@"操作成功")];
+//        [weakSelf.navigationController popViewControllerAnimated:YES];
+//    } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+//        [HUD showMessageWithCode:code errorMsg:msg];
+//    }];
+    
     WeakSelf
-    [IMSDKHTTPTOOL netRequestWorkCommonBaseUrl:urlHostStr Path:@"/feedback/addFeedBack" medth:LingIMHttpRequestTypePOST parameters:dict onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+    [IMSDKManager ssoFeedBackWith:dict onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
         [HUD showMessage:LanguageToolMatch(@"操作成功")];
         [weakSelf.navigationController popViewControllerAnimated:YES];
     } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
         [HUD showMessageWithCode:code errorMsg:msg];
     }];
-    
 }
 
 

@@ -10,8 +10,8 @@
   
 */
 // 韩文
-"CFBundleDisplayName" = "Dragonfly ";
-"CFBundleName" = "Dragonfly ";
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
 
 "NSCameraUsageDescription" = "액세스를 허용하려면 확인을 클릭하세요. 허용하지 않을 경우 로그인, 사진 촬영, 영상 녹화 등의 기능을 정상적으로 사용할 수 없습니다. ";
 "NSLocationWhenInUseUsageDescription" = "명함의 위치 정보에 대한 접근을 허용하려면 확인을 클릭하세요. ";

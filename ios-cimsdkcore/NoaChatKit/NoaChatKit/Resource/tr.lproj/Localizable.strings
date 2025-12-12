@@ -11,7 +11,7 @@
 */
 
 // 土耳其语
-"竹蜻蜓" = "Dragonfly";
+"风铃鸟" = "RealTalk";
 "录音组件初始化失败！" = "Kayıt bileşeni başlatma işlemi başarısız oldu!";
 "我的群活跃等级" = "Grup aktivite seviyem";
 "分值：" = "Puanlar:";
@@ -1599,3 +1599,8 @@
 "15分钟内在线" = "15 dk çevrim içi";
 "无法连接服务器,请稍后重试" = "Bağlanılamıyor, sonra deneyin";
 "已有账号？%@" = "Hesabın var mı? %@";
+"会话全局置顶消息已超出最大限制" = "Genel sabitleme sınırı aşıldı";
+"会话个人置顶消息已超出最大限制" = "Kişisel sabitleme sınırı aşıldı";
+"消息类型不支持该操作" = "Mesaj türü desteklenmiyor";
+"我和对方均置顶" = "Her iki taraf da sabitledi";
+"文件名不能包含下列任何字符:\\/:*?\"<>|" = "Dosya adı aşağıdaki karakterlerden herhangi birini içeremez:/:*?\"<>|";

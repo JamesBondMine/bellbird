@@ -619,14 +619,14 @@
 		18B1536A28A2703E0033CB51 /* NoaChatKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1536928A2703E0033CB51 /* NoaChatKitTests.m */; };
 		18B1537428A2703E0033CB51 /* NoaChatKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1537328A2703E0033CB51 /* NoaChatKitUITests.m */; };
 		18B1537628A2703E0033CB51 /* NoaChatKitUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1537528A2703E0033CB51 /* NoaChatKitUITestsLaunchTests.m */; };
-		2A1B8CA42EE6D96C006E7705 /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8C9E2EE6D96C006E7705 /* AppleMyungjo.ttf */; };
-		2A1B8CA52EE6D96C006E7705 /* pengyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8CA22EE6D96C006E7705 /* pengyou.png */; };
-		2A1B8CA62EE6D96C006E7705 /* pengyouquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8CA32EE6D96C006E7705 /* pengyouquan.png */; };
-		2A1B8CA72EE6D96C006E7705 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8C9C2EE6D96C006E7705 /* apple.png */; };
-		2A1B8CA82EE6D96C006E7705 /* liaotian.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8CA02EE6D96C006E7705 /* liaotian.png */; };
-		2A1B8CA92EE6D96C006E7705 /* appletree.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8C9F2EE6D96C006E7705 /* appletree.png */; };
-		2A1B8CAA2EE6D96C006E7705 /* Apple Chancery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8C9D2EE6D96C006E7705 /* Apple Chancery.ttf */; };
-		2A1B8CAB2EE6D96C006E7705 /* liaotian-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A1B8CA12EE6D96C006E7705 /* liaotian-2.png */; };
+		2AA95A232EEC199100A39FD4 /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AA95A1D2EEC199100A39FD4 /* AppleMyungjo.ttf */; };
+		2AA95A242EEC199100A39FD4 /* liaotian-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA95A202EEC199100A39FD4 /* liaotian-2.png */; };
+		2AA95A252EEC199100A39FD4 /* appletree.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA95A1E2EEC199100A39FD4 /* appletree.png */; };
+		2AA95A262EEC199100A39FD4 /* pengyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA95A212EEC199100A39FD4 /* pengyou.png */; };
+		2AA95A272EEC199100A39FD4 /* liaotian.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA95A1F2EEC199100A39FD4 /* liaotian.png */; };
+		2AA95A282EEC199100A39FD4 /* Apple Chancery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AA95A1C2EEC199100A39FD4 /* Apple Chancery.ttf */; };
+		2AA95A292EEC199100A39FD4 /* pengyouquan.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA95A222EEC199100A39FD4 /* pengyouquan.png */; };
+		2AA95A2A2EEC199100A39FD4 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA95A1B2EEC199100A39FD4 /* apple.png */; };
 		2D40C3602ECB46BD0084182D /* NoaForgetPasswordDataHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C35F2ECB46BD0084182D /* NoaForgetPasswordDataHandle.m */; };
 		2D40C3632ECC08680084182D /* NoaForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C3622ECC08680084182D /* NoaForgetPasswordView.m */; };
 		2D40C3662ECC4A8D0084182D /* NoaVerCodeLoginDataHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D40C3652ECC4A8D0084182D /* NoaVerCodeLoginDataHandle.m */; };
@@ -2036,7 +2036,7 @@
 		18AB495C28C58F02001FCE80 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		18AB496728C5CAFE001FCE80 /* NoaChineseSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoaChineseSort.m; sourceTree = "<group>"; };
 		18AB496828C5CAFE001FCE80 /* NoaChineseSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoaChineseSort.h; sourceTree = "<group>"; };
-		18B1534A28A2703D0033CB51 /* 竹蜻蜓.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "竹蜻蜓.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18B1534A28A2703D0033CB51 /* 风铃鸟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "风铃鸟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B1534D28A2703D0033CB51 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18B1534E28A2703D0033CB51 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		18B1535728A2703D0033CB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -2051,14 +2051,14 @@
 		18B1537528A2703E0033CB51 /* NoaChatKitUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoaChatKitUITestsLaunchTests.m; sourceTree = "<group>"; };
 		18B153DB28A2763A0033CB51 /* NoaChatCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NoaChatCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B013ABB24B17BD67A238FD /* Pods-NoaChatKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoaChatKit.release.xcconfig"; path = "Target Support Files/Pods-NoaChatKit/Pods-NoaChatKit.release.xcconfig"; sourceTree = "<group>"; };
-		2A1B8C9C2EE6D96C006E7705 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
-		2A1B8C9D2EE6D96C006E7705 /* Apple Chancery.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Chancery.ttf"; sourceTree = "<group>"; };
-		2A1B8C9E2EE6D96C006E7705 /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleMyungjo.ttf; sourceTree = "<group>"; };
-		2A1B8C9F2EE6D96C006E7705 /* appletree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appletree.png; sourceTree = "<group>"; };
-		2A1B8CA02EE6D96C006E7705 /* liaotian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liaotian.png; sourceTree = "<group>"; };
-		2A1B8CA12EE6D96C006E7705 /* liaotian-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "liaotian-2.png"; sourceTree = "<group>"; };
-		2A1B8CA22EE6D96C006E7705 /* pengyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyou.png; sourceTree = "<group>"; };
-		2A1B8CA32EE6D96C006E7705 /* pengyouquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyouquan.png; sourceTree = "<group>"; };
+		2AA95A1B2EEC199100A39FD4 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		2AA95A1C2EEC199100A39FD4 /* Apple Chancery.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Chancery.ttf"; sourceTree = "<group>"; };
+		2AA95A1D2EEC199100A39FD4 /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleMyungjo.ttf; sourceTree = "<group>"; };
+		2AA95A1E2EEC199100A39FD4 /* appletree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appletree.png; sourceTree = "<group>"; };
+		2AA95A1F2EEC199100A39FD4 /* liaotian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liaotian.png; sourceTree = "<group>"; };
+		2AA95A202EEC199100A39FD4 /* liaotian-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "liaotian-2.png"; sourceTree = "<group>"; };
+		2AA95A212EEC199100A39FD4 /* pengyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyou.png; sourceTree = "<group>"; };
+		2AA95A222EEC199100A39FD4 /* pengyouquan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pengyouquan.png; sourceTree = "<group>"; };
 		2D40C35E2ECB46BD0084182D /* NoaForgetPasswordDataHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoaForgetPasswordDataHandle.h; sourceTree = "<group>"; };
 		2D40C35F2ECB46BD0084182D /* NoaForgetPasswordDataHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoaForgetPasswordDataHandle.m; sourceTree = "<group>"; };
 		2D40C3612ECC08680084182D /* NoaForgetPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoaForgetPasswordView.h; sourceTree = "<group>"; };
@@ -4836,14 +4836,14 @@
 		04F9D5F428BDF391000AE80A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				2A1B8C9C2EE6D96C006E7705 /* apple.png */,
-				2A1B8C9D2EE6D96C006E7705 /* Apple Chancery.ttf */,
-				2A1B8C9E2EE6D96C006E7705 /* AppleMyungjo.ttf */,
-				2A1B8C9F2EE6D96C006E7705 /* appletree.png */,
-				2A1B8CA02EE6D96C006E7705 /* liaotian.png */,
-				2A1B8CA12EE6D96C006E7705 /* liaotian-2.png */,
-				2A1B8CA22EE6D96C006E7705 /* pengyou.png */,
-				2A1B8CA32EE6D96C006E7705 /* pengyouquan.png */,
+				2AA95A1B2EEC199100A39FD4 /* apple.png */,
+				2AA95A1C2EEC199100A39FD4 /* Apple Chancery.ttf */,
+				2AA95A1D2EEC199100A39FD4 /* AppleMyungjo.ttf */,
+				2AA95A1E2EEC199100A39FD4 /* appletree.png */,
+				2AA95A1F2EEC199100A39FD4 /* liaotian.png */,
+				2AA95A202EEC199100A39FD4 /* liaotian-2.png */,
+				2AA95A212EEC199100A39FD4 /* pengyou.png */,
+				2AA95A222EEC199100A39FD4 /* pengyouquan.png */,
 				04C065012D6D6D36004009F5 /* NoaDINPro-Bold.ttf */,
 				04AAE0DB2CDB3BB60090660F /* noa_captcha_aliyun1.html */,
 				04AAE0DC2CDB3BB60090660F /* noa_captcha_aliyun2.html */,
@@ -5089,7 +5089,7 @@
 		18B1534B28A2703D0033CB51 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18B1534A28A2703D0033CB51 /* 竹蜻蜓.app */,
+				18B1534A28A2703D0033CB51 /* 风铃鸟.app */,
 				18B1536528A2703E0033CB51 /* NoaChatKitTests.xctest */,
 				18B1536F28A2703E0033CB51 /* NoaChatKitUITests.xctest */,
 			);
@@ -5873,7 +5873,7 @@
 			);
 			name = NoaChatKit;
 			productName = NoaChatKit;
-			productReference = 18B1534A28A2703D0033CB51 /* 竹蜻蜓.app */;
+			productReference = 18B1534A28A2703D0033CB51 /* 风铃鸟.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18B1536428A2703E0033CB51 /* NoaChatKitTests */ = {
@@ -5982,16 +5982,16 @@
 				042FC60028F4F7B7007F54FE /* MBProgressHUD.bundle in Resources */,
 				04BD6BE829D29B250021750F /* noa_constant.db in Resources */,
 				1863DAF12A94AFEC005351F6 /* KLSignInView.xib in Resources */,
+				2AA95A232EEC199100A39FD4 /* AppleMyungjo.ttf in Resources */,
+				2AA95A242EEC199100A39FD4 /* liaotian-2.png in Resources */,
+				2AA95A252EEC199100A39FD4 /* appletree.png in Resources */,
+				2AA95A262EEC199100A39FD4 /* pengyou.png in Resources */,
+				2AA95A272EEC199100A39FD4 /* liaotian.png in Resources */,
+				2AA95A282EEC199100A39FD4 /* Apple Chancery.ttf in Resources */,
+				2AA95A292EEC199100A39FD4 /* pengyouquan.png in Resources */,
+				2AA95A2A2EEC199100A39FD4 /* apple.png in Resources */,
 				042240362A8E00D500350D31 /* NoaChatInputEmoji.plist in Resources */,
 				042240382A8E00D500350D31 /* EmojiResource.xcassets in Resources */,
-				2A1B8CA42EE6D96C006E7705 /* AppleMyungjo.ttf in Resources */,
-				2A1B8CA52EE6D96C006E7705 /* pengyou.png in Resources */,
-				2A1B8CA62EE6D96C006E7705 /* pengyouquan.png in Resources */,
-				2A1B8CA72EE6D96C006E7705 /* apple.png in Resources */,
-				2A1B8CA82EE6D96C006E7705 /* liaotian.png in Resources */,
-				2A1B8CA92EE6D96C006E7705 /* appletree.png in Resources */,
-				2A1B8CAA2EE6D96C006E7705 /* Apple Chancery.ttf in Resources */,
-				2A1B8CAB2EE6D96C006E7705 /* liaotian-2.png in Resources */,
 				18B1535D28A2703E0033CB51 /* LaunchScreen.storyboard in Resources */,
 				04882509298C999800FC58CB /* KNPhotoBrowser.bundle in Resources */,
 				04ACC8D42CD4A26F00629B5B /* noa_captcha_tencent.html in Resources */,
@@ -7010,7 +7010,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20251208;
+				CURRENT_PROJECT_VERSION = 20251212;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -7103,7 +7103,7 @@
 					"$(PROJECT_DIR)/NoaChatKit/Base/Tools/ThirdLibs/ZFatlameTool/FatLame",
 					"$(PROJECT_DIR)/NoaChatKit/Base/Tools/ThirdLibs/LXChatEncrypt",
 				);
-				MARKETING_VERSION = 2.5.1;
+				MARKETING_VERSION = 2.5.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -7250,8 +7250,8 @@
 					"-force_load",
 					"$(SRCROOT)/NoaChatKit/Base/Tools/ThirdLibs/OBS/OBS.framework/OBS",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codeappyang.idnumberft;
-				PRODUCT_NAME = "竹蜻蜓";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rafaelcode.realtimeltda;
+				PRODUCT_NAME = "风铃鸟";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ft1026dev;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -7281,7 +7281,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20251208;
+				CURRENT_PROJECT_VERSION = 20251212;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -7375,7 +7375,7 @@
 					"$(PROJECT_DIR)/NoaChatKit/Base/Tools/ThirdLibs/ZFatlameTool/FatLame",
 					"$(PROJECT_DIR)/NoaChatKit/Base/Tools/ThirdLibs/LXChatEncrypt",
 				);
-				MARKETING_VERSION = 2.5.1;
+				MARKETING_VERSION = 2.5.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -7521,8 +7521,8 @@
 					"-force_load",
 					"$(SRCROOT)/NoaChatKit/Base/Tools/ThirdLibs/OBS/OBS.framework/OBS",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codeappyang.idnumberft;
-				PRODUCT_NAME = "竹蜻蜓";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rafaelcode.realtimeltda;
+				PRODUCT_NAME = "风铃鸟";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ft1026dev;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

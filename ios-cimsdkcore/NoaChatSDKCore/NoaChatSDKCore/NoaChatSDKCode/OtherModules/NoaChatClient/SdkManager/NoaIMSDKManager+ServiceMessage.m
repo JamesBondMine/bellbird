@@ -474,6 +474,26 @@
     [self.userDelegate imsdkUserUpdateTranslateConfigInfo:updateTranslateConfig];
 }
 
+#pragma mark - 处理接收到的 单聊消息置顶
+- (void)toolDealReceiveServiceMessageForMessageTop:(IMServerMessage *)message {
+    DialogUserMessageTop *dialogUserMessageTop = message.dialogUserMessageTop;
+    NoaIMChatMessageModel *model = [NoaIMChatMessageModel new];
+    model.serverMessageProtobuf = message.delimitedData;//protobuf
+    model.messageType = CIMChatMessageType_ServerMessage;//系统通知消息 提示
+    model.messageSendType = CIMChatMessageSendTypeSuccess;//接收到的消息，发送成功
+    model.chatType = CIMChatType_SingleChat;//群聊类型
+    model.sendTime = message.sendTime;//发送时间
+    model.toSource = message.toSource;//发送的设备
+    model.msgID = [[NoaIMManagerTool sharedManager] getMessageID];//本地生成消息ID
+    model.serviceMsgID = message.sMsgId;//服务端返回消息ID
+    model.chatMessageReaded = YES;//系统通知消息，默认已读
+    model.currentVersionMessageOK = YES;//当前版本支持音视频通话消息(默认)
+    model.messageStatus = 1;//接收到的消息，默认是正常消息
+    model.toID = dialogUserMessageTop.friendUid;
+    model.fromID = dialogUserMessageTop.uid;
+    [self.messageDelegate cimToolChatMessageReceive:model];
+}
+
 #pragma mark - <<<<<<群相关系统通知>>>>>>
 #pragma mark - 处理接收到的 群聊相关提示类型 系统通知消息
 - (void)toolDealReceiveServiceMessageForGroupTip:(IMServerMessage *)message {

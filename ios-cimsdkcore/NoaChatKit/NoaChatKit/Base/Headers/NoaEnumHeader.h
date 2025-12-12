@@ -71,7 +71,8 @@ typedef NS_ENUM(NSUInteger, MessageMenuItemActionType) {
     MessageMenuItemActionTypeMutePlayback = 15,   //静音播放
     MessageMenuItemActionTypeGroupTop = 16,   //置顶
     MessageMenuItemActionTypeGroupTopCancel = 17, //取消置顶
-
+    MessageMenuItemActionTypeSingleTop = 18,   //单聊置顶
+    MessageMenuItemActionTypeSingleTopCancel = 19, //单聊取消置顶
 };
 
 //发送文件消息时，所选文件的来源

@@ -11,8 +11,8 @@
 */
 
 // 阿拉伯语
-"CFBundleDisplayName" = "Dragonfly ";
-"CFBundleName" = "Dragonfly ";
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
 
 "NSCameraUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول. إذا لم يكن مسموحًا بذلك، فلن تتمكن من استخدام وظائف مثل تسجيل الدخول والتقاط الصور وتسجيل الفيديو بشكل طبيعي. ";
 "NSLocationWhenInUseUsageDescription" = "الرجاء النقر فوق “موافق” للسماح بالوصول إلى معلومات موقعك في بطاقة عملك. ";

@@ -17,7 +17,8 @@
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{
         @"translationSwitch": @"translation_switch",
-        @"groupMsgPinning": @"group_msg_pinning"
+        @"groupMsgPinning": @"group_msg_pinning",
+        @"userMsgPinning" : @"user_dialog_msg_pinning",
     };
 
 }
@@ -68,7 +69,13 @@
     } else if ([NSString isNil:self.groupMsgPinning.configValue]) {
         self.groupMsgPinning.configValue = @"false";
     }
-
+    
+    // 个人消息置顶开关：默认关闭
+    if (!self.userMsgPinning) {
+        self.userMsgPinning = DefaultAuth();
+    } else if ([NSString isNil:self.userMsgPinning.configValue]) {
+        self.userMsgPinning.configValue = @"false";
+    }
 }
 
 @end

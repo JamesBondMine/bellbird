@@ -42,6 +42,7 @@ CF_EXTERN_C_BEGIN
 @class DelGroupNotice;
 @class DelMsgMessage;
 @class DialogReadTagChangeEventMessage;
+@class DialogUserMessageTop;
 @class FileMessage;
 @class ForwardMessage;
 @class FriendBlackMessage;
@@ -644,6 +645,9 @@ typedef GPB_ENUM(IMServerMessage_ServerMsgType) {
 
   /** 群组置顶消息变更  该消息只转发给在线的所有群成员 */
   IMServerMessage_ServerMsgType_GroupMessageTop = 516,
+
+  /** 用户会话个人置顶消息变更  该消息只转发当前单聊会话的所有人 */
+  IMServerMessage_ServerMsgType_DialogUserMessageTop = 517,
 };
 
 GPBEnumDescriptor *IMServerMessage_ServerMsgType_EnumDescriptor(void);
@@ -2068,6 +2072,7 @@ typedef GPB_ENUM(IMServerMessage_FieldNumber) {
   IMServerMessage_FieldNumber_ReceiveRedPacketMessage = 69,
   IMServerMessage_FieldNumber_GroupAllForbidMessage = 70,
   IMServerMessage_FieldNumber_GroupMessageTop = 71,
+  IMServerMessage_FieldNumber_DialogUserMessageTop = 72,
 };
 
 typedef GPB_ENUM(IMServerMessage_MessageBody_OneOfCase) {
@@ -2129,6 +2134,7 @@ typedef GPB_ENUM(IMServerMessage_MessageBody_OneOfCase) {
   IMServerMessage_MessageBody_OneOfCase_ReceiveRedPacketMessage = 69,
   IMServerMessage_MessageBody_OneOfCase_GroupAllForbidMessage = 70,
   IMServerMessage_MessageBody_OneOfCase_GroupMessageTop = 71,
+  IMServerMessage_MessageBody_OneOfCase_DialogUserMessageTop = 72,
 };
 
 GPB_FINAL @interface IMServerMessage : GPBMessage
@@ -2329,6 +2335,9 @@ GPB_FINAL @interface IMServerMessage : GPBMessage
 
 /** 变更群组置顶消息  该消息只转发给在线的所有群成员 */
 @property(nonatomic, readwrite, strong, null_resettable) GroupMessageTop *groupMessageTop;
+
+/** 用户会话个人置顶消息变更  该消息只转发当前单聊会话的所有人 */
+@property(nonatomic, readwrite, strong, null_resettable) DialogUserMessageTop *dialogUserMessageTop;
 
 /** 接受者用户设备ID, 空:给所有设备发; -1234,负号开头是给其他设备发 */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *toSource;
@@ -3476,6 +3485,39 @@ GPB_FINAL @interface GroupMessageTop : GPBMessage
 
 /** 群组全局置顶消息ID = 4; */
 @property(nonatomic, readwrite, copy, null_resettable) NSString *sMsgId;
+
+/** 操作类型 1:置顶 2:取消置顶 */
+@property(nonatomic, readwrite) int32_t type;
+
+@end
+
+#pragma mark - DialogUserMessageTop
+
+typedef GPB_ENUM(DialogUserMessageTop_FieldNumber) {
+  DialogUserMessageTop_FieldNumber_Uid = 1,
+  DialogUserMessageTop_FieldNumber_Nick = 2,
+  DialogUserMessageTop_FieldNumber_FriendUid = 3,
+  DialogUserMessageTop_FieldNumber_SMsgId = 4,
+  DialogUserMessageTop_FieldNumber_DialogId = 5,
+  DialogUserMessageTop_FieldNumber_Type = 6,
+};
+
+GPB_FINAL @interface DialogUserMessageTop : GPBMessage
+
+/** 操作当前会话置顶消息的用户ID */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *uid;
+
+/** 发布当前会话置顶消息的用户昵称 */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *nick;
+
+/** 当前会话的好友ID */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *friendUid;
+
+/** 当前会话置顶消息的服务端ID = 4; */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sMsgId;
+
+/** 服务端针对置顶消息生成的当前会话ID; */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *dialogId;
 
 /** 操作类型 1:置顶 2:取消置顶 */
 @property(nonatomic, readwrite) int32_t type;

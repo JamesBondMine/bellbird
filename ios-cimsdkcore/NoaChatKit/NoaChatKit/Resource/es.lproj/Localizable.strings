@@ -11,7 +11,7 @@
 */
 
 // 西班牙语
-"竹蜻蜓" = "Dragonfly";
+"风铃鸟" = "RealTalk";
 "录音组件初始化失败！" = "¡Error al inicializar el componente de grabación!";
 "我的群活跃等级" = "Mi nivel de actividad grupal";
 "分值：" = "Agujas:";
@@ -1599,3 +1599,8 @@
 "15分钟内在线" = "En línea 15 min";
 "无法连接服务器,请稍后重试" = "No conecta, inténtelo luego";
 "已有账号？%@" = "¿Ya tienes cuenta? %@";
+"会话全局置顶消息已超出最大限制" = "Límite global de fijados alcanzado";
+"会话个人置顶消息已超出最大限制" = "Límite personal de fijados alcanzado";
+"消息类型不支持该操作" = "Tipo de mensaje no soportado";
+"我和对方均置顶" = "Ambos fijaron";
+"文件名不能包含下列任何字符:\\/:*?\"<>|" = "El nombre del archivo no puede contener ninguno de los siguientes caracteres:/:*?\"<>|";

@@ -11,8 +11,8 @@
 */
 
 // 土耳其语
-"CFBundleDisplayName" = "Dragonfly ";
-"CFBundleName" = "Dragonfly ";
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
 
 "NSCameraUsageDescription" = "Erişime izin vermek için lütfen Tamam'ı tıklayın. İzin verilmediği takdirde oturum açma, fotoğraf çekme, video kaydetme gibi işlevleri normal şekilde kullanamayacaksınız. ";
 "NSLocationWhenInUseUsageDescription" = "Kartvizitinizdeki konum bilgilerinize erişime izin vermek için lütfen Tamam'ı tıklayın. ";

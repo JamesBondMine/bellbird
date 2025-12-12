@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "18B1534928A2703D0033CB51"
-               BuildableName = "&#x7af9;&#x873b;&#x8713;.app"
+               BuildableName = "&#x98ce;&#x94c3;&#x9e1f;.app"
                BlueprintName = "NoaChatKit"
                ReferencedContainer = "container:NoaChatKit.xcodeproj">
             </BuildableReference>
@@ -67,7 +67,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18B1534928A2703D0033CB51"
-            BuildableName = "&#x7af9;&#x873b;&#x8713;.app"
+            BuildableName = "&#x98ce;&#x94c3;&#x9e1f;.app"
             BlueprintName = "NoaChatKit"
             ReferencedContainer = "container:NoaChatKit.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18B1534928A2703D0033CB51"
-            BuildableName = "&#x7af9;&#x873b;&#x8713;.app"
+            BuildableName = "&#x98ce;&#x94c3;&#x9e1f;.app"
             BlueprintName = "NoaChatKit"
             ReferencedContainer = "container:NoaChatKit.xcodeproj">
          </BuildableReference>

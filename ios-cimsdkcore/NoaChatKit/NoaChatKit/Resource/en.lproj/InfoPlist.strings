@@ -10,8 +10,8 @@
   
 */
 // 英文
-"CFBundleDisplayName" = "Dragonfly ";
-"CFBundleName" = "Dragonfly ";
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
 
 "NSCameraUsageDescription" = "Please tap 'OK' to allow access. If you do not allow it, you will not be able to use the camera to scan code to log in, take photos, avatars, record videos, or make video calls. ";
 "NSLocationWhenInUseUsageDescription" = "Please tap “OK” to allow access to your location information in your personal business card. ";

@@ -74,6 +74,10 @@
 	<string>群全局置顶消息已超出最大限制</string>
 	<key>20018</key>
 	<string>群个人置顶消息已超出最大限制</string>
+	<key>20019</key>
+	<string>会话全局置顶消息已超出最大限制</string>
+	<key>20020</key>
+	<string>会话个人置顶消息已超出最大限制</string>
 	<key>30001</key>
 	<string>发送消息失败</string>
 	<key>30002</key>
@@ -92,6 +96,8 @@
 	<string>该消息不存在</string>
 	<key>30009</key>
 	<string>该消息已收藏</string>
+	<key>30010</key>
+	<string>消息类型不支持该操作</string>
 	<key>40001</key>
 	<string>获取用户信息失败</string>
 	<key>40002</key>

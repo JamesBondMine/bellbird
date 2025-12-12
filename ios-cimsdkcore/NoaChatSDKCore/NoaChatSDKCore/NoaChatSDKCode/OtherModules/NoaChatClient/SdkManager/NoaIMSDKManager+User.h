@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)userResetPasswordWith:(NSMutableDictionary * _Nullable)params onSuccess:(nullable LingIMSuccessCallback)onSuccess onFailure:(nullable LingIMFailureCallback)onFailure;
 
 
-/// 反馈与支持
+/// 系统投诉接口
 /// @param params 操作参数
 /*
 {
@@ -93,6 +93,13 @@ NS_ASSUME_NONNULL_BEGIN
 }
  */
 - (void)userAddFeedBackWith:(NSMutableDictionary *)params onSuccess:(nullable LingIMSuccessCallback)onSuccess onFailure:(nullable LingIMFailureCallback)onFailure;
+
+/// 企业号投诉接口
+/// - Parameters:
+///   - params: 参数
+///   - onSuccess: 成功回调
+///   - onFailure: 失败回调
+- (void)ssoFeedBackWith:(NSMutableDictionary *)params onSuccess:(nullable LingIMSuccessCallback)onSuccess onFailure:(nullable LingIMFailureCallback)onFailure;
 
 /// 获取用户角色权限
 ///  userUid 用户账号

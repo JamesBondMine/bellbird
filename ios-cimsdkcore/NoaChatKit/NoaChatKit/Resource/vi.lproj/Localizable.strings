@@ -11,7 +11,7 @@
 */
 
 // 越南语
-"竹蜻蜓" = "Dragonfly";
+"风铃鸟" = "RealTalk";
 "录音组件初始化失败！" = "Không khởi tạo được thành phần ghi âm!";
 "我的群活跃等级" = "Mức độ hoạt động nhóm của tôi";
 "分值：" = "Điểm:";
@@ -1599,3 +1599,8 @@
 "15分钟内在线" = "Trực tuyến 15’";
 "无法连接服务器,请稍后重试" = "Không kết nối, thử lại";
 "已有账号？%@" = "Đã có tài khoản? %@";
+"会话全局置顶消息已超出最大限制" = "Đã vượt giới hạn ghim toàn cục";
+"会话个人置顶消息已超出最大限制" = "Vượt giới hạn ghim cá nhân";
+"消息类型不支持该操作" = "Loại tin không hỗ trợ";
+"我和对方均置顶" = "Cả hai đã ghim";
+"文件名不能包含下列任何字符:\\/:*?\"<>|" = "Tên tệp không được chứa bất kỳ ký tự nào sau đây:/:*?\"<>|";

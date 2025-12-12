@@ -63,6 +63,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param message 系统通知消息
 - (void)toolDealReceiveServiceMessageForUpdateTranslateConfig:(IMServerMessage *)message;
 
+/// 处理接收到的 单聊消息置顶 系统通知
+/// @param message 系统通知消息
+- (void)toolDealReceiveServiceMessageForMessageTop:(IMServerMessage *)message;
+
 #pragma mark - 群相关系统通知
 
 /// 处理接收到的 群聊相关提示类型 系统通知消息

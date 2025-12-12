@@ -1,6 +1,6 @@
 //
-//  NoaMacroHeader.h
-//  NoaKit
+//  ZMacroHeader.h
+//  CIMKit
 //
 //  Created by Mac on 2022/8/30.
 //
@@ -120,45 +120,43 @@ return __singleton__; \
 
 #pragma mark ----------- 自动化打包 配置项 ----------------
 //平台投诉
-#define complainBaseurl     @"https://im.net" 
+#define complainBaseurl  @"https://licv2.goodim.cc/adm-license"
 //Logan 日志
-#define publishUrlOriginal  @""
+#define publishUrlOriginal  @"http://myapi.hxrzka.com"
 //sentry
 #define sentryDSNOriginal  @"http://54a47c25e99ef4f30846d810655cc8e7@mysentry.zfawhx.cn/7"
 //oss地址后缀(不带桶名称，桶名称通过DNS解析获取，解析出阿里云、火山云后再拼接到前面)
-#define ossSuffixUrl  @"/lx/%@/navpoint"
+#define ossSuffixUrl  @"/ale/com_%@/navpoint"
 //aws地址
-#define awsUrl  @"lxpoint.s3.ap-southeast-1.amazonaws.com/lx/%@/navpoint"
+#define awsUrl  @"dacink.s3.ap-southeast-1.amazonaws.com/ale/com_%@/navpoint"
 //主域名
-#define normarlHttpDNSDomain    @"ana.pinned.cn"
+#define normarlHttpDNSDomain    @"tom.dacncloud.com"
 //副域名
-#define spareHttpDNSDomain      @"anas.pinned.cn"
+#define spareHttpDNSDomain      @"jerry.dacncloud.com"
 //内置域名
-#define builtInBucketName       @"lxpoint.oss-cn-hangzhou.aliyuncs.com"
+#define builtInBucketName       @"sdfkoja.oss-cn-hangzhou.aliyuncs.com,fkldfgsdw.tos-cn-guangzhou.volces.com"
+
 //服务协议地址
-#define servicePolicyUrl  @""
+#define servicePolicyUrl  @"https://a.zqtpc.com/application/terms_of_service_en.html"
 // 隐私协议地址
-#define privacyPolicyUrl @""
+#define privacyPolicyUrl @"https://a.zqtpc.com/application/privacy_policy_en.html"
 
 #define httpId       @"161860"
 //内置域名
 #define httpKeyId       @"161860_28647118757828608"
-//服务协议隐私政策地址
+//
 #define httpKeySecret  @"509671ca1c05455bb627312e6ae6f740"
 
 //主域名
-#define DirectNormarDomain    @"nav.loadingworks.com"
+#define DirectNormarDomain    @"pddm.joyskyim.com"
 //副域名
-#define DirectSpareDomain     @"6.loadingworks.com"
+#define DirectSpareDomain     @"pddb.joyskyim.com"
 #define DirectInBucketDomain  @""
-//sdk
-#define DirectId       @"671581"
-#define DirectKeyId       @"671581_30158023925312512"
-#define DirectKeySecret  @"0fc2f1c074fd42b3b13f23234297dc68"
+//内置域名
 
-//对图片视频等文件加解密方式  1.xor加解密 2.aes加解密 3.不加密
-#define kEncryptType @"1"
-
+#define DirectId       @"676111"
+#define DirectKeyId       @"676111_30188605610610688"
+#define DirectKeySecret  @"3ed356f8eb034cff8b8a685961aa9a32"
 
 #define DirectDecodeKeyId @"671581_30158023925312512"
 #define DirectDecodeKeySecret @"0fc2f1c074fd42b3b13f23234297dc68"
@@ -166,27 +164,32 @@ return __singleton__; \
 #define DefaultAppType  0
 
 // 国内导航保底地址
-#define kFallbackDomesticUrl @"10.10.10.10:8089,10.10.10.11:8089"
+#define kFallbackDomesticUrl @"120.26.105.148:8087"
 
 // 海外导航保底地址
-#define kFallbackOverseasUrl @"11.11.11.11:8089,11.11.11.12:8089"
+#define kFallbackOverseasUrl @"120.26.105.148:8087"
+
+//对图片视频等文件加解密方式  1.xor加解密 2.aes加解密 3.不加密
+#define kEncryptType @"1"
+
+#pragma mark - 第三方相关
 
 #pragma mark - DNS/DoH 常量
 // Cloudflare DoH 常量
 #define CF_DOH_BASE_URL                 @"https://cloudflare-dns.com/dns-query"
-#define CF_DOH_TEST_DOMAIN              @"pdd.jsimapp.com"
+#define CF_DOH_TEST_DOMAIN              @"pxx.jsimapp.com"
 
 // 阿里/腾讯 HttpDNS 测试域名常量（可按需替换）
-#define ALI_HTTPDNS_TEST_DOMAIN         @"pdd.dacncloud.com"
-#define TENCENT_HTTPDNS_TEST_DOMAIN     @"pdd.jsimapp.com"
-
+#define ALI_HTTPDNS_TEST_DOMAIN         @"pxx.dacncloud.com"
+#define TENCENT_HTTPDNS_TEST_DOMAIN     @"pxx.jsimapp.com"
 // TXT 解密密钥（Ali/CF TXT解密用）
 #define Z_DNS_TXT_AES_SECRET            @"2be4613f40779c85"
 
 // 是否允许兜底重试（五源路径禁用，兜底路径启用）的默认宏
 #define Z_ALLOW_FALLBACK_RETRY_DEFAULT   NO
 
-#pragma mark - 第三方相关
+
+#pragma mark -- url配置结束
 
 #pragma mark - APP本身
 //设备唯一标识
@@ -196,7 +199,7 @@ return __singleton__; \
 #define APP_CHANNEL      @"App Store"
 
 //App在App Store的地址
-#define APP_IN_APPLE_STORE_URL  @"itms-apps://itunes.apple.com/app/id6450179044"
+#define APP_IN_APPLE_STORE_URL  @"https://apps.apple.com/cn/app/%E9%A3%8E%E9%93%83%E9%B8%9F/id6755617657"
 
 #define L_DevicePushToken       @"DevicePushTokenKey"       //推送token
 
@@ -377,14 +380,5 @@ return __singleton__; \
 
 #define OSS_LOCAL_CACHE @"ssoModelCacheLocal"
 #define CONNECT_LOCAL_CACHE @"connectCache"
-
-
-#ifdef DEBUG
-#define DDLog(fmt, ...) LLog([NSString stringWithFormat: fmt, ##__VA_ARGS__]);
-#else
-#define DDLog(fmt, ...)
-#endif
-
-
 
 #endif /* ZMacroHeader_h */

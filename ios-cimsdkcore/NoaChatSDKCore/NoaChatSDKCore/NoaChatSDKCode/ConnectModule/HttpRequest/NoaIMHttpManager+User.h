@@ -35,8 +35,10 @@
 #define User_Check_User_Password_url            @"/auth/user/checkUserPassword"
 //更新密码
 #define User_Reset_Password_Url                 @"/auth/user/resetPassword"
-//投诉与支持
+//投诉与支持-系统投诉
 #define User_Feedback_Url                       @"/biz/feedback/addFeedBack"
+//投诉与支持-企业号投诉
+#define Sso_Feedback_Url                       @"/biz/feedback/addCompanyFeedBack"
 //获取用户角色权限
 #define User_Role_AuthorityList_Url             @"/biz/user/getUserRoleAuthorityList"
 //设置离线时长
@@ -137,6 +139,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)userAddFeedBackWith:(NSMutableDictionary *)params onSuccess:(nullable LingIMSuccessCallback)onSuccess onFailure:(nullable LingIMFailureCallback)onFailure;
 
+/// 企业号投诉接口
+/// - Parameters:
+///   - params: 参数
+///   - onSuccess: 成功回调
+///   - onFailure: 失败回调
+- (void)ssoAddFeedBackWith:(NSMutableDictionary *)params onSuccess:(nullable LingIMSuccessCallback)onSuccess onFailure:(nullable LingIMFailureCallback)onFailure;
 
 #pragma mark - 获取用户角色权限
 /**

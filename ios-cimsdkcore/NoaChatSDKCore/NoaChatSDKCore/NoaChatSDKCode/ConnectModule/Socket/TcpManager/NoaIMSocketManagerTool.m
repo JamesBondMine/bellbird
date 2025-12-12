@@ -574,6 +574,11 @@ typedef NS_ENUM(NSUInteger, LingIMUserAuthStatus) {
             [self dealServerMessageOfGroup:serverMessage];
         }
             break;
+        case IMServerMessage_ServerMsgType_DialogUserMessageTop://单聊置顶消息变化
+        {
+            [self dealServerMessageOfMessageTop:serverMessage];
+        }
+            break;
         case IMServerMessage_ServerMsgType_MsgHaveReadMessage://消息已读 系统通知
         {
             [self dealServerMessageOfReadMessage:serverMessage];
@@ -728,6 +733,14 @@ typedef NS_ENUM(NSUInteger, LingIMUserAuthStatus) {
         [_groupDelegate noaGroupTipServerMessage:serverMessage];
     }
     
+}
+
+//处理系统类型消息中的 会话消息置顶变化
+- (void)dealServerMessageOfMessageTop:(IMServerMessage *)serverMessage {
+    //通用的系统通知消息处理
+    if ([_messageDelegate respondsToSelector:@selector(noaDialogMessageTopChangeEventWith:)]) {
+        [_messageDelegate noaDialogMessageTopChangeEventWith:serverMessage];
+    }
 }
 
 //处理系统类型消息中的 消息已读相关 消息

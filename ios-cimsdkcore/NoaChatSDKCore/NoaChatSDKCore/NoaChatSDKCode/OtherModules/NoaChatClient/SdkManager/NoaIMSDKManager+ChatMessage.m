@@ -1589,4 +1589,19 @@
     [[NoaIMHttpManager sharedManager] MessageQueryGroupTopMsgsWith:params onSuccess:onSuccess onFailure:onFailure];
 }
 
+#pragma mark - 查询个人消息是否可以置顶
+- (void)MessageQueryUserMsgStatusWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure {
+    [[NoaIMHttpManager sharedManager] MessageQueryUserMsgStatusWith:params onSuccess:onSuccess onFailure:onFailure];
+}
+
+#pragma mark - 设置/取消 消息置顶
+- (void)MessageSetMsgTopWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure {
+    [[NoaIMHttpManager sharedManager] MessageSetMsgTopWith:params onSuccess:onSuccess onFailure:onFailure];
+}
+
+#pragma mark - 查询个人置顶消息列表
+- (void)MessageQueryUserTopMsgsWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure {
+    [[NoaIMHttpManager sharedManager] MessageQueryUserTopMsgsWith:params onSuccess:onSuccess onFailure:onFailure];
+}
+
 @end

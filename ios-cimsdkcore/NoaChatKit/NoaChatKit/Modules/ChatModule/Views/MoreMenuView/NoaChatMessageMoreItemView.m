@@ -187,6 +187,18 @@
                 @"imageName" : @"c_more_group_cancel_top"
             };
             break;
+        case MessageMenuItemActionTypeSingleTop:
+            return @{
+                @"titleName" : LanguageToolMatch(@"置顶"),
+                @"imageName" : @"c_more_group_top"
+            };
+            break;
+        case MessageMenuItemActionTypeSingleTopCancel:
+            return @{
+                @"titleName" : LanguageToolMatch(@"取消置顶"),
+                @"imageName" : @"c_more_group_cancel_top"
+            };
+            break;
         default:
             return @{
                 @"titleName" : @"",

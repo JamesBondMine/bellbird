@@ -11,8 +11,8 @@
 */
 
 // 乌兹别克语
-"CFBundleDisplayName" = "Dragonfly ";
-"CFBundleName" = "Dragonfly ";
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
 
 "NSCameraUsageDescription" = "Kirishga ruxsat berish uchun OK tugmasini bosing. Ruxsat berilmasa, tizimga kirish, suratga olish va video yozish kabi funksiyalardan odatdagidek foydalana olmaysiz. ";
 "NSLocationWhenInUseUsageDescription" = "Vizitkangizdagi joylashuv maʼlumotlariga kirishga ruxsat berish uchun OK tugmasini bosing. ";

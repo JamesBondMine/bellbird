@@ -39,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NoaUsereAuthModel *translationSwitch;
 /// 群消息置顶开关（后端字段：group_msg_pinning）
 @property (nonatomic, strong) NoaUsereAuthModel *groupMsgPinning;
+/// 个人消息置顶开关（后端字段：user_dialog_msg_pinning）
+@property (nonatomic, strong) NoaUsereAuthModel *userMsgPinning;
 
 @end
 

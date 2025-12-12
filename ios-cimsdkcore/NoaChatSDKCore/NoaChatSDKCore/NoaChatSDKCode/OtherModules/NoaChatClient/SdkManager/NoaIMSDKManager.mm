@@ -476,6 +476,11 @@ NoaGroupDelegate
     [self syncUserSessionStatus:message];
 }
 
+
+- (void)noaDialogMessageTopChangeEventWith:(IMServerMessage *)message {
+    [self toolDealReceiveServiceMessageForMessageTop:message];
+}
+
 - (void)noaDialogReadTagChangeEventWith:(IMServerMessage * _Nullable)message {
     DialogReadTagChangeEventMessage *dialogReadTagMessage = message.dialogReadTagChangeEventMessage;
     LingIMSessionModel *sessionModel = [IMSDKManager toolCheckMySessionWith:dialogReadTagMessage.peerUid];

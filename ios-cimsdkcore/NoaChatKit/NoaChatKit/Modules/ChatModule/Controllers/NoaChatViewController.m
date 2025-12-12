@@ -335,6 +335,8 @@
         } else {
             _topView.btnTime.hidden = YES;
         }
+        //请求单聊置顶消息列表
+        [self requestSingleTopMessages];
     } else {
         //群聊
         //群聊音视频通话提示
@@ -735,9 +737,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRoleAuthorityUploadImageVideoChange) name:@"UserRoleAuthorityUpImageVideoFileChangeNotification" object:nil];
     //用户角色权限发生变化(是否允许删除消息)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRoleAuthorityDeleteMessageChange) name:@"UserRoleAuthorityDeleteMessageChangeNotification" object:nil];
-    //群置顶消息定位通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(groupTopMessageLocation:) name:@"GroupTopMessageLocationNotification" object:nil];
-
+    //置顶消息定位通知（单聊和群聊通用）
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(groupTopMessageLocation:) name:@"TopMessageLocationNotification" object:nil];
     //专属监听
     if (self.chatType == CIMChatType_SingleChat) {
         //单聊
@@ -834,10 +835,11 @@
 - (void)groupTopMessageLocation:(NSNotification *)notification {
     NSDictionary *userInfo = notification.userInfo;
     NSString *smsgId = [userInfo objectForKeySafe:@"smsgId"];
-    NSString *groupId = [userInfo objectForKeySafe:@"groupId"];
+    // 支持单聊和群聊：单聊传 friendUid，群聊传 groupId
+    NSString *sessionId = [userInfo objectForKeySafe:@"groupId"] ?: [userInfo objectForKeySafe:@"friendUid"];
     
     // 检查是否是当前会话
-    if (![groupId isEqualToString:self.sessionID]) {
+    if (![sessionId isEqualToString:self.sessionID]) {
         return;
     }
     
@@ -3164,7 +3166,14 @@
             return;
         }
     }
-
+    
+    if (message.serverMessage.sMsgType == IMServerMessage_ServerMsgType_DialogUserMessageTop) {
+        if(([message.fromID isEqualToString:self.sessionID] && [message.toID isEqualToString:UserManager.userInfo.userUID]) || ([message.fromID isEqualToString:UserManager.userInfo.userUID] && [message.toID isEqualToString:self.sessionID])){
+            [self requestSingleTopMessages];
+            return;
+        }
+    }
+    
     //单聊
     if (message.chatType == CIMChatType_SingleChat) {
         //撤回消息通知、双向删除
@@ -5343,7 +5352,59 @@
             // 查询失败，不添加置顶相关菜单项
         }];
     }
-
+    
+    // 对于单聊的文字消息和@消息，查询置顶状态并动态添加菜单项
+    // 只有在 userMsgPinning 是 "true" 时才请求接口动态添加
+    // 引用消息不添加置顶和取消置顶按钮
+    if (self.chatType == CIMChatType_SingleChat && 
+        (longTapModel.message.messageType == CIMChatMessageType_TextMessage || longTapModel.message.messageType == CIMChatMessageType_AtMessage) &&
+        longTapModel.message.serviceMsgID.length > 0 &&
+        [NSString isNil:longTapModel.message.referenceMsgId] && // 引用消息不添加置顶按钮
+        [UserManager.userRoleAuthInfo.userMsgPinning.configValue isEqualToString:@"true"]) {
+        // 异步查询置顶状态
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObjectSafe:UserManager.userInfo.userUID forKey:@"userUid"];
+        [params setObjectSafe:self.sessionID forKey:@"friendUid"];
+        [params setObjectSafe:longTapModel.message.serviceMsgID forKey:@"smsgId"];
+        
+        // 使用关联对象保存 type 值和消息模型
+        objc_setAssociatedObject(msgMoreMenu, @"msgTopType", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(msgMoreMenu, @"msgModel", longTapModel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        
+        [IMSDKManager MessageQueryUserMsgStatusWith:params onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+            __strong typeof(weakMsgMoreMenu) strongMsgMoreMenu = weakMsgMoreMenu;
+            if (!strongMsgMoreMenu) { return; }
+            
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *dataDic = (NSDictionary *)data;
+                NSInteger type = [[dataDic objectForKeySafe:@"type"] integerValue];
+                
+                // 保存 type 值到关联对象
+                objc_setAssociatedObject(strongMsgMoreMenu, @"msgTopType", @(type), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                
+                // 根据 type 值动态添加菜单项
+                NSMutableArray *updatedMenuArr = [menuArr mutableCopy];
+                
+                if (type == 0) {
+                    // type == 0：未置顶，添加置顶菜单项
+                    if (![updatedMenuArr containsObject:[NSNumber numberWithInteger:MessageMenuItemActionTypeSingleTop]]) {
+                        [updatedMenuArr addObject:[NSNumber numberWithInteger:MessageMenuItemActionTypeSingleTop]];
+                    }
+                } else {
+                    // type != 0：已置顶（1全局、2个人、3全局+个人），添加取消置顶菜单项
+                    if (![updatedMenuArr containsObject:[NSNumber numberWithInteger:MessageMenuItemActionTypeSingleTopCancel]]) {
+                        [updatedMenuArr addObject:[NSNumber numberWithInteger:MessageMenuItemActionTypeSingleTopCancel]];
+                    }
+                }
+                
+                // 更新菜单显示
+                [strongMsgMoreMenu updateMenuItems:updatedMenuArr];
+            }
+        } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+            // 查询失败，不添加置顶相关菜单项
+        }];
+    }
+    
     [msgMoreMenu setMenuClick:^(MessageMenuItemActionType actionType) {
         __strong typeof(weakMsgMoreMenu) strongMsgMoreMenu = weakMsgMoreMenu;
         switch (actionType) {
@@ -5415,7 +5476,14 @@
                 //取消置顶
                 [weakSelf messageGroupTopCancelActionWithMsg:longTapModel msgMoreMenu:strongMsgMoreMenu];
                 break;
-
+            case MessageMenuItemActionTypeSingleTop:
+                //单聊置顶
+                [weakSelf messageSingleTopActionWithMsg:longTapModel msgMoreMenu:strongMsgMoreMenu];
+                break;
+            case MessageMenuItemActionTypeSingleTopCancel:
+                //单聊取消置顶
+                [weakSelf messageSingleTopCancelActionWithMsg:longTapModel msgMoreMenu:strongMsgMoreMenu];
+                break;
             default:
                 break;
         }
@@ -6612,6 +6680,183 @@
     }];
 }
 
+//单聊消息置顶
+- (void)messageSingleTopActionWithMsg:(NoaMessageModel *)msgModel msgMoreMenu:(NoaChatMessageMoreView *)msgMoreMenu {
+    if (!msgModel || !msgModel.message.serviceMsgID.length) {
+        return;
+    }
+    
+    // 显示带复选框的弹框
+    NoaMessageAlertView *alertView = [[NoaMessageAlertView alloc] initWithMsgAlertType:ZMessageAlertTypeTitleCheckBoxAboveButton supView:nil];
+    alertView.lblTitle.text = LanguageToolMatch(@"置顶消息");
+    alertView.lblContent.text = LanguageToolMatch(@"你确定置顶本条消息吗?");
+    alertView.checkboxLblContent.text = LanguageToolMatch(@"我和对方均置顶");
+    [alertView.btnSure setTitle:LanguageToolMatch(@"确认") forState:UIControlStateNormal];
+    [alertView.btnSure setTkThemeTitleColor:@[COLORWHITE, COLORWHITE] forState:UIControlStateNormal];
+    alertView.btnSure.tkThemebackgroundColors = @[COLOR_5966F2, COLOR_5966F2_DARK];
+    [alertView.btnCancel setTitle:LanguageToolMatch(@"取消") forState:UIControlStateNormal];
+    [alertView.btnCancel setTkThemeTitleColor:@[COLOR_66, COLOR_66_DARK] forState:UIControlStateNormal];
+    alertView.btnCancel.tkThemebackgroundColors = @[COLOR_F6F6F6, COLOR_F6F6F6_DARK];
+    alertView.isSelectCheckBox = NO;
+    alertView.sureBtnBlock = ^(BOOL isCheckBox) {
+        // 根据复选框状态决定：勾选=全局置顶(1)，未勾选=个人置顶(2)
+        NSInteger msgStatus = isCheckBox ? 1 : 2;
+        [self doSetSingleMsgTopWithMsgModel:msgModel msgStatus:msgStatus];
+    };
+    alertView.cancelBtnBlock = ^{
+    };
+    [alertView alertShow];
+}
+
+//单聊消息取消置顶
+- (void)messageSingleTopCancelActionWithMsg:(NoaMessageModel *)msgModel msgMoreMenu:(NoaChatMessageMoreView *)msgMoreMenu {
+    if (!msgModel || !msgModel.message.serviceMsgID.length) {
+        return;
+    }
+    
+    // 获取保存的 type 值
+    NSNumber *typeNum = objc_getAssociatedObject(msgMoreMenu, @"msgTopType");
+    NSInteger type = typeNum ? typeNum.integerValue : 0;
+    
+    // 根据 type 值显示不同的提示框
+    if (type == 1 || type == 3) {
+        // type == 1 或 type == 3：显示取消全局置顶弹框
+        [self showCancelSingleGlobalTopAlertWithMsgModel:msgModel];
+    } else if (type == 2) {
+        // type == 2：显示取消置顶弹框
+        [self showCancelSingleTopAlertWithMsgModel:msgModel];
+    } else {
+        // 如果 type 值异常，再次查询
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObjectSafe:UserManager.userInfo.userUID forKey:@"userUid"];
+        [params setObjectSafe:self.sessionID forKey:@"friendUid"];
+        [params setObjectSafe:msgModel.message.serviceMsgID forKey:@"smsgId"];
+        
+        WeakSelf;
+        [IMSDKManager MessageQueryUserMsgStatusWith:params onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *dataDic = (NSDictionary *)data;
+                NSInteger currentType = [[dataDic objectForKeySafe:@"type"] integerValue];
+                
+                if (currentType == 1 || currentType == 3) {
+                    // type == 1 或 type == 3：显示取消全局置顶弹框
+                    [weakSelf showCancelSingleGlobalTopAlertWithMsgModel:msgModel];
+                } else if (currentType == 2) {
+                    // type == 2：显示取消置顶弹框
+                    [weakSelf showCancelSingleTopAlertWithMsgModel:msgModel];
+                }
+            }
+        } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+            // 查询失败
+        }];
+    }
+}
+
+// 显示取消单聊全局置顶提示框
+- (void)showCancelSingleGlobalTopAlertWithMsgModel:(NoaMessageModel *)msgModel {
+    NoaMessageAlertView *alertView = [[NoaMessageAlertView alloc] initWithMsgAlertType:ZMessageAlertTypeTitle supView:nil];
+    alertView.lblTitle.text = LanguageToolMatch(@"取消全局置顶");
+    alertView.lblContent.text = LanguageToolMatch(@"你确定取消本条消息的全局置顶吗?");
+    [alertView.btnSure setTitle:LanguageToolMatch(@"确认") forState:UIControlStateNormal];
+    [alertView.btnSure setTkThemeTitleColor:@[COLORWHITE, COLORWHITE] forState:UIControlStateNormal];
+    alertView.btnSure.tkThemebackgroundColors = @[COLOR_5966F2, COLOR_5966F2_DARK];
+    [alertView.btnCancel setTitle:LanguageToolMatch(@"取消") forState:UIControlStateNormal];
+    [alertView.btnCancel setTkThemeTitleColor:@[COLOR_66, COLOR_66_DARK] forState:UIControlStateNormal];
+    alertView.btnCancel.tkThemebackgroundColors = @[COLOR_F6F6F6, COLOR_F6F6F6_DARK];
+    alertView.sureBtnBlock = ^(BOOL isCheckBox) {
+        // 取消全局置顶
+        [self doSetSingleMsgTopWithMsgModel:msgModel msgStatus:3];
+    };
+    alertView.cancelBtnBlock = ^{
+    };
+    [alertView alertShow];
+}
+
+// 显示取消单聊置顶提示框（个人置顶）
+- (void)showCancelSingleTopAlertWithMsgModel:(NoaMessageModel *)msgModel {
+    NoaMessageAlertView *alertView = [[NoaMessageAlertView alloc] initWithMsgAlertType:ZMessageAlertTypeTitle supView:nil];
+    alertView.lblTitle.text = LanguageToolMatch(@"取消置顶");
+    alertView.lblContent.text = LanguageToolMatch(@"你确定取消本条置顶消息吗?");
+    [alertView.btnSure setTitle:LanguageToolMatch(@"确认") forState:UIControlStateNormal];
+    [alertView.btnSure setTkThemeTitleColor:@[COLORWHITE, COLORWHITE] forState:UIControlStateNormal];
+    alertView.btnSure.tkThemebackgroundColors = @[COLOR_5966F2, COLOR_5966F2_DARK];
+    [alertView.btnCancel setTitle:LanguageToolMatch(@"取消") forState:UIControlStateNormal];
+    [alertView.btnCancel setTkThemeTitleColor:@[COLOR_66, COLOR_66_DARK] forState:UIControlStateNormal];
+    alertView.btnCancel.tkThemebackgroundColors = @[COLOR_F6F6F6, COLOR_F6F6F6_DARK];
+    alertView.sureBtnBlock = ^(BOOL isCheckBox) {
+        // 取消个人置顶
+        [self doSetSingleMsgTopWithMsgModel:msgModel msgStatus:4];
+    };
+    alertView.cancelBtnBlock = ^{
+    };
+    [alertView alertShow];
+}
+
+//执行单聊置顶/取消置顶操作
+- (void)doSetSingleMsgTopWithMsgModel:(NoaMessageModel *)msgModel msgStatus:(NSInteger)msgStatus {
+    if (!msgModel || !msgModel.message.serviceMsgID.length) {
+        return;
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObjectSafe:UserManager.userInfo.userUID forKey:@"userUid"];
+    [params setObjectSafe:self.sessionID forKey:@"friendUid"];
+    [params setObjectSafe:msgModel.message.serviceMsgID forKey:@"smsgId"];
+    [params setObjectSafe:@(msgStatus) forKey:@"msgStatus"];
+    
+    WeakSelf;
+    [IMSDKManager MessageSetMsgTopWith:params onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+        // 置顶/取消置顶成功，更新置顶消息列表
+        if (weakSelf && weakSelf.chatType == CIMChatType_SingleChat) {
+            [weakSelf requestSingleTopMessages];
+        }
+    } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+        // 置顶/取消置顶失败
+        [HUD showMessageWithCode:code errorMsg:msg inView:weakSelf.view];
+    }];
+}
+
+//请求单聊置顶消息列表（悬浮窗数据）
+- (void)requestSingleTopMessages {
+    if (self.chatType != CIMChatType_SingleChat || !self.sessionID.length) {
+        return;
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObjectSafe:UserManager.userInfo.userUID forKey:@"userUid"];
+    [params setObjectSafe:@(0) forKey:@"type"]; // type=0 查询悬浮的10条记录
+    [params setObjectSafe:self.sessionID forKey:@"friendUid"];
+    
+    WeakSelf
+    [IMSDKManager MessageQueryUserTopMsgsWith:params onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+        // data 直接就是数组
+        NSArray *rows = nil;
+        if ([data isKindOfClass:[NSArray class]]) {
+            rows = (NSArray *)data;
+        }
+        
+        if ([rows isKindOfClass:[NSArray class]] && rows.count > 0) {
+            // 取出所有数据，直接传递字典数组
+            [weakSelf.groupTopMessageView updateWithTopMessages:rows sessionID:weakSelf.sessionID];
+        } else {
+            [weakSelf.groupTopMessageView updateWithTopMessages:nil sessionID:weakSelf.sessionID];
+        }
+        // 延迟更新 header 高度，等待 groupTopMessageView 的显示/隐藏动画完成（动画时间 0.3 秒）
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf updateTableViewContentInset];
+        });
+    } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+        [ZTOOL doInMain:^{
+            // 请求失败，隐藏置顶消息 View
+            [weakSelf.groupTopMessageView updateWithTopMessages:nil sessionID:weakSelf.sessionID];
+            // 延迟更新 header 高度，等待 groupTopMessageView 的显示/隐藏动画完成（动画时间 0.3 秒）
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf updateTableViewContentInset];
+            });
+        }];
+    }];
+}
+
 //替换messageModel
 - (void)replaceMessageModelWithNewMsgModel:(NoaIMChatMessageModel *)chatMessageModel {
     for(int i = 0; i<self.messageModels.count;i++) {
@@ -7152,7 +7397,7 @@
 }
 
 - (ZGroupTopMessageView *)groupTopMessageView {
-    if (!_groupTopMessageView && self.chatType == CIMChatType_GroupChat) {
+    if (!_groupTopMessageView) {
         _groupTopMessageView = [[ZGroupTopMessageView alloc] initWithFrame:CGRectMake(DWScale(16), DStatusBarH + 44 + DWScale(40) + DWScale(8), DScreenWidth - DWScale(32), DWScale(48))];
         _groupTopMessageView.delegate = self;
         [self.view addSubview:_groupTopMessageView];
@@ -7239,6 +7484,9 @@
     ZGroupTopMessageListViewController *vc = [[ZGroupTopMessageListViewController alloc] init];
     vc.groupId = self.sessionID;
     vc.groupInfo = self.groupInfo;
+    // 传递会话类型
+    vc.chatType = self.chatType;
+    vc.friendUid = self.chatType == CIMChatType_SingleChat ? self.sessionID : nil;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -7252,7 +7500,7 @@
     NSString *smsgId = [view currentSmsgId];
     if (smsgId.length > 0) {
         // 发送通知定位消息
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupTopMessageLocationNotification" object:nil userInfo:@{@"smsgId": smsgId, @"groupId": self.sessionID}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TopMessageLocationNotification" object:nil userInfo:@{@"smsgId": smsgId, @"groupId": self.sessionID}];
     }
 }
 

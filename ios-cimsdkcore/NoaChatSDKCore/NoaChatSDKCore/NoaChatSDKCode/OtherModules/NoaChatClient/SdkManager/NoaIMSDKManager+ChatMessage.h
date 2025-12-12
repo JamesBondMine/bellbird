@@ -322,6 +322,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param params 操作参数 {groupId:群组ID, userUid:操作用户ID}
 - (void)MessageQueryGroupTopMsgsWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure;
 
+/// 查询个人消息是否可以置顶
+/// @param params 操作参数 {userUid:操作用户ID, friendUid:好友ID, smsgId:服务端消息ID}
+- (void)MessageQueryUserMsgStatusWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure;
+
+/// 设置/取消 消息置顶
+/// @param params 操作参数 {userUid:操作用户ID, friendUid:好友ID, smsgId:服务端消息ID, msgStatus:消息状态(1 全局置顶，2用户个人置顶，3取消全局置顶，4取消个人置顶)}
+- (void)MessageSetMsgTopWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure;
+
+/// 查询个人置顶消息列表
+/// @param params 操作参数 {userUid:操作用户ID, type:为0时，查询悬浮的10条记录；1，查询全部的个人当前会话的所有置顶消息列表, friendUid:好友ID}
+- (void)MessageQueryUserTopMsgsWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure;
+
 @end
 
 NS_ASSUME_NONNULL_END

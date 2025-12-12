@@ -5,18 +5,7 @@
       "scale" : "1x"
     },
     {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-   
-    {
-      "filename" : "LaunchImage_l.png",
+      "filename" : "LaunchImage_light.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -27,7 +16,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "LaunchImage_d.png",
+      "filename" : "LaunchImage_dark.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

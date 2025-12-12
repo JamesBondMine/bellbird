@@ -91,6 +91,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param message 系统通知消息
 - (void)noaDialogReadTagChangeEventWith:(IMServerMessage * _Nullable)message;
 
+/// 接收到系统通知消息 - 会话 置顶消息变化
+/// @param message 系统通知消息
+- (void)noaDialogMessageTopChangeEventWith:(IMServerMessage * _Nullable)message;
+
 @end
 
 #pragma mark - 用户回调

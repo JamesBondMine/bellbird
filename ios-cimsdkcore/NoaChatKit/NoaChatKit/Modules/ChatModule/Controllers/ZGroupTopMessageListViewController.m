@@ -47,7 +47,12 @@
     self.messageList = [NSMutableArray array];
     
     [self setupUI];
-    [self requestGroupTopMessageList];
+    // 根据会话类型调用不同的请求方法
+    if (self.chatType == CIMChatType_SingleChat) {
+        [self requestSingleTopMessageList];
+    } else {
+        [self requestGroupTopMessageList];
+    }
 }
 
 #pragma mark - UI
@@ -68,7 +73,11 @@
     // 添加下拉刷新
     WeakSelf;
     self.baseTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf requestGroupTopMessageList];
+        if (weakSelf.chatType == CIMChatType_SingleChat) {
+            [weakSelf requestSingleTopMessageList];
+        } else {
+            [weakSelf requestGroupTopMessageList];
+        }
     }];
 }
 
@@ -154,6 +163,115 @@
                     }
                     
                     // 读取 topType 并保存到关联对象
+                    NSInteger topType = [[dict objectForKeySafe:@"topType"] integerValue];
+                    objc_setAssociatedObject(messageModel, @"topType", @(topType), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                    
+                    [newMessages addObject:messageModel];
+                }
+            }
+            
+            // 替换数据
+            [weakSelf.messageList removeAllObjects];
+            [weakSelf.messageList addObjectsFromArray:newMessages];
+            
+            // 处理消息时间显示
+            [weakSelf computeVisibleTime];
+            
+            [weakSelf.baseTableView reloadData];
+        } else {
+            [weakSelf.messageList removeAllObjects];
+            [weakSelf.baseTableView reloadData];
+        }
+    } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+        [HUD hideHUD];
+        [weakSelf.baseTableView.mj_header endRefreshing];
+        [HUD showMessageWithCode:code errorMsg:msg inView:self.view];
+    }];
+}
+
+//请求单聊置顶消息列表
+- (void)requestSingleTopMessageList {
+    if (!self.friendUid.length) {
+        return;
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObjectSafe:UserManager.userInfo.userUID forKey:@"userUid"];
+    [params setObjectSafe:@(1) forKey:@"type"]; // type=1 查询全部的个人当前会话的所有置顶消息列表
+    [params setObjectSafe:self.friendUid forKey:@"friendUid"];
+    
+    WeakSelf;
+    [HUD showActivityMessage:@"" inView:self.view];
+    [IMSDKManager MessageQueryUserTopMsgsWith:params onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+        [HUD hideHUD];
+        [weakSelf.baseTableView.mj_header endRefreshing];
+        // data 直接就是数组
+        NSArray *dataArray = nil;
+        if ([data isKindOfClass:[NSArray class]]) {
+            dataArray = (NSArray *)data;
+        }
+        
+        if ([dataArray isKindOfClass:[NSArray class]] && dataArray.count > 0) {
+            NSMutableArray<NoaMessageModel *> *newMessages = [NSMutableArray array];
+            
+            for (NSDictionary *dict in dataArray) {
+                // 优先从数据库查询消息（如果数据库有，使用数据库的数据，确保 showContent 和 showTranslateContent 正确）
+                NSString *smsgId = [dict objectForKeySafe:@"smsgId"];
+                NoaIMChatMessageModel *chatMessageModel = nil;
+                
+                if (weakSelf.friendUid.length > 0 && smsgId.length > 0) {
+                    // 尝试从数据库查询消息
+                    chatMessageModel = [IMSDKManager toolGetOneChatMessageWithServiceMessageID:smsgId sessionID:weakSelf.friendUid];
+                }
+                
+                // 如果数据库没有找到，从字典创建
+                if (!chatMessageModel) {
+                    chatMessageModel = [weakSelf createChatMessageModelFromDict:dict];
+                }
+                
+                if (chatMessageModel) {
+                    // 设置 translateStatus（确保有译文时能正确显示）
+                    if (chatMessageModel.messageType == CIMChatMessageType_TextMessage || chatMessageModel.messageType == CIMChatMessageType_AtMessage) {
+                        if (chatMessageModel.translateStatus == CIMTranslateStatusNone) {
+                            if (![NSString isNil:chatMessageModel.translateContent] || ![NSString isNil:chatMessageModel.atTranslateContent] || ![NSString isNil:chatMessageModel.againTranslateContent] || ![NSString isNil:chatMessageModel.againAtTranslateContent]) {
+                                chatMessageModel.translateStatus = CIMTranslateStatusSuccess;
+                            }
+                        } else {
+                            if (![NSString isNil:chatMessageModel.translateContent] || ![NSString isNil:chatMessageModel.atTranslateContent] || ![NSString isNil:chatMessageModel.againTranslateContent] || ![NSString isNil:chatMessageModel.againAtTranslateContent]) {
+                                chatMessageModel.translateStatus = CIMTranslateStatusSuccess;
+                            }
+                        }
+                    }
+                    
+                    // 创建 ZMessageModel（会自动计算 showContent 和 showTranslateContent）
+                    BOOL isSelf = [chatMessageModel.fromID isEqualToString:UserManager.userInfo.userUID];
+                    NoaMessageModel *messageModel = [[NoaMessageModel alloc] initWithMessageModel:chatMessageModel isSelf:isSelf];
+                    messageModel.message.messageSendType = CIMChatMessageSendTypeSuccess;
+                    
+                    // 调试：检查 @消息的关键属性
+                    if (chatMessageModel.messageType == CIMChatMessageType_AtMessage) {
+                        if ([NSString isNil:messageModel.message.showContent] && messageModel.message.atContent.length > 0) {
+                            // 如果 showContent 为空但 atContent 不为空，重新计算
+                            if (isSelf) {
+                                messageModel.message.showContent = [NoaMessageTools atContenTranslateToShowContent:messageModel.message.atContent atUsersDictList:messageModel.message.atUsersInfoList withMessage:messageModel.message isGetShowName:YES];
+                            } else {
+                                NSString *translateContent = ![NSString isNil:messageModel.message.atTranslateContent] ? messageModel.message.atTranslateContent : messageModel.message.atContent;
+                                messageModel.message.showContent = [NoaMessageTools atContenTranslateToShowContent:translateContent atUsersDictList:messageModel.message.atUsersInfoList withMessage:messageModel.message isGetShowName:YES];
+                            }
+                            // 重新计算 attStr
+                            if (messageModel.message.showContent.length > 0) {
+                                messageModel.attStr = [[NoaChatInputEmojiManager sharedManager] attributedString:messageModel.message.showContent];
+                                if (messageModel.attStr) {
+                                    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+                                    style.lineSpacing = 2;
+                                    NSDictionary *dict = @{NSFontAttributeName:[UIFont systemFontOfSize:16],NSParagraphStyleAttributeName:[style copy]};
+                                    [messageModel.attStr addAttributes:dict range:NSMakeRange(0, messageModel.attStr.length)];
+                                }
+                            }
+                        }
+                    }
+                    
+                    // 读取 topType 并保存到关联对象（单聊使用 type 字段）
                     NSInteger topType = [[dict objectForKeySafe:@"topType"] integerValue];
                     objc_setAssociatedObject(messageModel, @"topType", @(topType), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                     
@@ -577,8 +695,9 @@
 - (void)locationButtonAction:(UIButton *)sender {
     NSString *smsgId = objc_getAssociatedObject(sender, @"smsgId");
     if (smsgId.length > 0) {
+        NSString *sessionID = self.chatType == CIMChatType_SingleChat ? self.friendUid : self.groupId;
         // 排除删除和撤回的消息
-        NoaIMChatMessageModel *targetMessage = [IMSDKManager toolGetOneChatMessageWithServiceMessageIDExcludeDeleted:smsgId sessionID:self.groupId];
+        NoaIMChatMessageModel *targetMessage = [IMSDKManager toolGetOneChatMessageWithServiceMessageIDExcludeDeleted:smsgId sessionID:sessionID];
         if (!targetMessage) {
             [HUD showMessage:LanguageToolMatch(@"找不到本条消息") inView:self.view];
             return;
@@ -588,49 +707,72 @@
         
         // 发送通知，让聊天页面定位到该消息
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupTopMessageLocationNotification" object:nil userInfo:@{@"smsgId": smsgId, @"groupId": self.groupId ?: @""}];
+            NSString *sessionIdKey = self.chatType == CIMChatType_SingleChat ? @"friendUid" : @"groupId";
+            NSString *sessionIdValue = self.chatType == CIMChatType_SingleChat ? (self.friendUid ?: @"") : (self.groupId ?: @"");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TopMessageLocationNotification" object:nil userInfo:@{@"smsgId": smsgId, sessionIdKey: sessionIdValue}];
         });
     }
 }
 
 #pragma mark - ZMessageBaseCellDelegate
 - (void)messageCellLongTapWithIndex:(NSIndexPath *)indexPath {
-    // 判断 groupMsgPinning 是否为 "true"
-    if (![UserManager.userRoleAuthInfo.groupMsgPinning.configValue isEqualToString:@"true"]) {
-        return;
-    }
-    
     if (indexPath.row >= self.messageList.count) {
         return;
     }
     
     NoaMessageModel *msgModel = [self.messageList objectAtIndex:indexPath.row];
     
-    // 获取 topType
-    NSNumber *topTypeNum = objc_getAssociatedObject(msgModel, @"topType");
-    NSInteger topType = topTypeNum ? [topTypeNum integerValue] : 0;
-    
-    // 获取用户角色
-    NSInteger userGroupRole = self.groupInfo ? self.groupInfo.userGroupRole : 0;
-    
-    // 根据 topType 和用户角色判断显示哪个弹框
-    if (topType == 2) {
-        // 仅个人置顶：弹出取消个人置顶弹框
-        [self showCancelPersonalTopAlertWithMsgModel:msgModel];
-    } else if (topType == 1) {
-        // 全局置顶：只有群主或管理员才能取消
-        if (userGroupRole == 1 || userGroupRole == 2) {
-            [self showCancelGlobalTopAlertWithMsgModel:msgModel];
+    // 根据会话类型判断权限
+    if (self.chatType == CIMChatType_SingleChat) {
+        // 单聊：判断 userMsgPinning 是否为 "true"
+        if (![UserManager.userRoleAuthInfo.userMsgPinning.configValue isEqualToString:@"true"]) {
+            return;
         }
-        // 群成员不弹框
-    } else if (topType == 3) {
-        // 全局+个人置顶
-        if (userGroupRole == 1 || userGroupRole == 2) {
-            // 群主或管理员：弹出取消全局置顶弹框
-            [self showCancelGlobalTopAlertWithMsgModel:msgModel];
-        } else {
-            // 群成员：弹出取消个人置顶弹框
+        
+        // 获取 topType（单聊使用 type 字段）
+        NSNumber *topTypeNum = objc_getAssociatedObject(msgModel, @"topType");
+        NSInteger topType = topTypeNum ? [topTypeNum integerValue] : 0;
+        
+        // 根据 topType 判断显示哪个弹框
+        if (topType == 1 || topType == 3) {
+            // type == 1 或 type == 3：显示取消全局置顶弹框
+            [self showCancelSingleGlobalTopAlertWithMsgModel:msgModel];
+        } else if (topType == 2) {
+            // type == 2：显示取消置顶弹框
+            [self showCancelSingleTopAlertWithMsgModel:msgModel];
+        }
+    } else {
+        // 群聊：判断 groupMsgPinning 是否为 "true"
+        if (![UserManager.userRoleAuthInfo.groupMsgPinning.configValue isEqualToString:@"true"]) {
+            return;
+        }
+        
+        // 获取 topType
+        NSNumber *topTypeNum = objc_getAssociatedObject(msgModel, @"topType");
+        NSInteger topType = topTypeNum ? [topTypeNum integerValue] : 0;
+        
+        // 获取用户角色
+        NSInteger userGroupRole = self.groupInfo ? self.groupInfo.userGroupRole : 0;
+        
+        // 根据 topType 和用户角色判断显示哪个弹框
+        if (topType == 2) {
+            // 仅个人置顶：弹出取消个人置顶弹框
             [self showCancelPersonalTopAlertWithMsgModel:msgModel];
+        } else if (topType == 1) {
+            // 全局置顶：只有群主或管理员才能取消
+            if (userGroupRole == 1 || userGroupRole == 2) {
+                [self showCancelGlobalTopAlertWithMsgModel:msgModel];
+            }
+            // 群成员不弹框
+        } else if (topType == 3) {
+            // 全局+个人置顶
+            if (userGroupRole == 1 || userGroupRole == 2) {
+                // 群主或管理员：弹出取消全局置顶弹框
+                [self showCancelGlobalTopAlertWithMsgModel:msgModel];
+            } else {
+                // 群成员：弹出取消个人置顶弹框
+                [self showCancelPersonalTopAlertWithMsgModel:msgModel];
+            }
         }
     }
 }
@@ -682,6 +824,48 @@
     [alertView alertShow];
 }
 
+// 显示取消单聊全局置顶提示框
+- (void)showCancelSingleGlobalTopAlertWithMsgModel:(NoaMessageModel *)msgModel {
+    NoaMessageAlertView *alertView = [[NoaMessageAlertView alloc] initWithMsgAlertType:ZMessageAlertTypeTitle supView:nil];
+    alertView.lblTitle.text = LanguageToolMatch(@"取消全局置顶");
+    alertView.lblContent.text = LanguageToolMatch(@"你确定取消本条消息的全局置顶吗?");
+    [alertView.btnSure setTitle:LanguageToolMatch(@"确认") forState:UIControlStateNormal];
+    [alertView.btnSure setTkThemeTitleColor:@[COLORWHITE, COLORWHITE] forState:UIControlStateNormal];
+    alertView.btnSure.tkThemebackgroundColors = @[COLOR_5966F2, COLOR_5966F2_DARK];
+    [alertView.btnCancel setTitle:LanguageToolMatch(@"取消") forState:UIControlStateNormal];
+    [alertView.btnCancel setTkThemeTitleColor:@[COLOR_66, COLOR_66_DARK] forState:UIControlStateNormal];
+    alertView.btnCancel.tkThemebackgroundColors = @[COLOR_F6F6F6, COLOR_F6F6F6_DARK];
+    WeakSelf;
+    alertView.sureBtnBlock = ^(BOOL isCheckBox) {
+        // 取消全局置顶
+        [weakSelf doSetSingleMsgTopWithMsgModel:msgModel msgStatus:3];
+    };
+    alertView.cancelBtnBlock = ^{
+    };
+    [alertView alertShow];
+}
+
+// 显示取消单聊置顶提示框（个人置顶）
+- (void)showCancelSingleTopAlertWithMsgModel:(NoaMessageModel *)msgModel {
+    NoaMessageAlertView *alertView = [[NoaMessageAlertView alloc] initWithMsgAlertType:ZMessageAlertTypeTitle supView:nil];
+    alertView.lblTitle.text = LanguageToolMatch(@"取消置顶");
+    alertView.lblContent.text = LanguageToolMatch(@"你确定取消本条置顶消息吗?");
+    [alertView.btnSure setTitle:LanguageToolMatch(@"确认") forState:UIControlStateNormal];
+    [alertView.btnSure setTkThemeTitleColor:@[COLORWHITE, COLORWHITE] forState:UIControlStateNormal];
+    alertView.btnSure.tkThemebackgroundColors = @[COLOR_5966F2, COLOR_5966F2_DARK];
+    [alertView.btnCancel setTitle:LanguageToolMatch(@"取消") forState:UIControlStateNormal];
+    [alertView.btnCancel setTkThemeTitleColor:@[COLOR_66, COLOR_66_DARK] forState:UIControlStateNormal];
+    alertView.btnCancel.tkThemebackgroundColors = @[COLOR_F6F6F6, COLOR_F6F6F6_DARK];
+    WeakSelf;
+    alertView.sureBtnBlock = ^(BOOL isCheckBox) {
+        // 取消个人置顶
+        [weakSelf doSetSingleMsgTopWithMsgModel:msgModel msgStatus:4];
+    };
+    alertView.cancelBtnBlock = ^{
+    };
+    [alertView alertShow];
+}
+
 //执行置顶/取消置顶操作
 - (void)doSetMsgTopWithMsgModel:(NoaMessageModel *)msgModel msgStatus:(NSInteger)msgStatus {
     if (!msgModel || !msgModel.message.serviceMsgID.length) {
@@ -698,6 +882,28 @@
     [IMSDKManager groupSetMsgTopWith:params onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
         // 取消置顶成功，刷新列表数据
         [weakSelf requestGroupTopMessageList];
+    } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
+        // 取消置顶失败
+        [HUD showMessageWithCode:code errorMsg:msg inView:weakSelf.view];
+    }];
+}
+
+//执行单聊置顶/取消置顶操作
+- (void)doSetSingleMsgTopWithMsgModel:(NoaMessageModel *)msgModel msgStatus:(NSInteger)msgStatus {
+    if (!msgModel || !msgModel.message.serviceMsgID.length) {
+        return;
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObjectSafe:UserManager.userInfo.userUID forKey:@"userUid"];
+    [params setObjectSafe:self.friendUid forKey:@"friendUid"];
+    [params setObjectSafe:msgModel.message.serviceMsgID forKey:@"smsgId"];
+    [params setObjectSafe:@(msgStatus) forKey:@"msgStatus"];
+    
+    WeakSelf;
+    [IMSDKManager MessageSetMsgTopWith:params onSuccess:^(id _Nullable data, NSString * _Nullable traceId) {
+        // 取消置顶成功，刷新列表数据
+        [weakSelf requestSingleTopMessageList];
     } onFailure:^(NSInteger code, NSString * _Nullable msg, NSString * _Nullable traceId) {
         // 取消置顶失败
         [HUD showMessageWithCode:code errorMsg:msg inView:weakSelf.view];

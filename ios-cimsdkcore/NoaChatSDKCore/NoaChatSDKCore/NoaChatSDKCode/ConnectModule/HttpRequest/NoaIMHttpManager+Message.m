@@ -380,4 +380,31 @@
     }
 }
 
+#pragma mark - 查询个人置顶消息列表
+- (void)MessageQueryUserTopMsgsWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure {
+    if (kAllHttpRequestUseTcp) {
+        [LingIMTcpRequestModel sendTcpRequestWithParam:params Url:Dialogs_Query_User_Top_Msgs_Url Method:LingRequestPost SuccessFunc:onSuccess FailureFunc:onFailure];
+    }else {
+        [self netRequestWithType:LingIMHttpRequestTypePOST path:Dialogs_Query_User_Top_Msgs_Url parameters:params onSuccess:onSuccess onFailure:onFailure];
+    }
+}
+
+#pragma mark - 查询个人消息是否可以置顶
+- (void)MessageQueryUserMsgStatusWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure {
+    if (kAllHttpRequestUseTcp) {
+        [LingIMTcpRequestModel sendTcpRequestWithParam:params Url:Dialogs_Query_User_Msg_Status_Url Method:LingRequestPost SuccessFunc:onSuccess FailureFunc:onFailure];
+    }else {
+        [self netRequestWithType:LingIMHttpRequestTypePOST path:Dialogs_Query_User_Msg_Status_Url parameters:params onSuccess:onSuccess onFailure:onFailure];
+    }
+}
+
+#pragma mark - 设置/取消 消息置顶
+- (void)MessageSetMsgTopWith:(NSMutableDictionary * _Nullable)params onSuccess:(LingIMSuccessCallback)onSuccess onFailure:(LingIMFailureCallback)onFailure {
+    if (kAllHttpRequestUseTcp) {
+        [LingIMTcpRequestModel sendTcpRequestWithParam:params Url:Dialogs_Set_Msg_Top_Url Method:LingRequestPost SuccessFunc:onSuccess FailureFunc:onFailure];
+    }else {
+        [self netRequestWithType:LingIMHttpRequestTypePOST path:Dialogs_Set_Msg_Top_Url parameters:params onSuccess:onSuccess onFailure:onFailure];
+    }
+}
+
 @end

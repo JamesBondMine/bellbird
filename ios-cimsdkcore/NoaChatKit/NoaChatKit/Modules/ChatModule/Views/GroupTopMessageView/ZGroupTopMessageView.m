@@ -32,6 +32,10 @@
 @property (nonatomic, assign) CGFloat panOffset; // 滑动过程中的偏移量
 @property (nonatomic, copy) NSString *sessionID; // 会话ID，用于查询数据库
 
+// 动画控制相关
+@property (nonatomic, strong) UIViewPropertyAnimator *currentAnimator; // 当前正在进行的动画
+@property (nonatomic, assign) NSInteger pendingTargetIndex; // 待切换的目标索引（用于防抖）
+
 @end
 
 @implementation ZGroupTopMessageView
@@ -40,6 +44,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.indicatorBars = [NSMutableArray array];
+        self.pendingTargetIndex = -1; // 初始化为无效值
         [self setupUI];
         self.hidden = YES;
     }
@@ -494,18 +499,6 @@
         return attributedString;
     }
     
-    // 先处理空白字符：将所有换行符、回车符、制表符等空白字符替换为空格，并合并多个连续空白为单个空格
-    attributedString = [self normalizeWhitespaceInAttributedString:attributedString];
-    
-    // 如果处理后的文本为空，返回省略号
-    if (!attributedString || attributedString.length == 0) {
-        NSMutableAttributedString *ellipsisAttributedString = [[NSMutableAttributedString alloc] initWithString:@"..."];
-        // 尝试获取原文本的属性
-        NSDictionary *attributes = @{NSFontAttributeName: FONTN(14)};
-        [ellipsisAttributedString addAttributes:attributes range:NSMakeRange(0, ellipsisAttributedString.length)];
-        return ellipsisAttributedString;
-    }
-    
     // 获取字体（从 attributedString 中获取，如果没有则使用默认字体）
     UIFont *font = [attributedString attribute:NSFontAttributeName atIndex:0 effectiveRange:NULL];
     if (!font) {
@@ -544,11 +537,47 @@
     NSInteger right = attributedString.length;
     NSInteger bestLength = 0;
     
+    // 获取底层字符串，用于安全截断
+    NSString *plainString = attributedString.string;
+    
+    // 辅助方法：确保截断位置不会在 emoji 中间
+    NSInteger (^safeTruncateIndex)(NSInteger) = ^NSInteger(NSInteger index) {
+        if (index <= 0) {
+            return 0;
+        }
+        if (index >= plainString.length) {
+            return plainString.length;
+        }
+        // 使用 rangeOfComposedCharacterSequenceAtIndex 确保不会在 emoji 中间截断
+        // 如果 index 在某个 composed character sequence 中间，调整到该序列的结束位置
+        NSRange composedRange = [plainString rangeOfComposedCharacterSequenceAtIndex:index];
+        // 如果 index 正好在 composedRange 的开始，返回该位置
+        if (composedRange.location == index) {
+            return index;
+        }
+        // 如果 index 在 composedRange 中间，调整到 composedRange 的开始（避免截断 emoji）
+        if (composedRange.location < index && index < NSMaxRange(composedRange)) {
+            return composedRange.location;
+        }
+        // 如果 index 在 composedRange 的结束位置之后，检查前一个字符
+        if (index > 0) {
+            NSRange prevComposedRange = [plainString rangeOfComposedCharacterSequenceAtIndex:index - 1];
+            if (NSMaxRange(prevComposedRange) > index) {
+                // index 在前一个字符序列中间，调整到前一个序列的结束
+                return prevComposedRange.location;
+            }
+        }
+        return index;
+    };
+    
     while (left <= right) {
         NSInteger mid = (left + right) / 2;
         
+        // 确保 mid 不会在 emoji 中间截断
+        NSInteger safeMid = safeTruncateIndex(mid);
+        
         // 创建截断后的 attributedString（包含省略号）
-        NSMutableAttributedString *testAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:[attributedString attributedSubstringFromRange:NSMakeRange(0, mid)]];
+        NSMutableAttributedString *testAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:[attributedString attributedSubstringFromRange:NSMakeRange(0, safeMid)]];
         [testAttributedString appendAttributedString:ellipsisAttributedString];
         
         // 计算宽度
@@ -559,7 +588,7 @@
         
         if (testWidth <= maxWidth) {
             // 可以显示更多字符
-            bestLength = mid;
+            bestLength = safeMid;
             left = mid + 1;
         } else {
             // 超出宽度，减少字符数
@@ -572,8 +601,11 @@
         return ellipsisAttributedString;
     }
     
+    // 再次确保 bestLength 不会在 emoji 中间截断
+    NSInteger safeBestLength = safeTruncateIndex(bestLength);
+    
     // 创建截断后的 attributedString
-    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithAttributedString:[attributedString attributedSubstringFromRange:NSMakeRange(0, bestLength)]];
+    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithAttributedString:[attributedString attributedSubstringFromRange:NSMakeRange(0, safeBestLength)]];
     [result appendAttributedString:ellipsisAttributedString];
     
     return result;
@@ -799,6 +831,18 @@
         return;
     }
     
+    // 取消之前正在进行的动画
+    if (self.currentAnimator && self.currentAnimator.isRunning) {
+        [self.currentAnimator stopAnimation:YES];
+        [self.currentAnimator finishAnimationAtPosition:UIViewAnimatingPositionCurrent];
+        self.currentAnimator = nil;
+    }
+    
+    // 如果之前有动画被取消，需要先重置状态
+    [self.layer removeAllAnimations];
+    [self.contentLabel.layer removeAllAnimations];
+    [self.nextContentLabel.layer removeAllAnimations];
+    
     NSInteger oldIndex = self.currentIndex;
     self.currentIndex = index;
     
@@ -826,7 +870,11 @@
             self.nextContentLabel.alpha = 0;
         }
         
-        [UIView animateWithDuration:0.3 animations:^{
+        // 保存目标索引，用于 completion 回调中获取正确的数据
+        NSInteger targetIndex = index;
+        
+        // 使用 UIViewPropertyAnimator 以便可以取消
+        self.currentAnimator = [[UIViewPropertyAnimator alloc] initWithDuration:0.3 curve:UIViewAnimationCurveEaseInOut animations:^{
             if (isMovingUp) {
                 // 当前内容向上移出
                 self.contentLabel.transform = CGAffineTransformMakeTranslation(0, -contentHeight);
@@ -840,24 +888,65 @@
             }
             self.contentLabel.alpha = 0;
             self.nextContentLabel.alpha = 1;
-        } completion:^(BOOL finished) {
-            if (finished) {
-                // 动画完成后，先更新 contentLabel 的内容（此时 alpha 还是 0，不可见）
-                self.contentLabel.attributedText = self.nextContentLabel.attributedText;
+        }];
+        
+        __weak typeof(self) weakSelf = self;
+        [self.currentAnimator addCompletion:^(UIViewAnimatingPosition finalPosition) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if (!strongSelf) return;
+            
+            // 检查动画是否完成且目标索引仍然有效
+            if (finalPosition == UIViewAnimatingPositionEnd &&
+                targetIndex >= 0 &&
+                targetIndex < strongSelf.dataArray.count &&
+                targetIndex == strongSelf.currentIndex) {
                 
-                // 在同一帧内重置 transform 和 alpha，避免闪烁
+                // 直接从 dataArray 获取目标数据，而不是依赖 nextContentLabel
+                NSDictionary *targetData = strongSelf.dataArray[targetIndex];
+                NSMutableAttributedString *targetAttributedString = [strongSelf getDisplayContentFromData:targetData];
+                
+                // 在同一帧内更新内容和重置状态，避免闪烁
                 [UIView performWithoutAnimation:^{
-                    self.contentLabel.transform = CGAffineTransformIdentity;
-                    self.contentLabel.alpha = 1;
-                    self.nextContentLabel.transform = CGAffineTransformIdentity;
-                    self.nextContentLabel.alpha = 0;
-                    self.nextContentLabel.attributedText = nil; // 清空下一个 label 的内容
+                    if (targetAttributedString) {
+                        strongSelf.contentLabel.attributedText = targetAttributedString;
+                    } else {
+                        strongSelf.contentLabel.attributedText = nil;
+                    }
+                    strongSelf.contentLabel.transform = CGAffineTransformIdentity;
+                    strongSelf.contentLabel.alpha = 1;
+                    strongSelf.nextContentLabel.transform = CGAffineTransformIdentity;
+                    strongSelf.nextContentLabel.alpha = 0;
+                    strongSelf.nextContentLabel.attributedText = nil; // 清空下一个 label 的内容
                 }];
                 
                 // 更新指示器高亮
-                [self updateIndicatorHighlight];
+                [strongSelf updateIndicatorHighlight];
+            } else {
+                // 动画被取消或目标索引已改变，重置状态
+                [UIView performWithoutAnimation:^{
+                    // 确保显示当前索引对应的内容
+                    if (strongSelf.currentIndex >= 0 && strongSelf.currentIndex < strongSelf.dataArray.count) {
+                        NSDictionary *currentData = strongSelf.dataArray[strongSelf.currentIndex];
+                        NSMutableAttributedString *currentAttributedString = [strongSelf getDisplayContentFromData:currentData];
+                        if (currentAttributedString) {
+                            strongSelf.contentLabel.attributedText = currentAttributedString;
+                        } else {
+                            strongSelf.contentLabel.attributedText = nil;
+                        }
+                    }
+                    strongSelf.contentLabel.transform = CGAffineTransformIdentity;
+                    strongSelf.contentLabel.alpha = 1;
+                    strongSelf.nextContentLabel.transform = CGAffineTransformIdentity;
+                    strongSelf.nextContentLabel.alpha = 0;
+                    strongSelf.nextContentLabel.attributedText = nil;
+                }];
+                [strongSelf updateIndicatorHighlight];
             }
+            
+            strongSelf.currentAnimator = nil;
         }];
+        
+        [self.currentAnimator startAnimation];
     } else {
         // 无动画，直接更新
         [self updateContentDisplay];
@@ -876,7 +965,6 @@
 }
 
 - (void)handleTapGesture:(UITapGestureRecognizer *)gesture {
-    // 点击整个 view 时，定位当前显示的消息
     // 排除点击列表按钮的情况
     CGPoint location = [gesture locationInView:self.containerView];
     if (CGRectContainsPoint(self.listButton.frame, location)) {
@@ -884,9 +972,75 @@
         return;
     }
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(groupTopMessageViewDidClickView:)]) {
-        [self.delegate groupTopMessageViewDidClickView:self];
+    // 获取点击位置相对于整个 view 的坐标
+    CGPoint locationInView = [gesture locationInView:self];
+    CGFloat viewHeight = CGRectGetHeight(self.bounds);
+    CGFloat midY = viewHeight / 2.0;
+    
+    // 判断点击位置是上部分还是下部分
+    BOOL isUpperPart = locationInView.y < midY;
+    
+    if (isUpperPart) {
+        // 点击上部分：切换到上一条消息，然后定位
+        [self handleUpperPartTap];
+    } else {
+        // 点击下部分：直接定位当前消息
+        if (self.delegate && [self.delegate respondsToSelector:@selector(groupTopMessageViewDidClickView:)]) {
+            [self.delegate groupTopMessageViewDidClickView:self];
+        }
     }
+}
+
+// 处理点击上部分的逻辑（内部方法，实际执行切换）
+- (void)performUpperPartTap {
+    // 边界情况：如果没有数据，直接返回
+    if (self.dataArray.count == 0) {
+        return;
+    }
+    
+    // 如果只有一条消息，直接定位
+    if (self.dataArray.count == 1) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(groupTopMessageViewDidClickView:)]) {
+            [self.delegate groupTopMessageViewDidClickView:self];
+        }
+        return;
+    }
+    
+    // 计算上一条消息的索引
+    NSInteger previousIndex = self.currentIndex - 1;
+    if (previousIndex < 0) {
+        // 当前是第一个，循环到最后一个
+        previousIndex = self.dataArray.count - 1;
+    }
+    
+    // 更新待切换的目标索引（用于防抖）
+    self.pendingTargetIndex = previousIndex;
+    
+    // 切换到上一条消息（带动画）
+    [self switchToIndex:previousIndex animated:YES];
+    
+    // 切换完成后，定位到切换后的消息
+    // 使用延迟确保动画完成后再定位
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 检查目标索引是否仍然有效（防止快速点击导致的状态不一致）
+        if (self.pendingTargetIndex >= 0 &&
+            self.pendingTargetIndex < self.dataArray.count &&
+            self.pendingTargetIndex == self.currentIndex) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(groupTopMessageViewDidClickView:)]) {
+                [self.delegate groupTopMessageViewDidClickView:self];
+            }
+        }
+        self.pendingTargetIndex = -1; // 重置
+    });
+}
+
+// 处理点击上部分的逻辑（带防抖）
+- (void)handleUpperPartTap {
+    // 取消之前的延迟执行（防抖：如果快速点击，只执行最后一次）
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(performUpperPartTap) object:nil];
+    
+    // 延迟执行，如果快速点击会取消之前的延迟
+    [self performSelector:@selector(performUpperPartTap) withObject:nil afterDelay:0.1];
 }
 
 - (NSString *)currentSmsgId {

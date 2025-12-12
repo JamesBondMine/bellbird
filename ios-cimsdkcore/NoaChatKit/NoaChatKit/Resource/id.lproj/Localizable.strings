@@ -11,7 +11,7 @@
 */
 
 // 印度尼西亚语(印尼语)
-"竹蜻蜓" = "Dragonfly";
+"风铃鸟" = "RealTalk";
 "录音组件初始化失败！" = "Inisialisasi komponen rekaman gagal!";
 "我的群活跃等级" = "Tingkat aktivitas kelompok saya";
 "分值：" = "Poin:";
@@ -1599,3 +1599,8 @@
 "15分钟内在线" = "Online 15 mnt";
 "无法连接服务器,请稍后重试" = "Tidak dapat terhubung, coba lagi";
 "已有账号？%@" = "Sudah punya akun? %@";
+"会话全局置顶消息已超出最大限制" = "Batas pin global tercapai";
+"会话个人置顶消息已超出最大限制" = "Batas pin pribadi tercapai";
+"消息类型不支持该操作" = "Jenis pesan tidak didukung";
+"我和对方均置顶" = "Keduanya disematkan";
+"文件名不能包含下列任何字符:\\/:*?\"<>|" = "Nama file tidak boleh berisi karakter apa pun berikut ini:/:*?\"<>|";

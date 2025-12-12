@@ -10,8 +10,8 @@
   
 */
 // 葡萄牙语（巴西）
-"CFBundleDisplayName" = "Dragonfly ";
-"CFBundleName" = "Dragonfly ";
+"CFBundleDisplayName" = "RealTalk ";
+"CFBundleName" = "RealTalk ";
 
 "NSCameraUsageDescription" = "Clique em OK para permitir o acesso. Se não permitir o acesso, você não poderá usar as funções de login, foto e gravação de vídeo corretamente. ";
 "NSLocationWhenInUseUsageDescription" = "Clique em OK para permitir o acesso às suas informações de localização em seu cartão de visita pessoal. ";
